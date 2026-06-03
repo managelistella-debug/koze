@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Koze Design &amp; Build</title>
+  <meta name="description" content="Learn about Koze Design &amp; Build and founder Jason Craig — a Lower Mainland design-build firm built on budget-led design, fixed-price construction, and a process that puts clients first." />
+  <link rel="stylesheet" href="https://use.typekit.net/hci4ywt.css" />
+  <link rel="stylesheet" href="public/css/koze.css" />
+  <style>
+    /* ─── WHY WE EXIST ─── */
+    .why-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .why-text .opening-quote {
+      font-size: clamp(20px, 2.6vw, 30px); font-family: "loos-wide", sans-serif; font-weight: 500;
+      color: var(--navy); line-height: 1.25; letter-spacing: -0.02em;
+      border-left: 3px solid var(--gold); padding-left: 24px; margin-bottom: 32px;
+    }
+    .why-text p { font-size: 16px; color: var(--text-mid); line-height: 1.85; margin-bottom: 16px; }
+    .why-img { position: relative; overflow: hidden; }
+    .why-img img { width: 100%; object-fit: cover; display: block; aspect-ratio: 4/5; }
+    .why-img .wa { position: absolute; bottom: -24px; left: -24px; width: 160px; aspect-ratio: 1; background: var(--gold); z-index: -1; }
+
+    /* ─── FOUNDER ─── */
+    .founder-section { background: var(--navy); padding: 100px 48px; }
+    .founder-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 400px 1fr; gap: 80px; align-items: stretch; }
+    .founder-img-col { position: relative; display: flex; flex-direction: column; }
+    .founder-img-col img { width: 100%; display: block; object-fit: cover; aspect-ratio: 3/4; }
+    .founder-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: auto; padding-top: 24px; }
+    .founder-stat { background: rgba(255,255,255,0.05); padding: 28px 24px; text-align: center; border: 1px solid rgba(255,255,255,0.06); }
+    .founder-stat-num { font-size: 32px; font-weight: 800; color: var(--white); letter-spacing: -0.02em; line-height: 1; margin-bottom: 6px; }
+    .founder-stat-label { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.4); letter-spacing: 0.06em; text-transform: uppercase; line-height: 1.4; }
+    .founder-text { padding-top: 8px; }
+    .founder-text .section-label { color: rgba(255,255,255,0.45); }
+    .founder-text h2 { font-size: clamp(28px, 3.5vw, 46px); color: var(--white); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 10px; }
+    .founder-title { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; display: block; }
+    .founder-text p { font-size: 15px; color: rgba(255,255,255,0.68); line-height: 1.85; margin-bottom: 18px; }
+    .founder-quote-block {
+      margin: 32px 0; padding: 24px 28px;
+      border-left: 3px solid var(--gold);
+      background: rgba(255,255,255,0.04);
+    }
+    .founder-quote-block p { font-size: 16px; color: var(--white); font-style: italic; line-height: 1.65; margin: 0; }
+
+    /* ─── VALUES ─── */
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 56px; }
+    .value-card { padding: 44px 36px; background: var(--white); border-top: 3px solid var(--border); transition: border-color 0.3s, background 0.3s; }
+    .value-card:hover { border-color: var(--gold); }
+    .value-icon { width: 40px; height: 40px; background: var(--navy); margin-bottom: 20px; display: flex; align-items: center; justify-content: center; }
+    .value-icon svg { width: 18px; height: 18px; stroke: var(--white); fill: none; stroke-width: 1.5; }
+    .value-card h3 { font-size: 18px; color: var(--navy); line-height: 1.2; margin-bottom: 12px; }
+    .value-card p { font-size: 14px; color: var(--text-mid); line-height: 1.75; }
+
+    /* ─── DIFFERENTIATORS ─── */
+    .diff-about-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 56px; }
+    .diff-about-card { padding: 52px 44px; background: var(--light-bg); position: relative; transition: background 0.3s; overflow: hidden; }
+    .diff-about-card:hover { background: var(--white); }
+    .diff-about-num { font-size: 80px; font-weight: 500; color: rgba(0,45,64,0.05); line-height: 1; position: absolute; top: 24px; right: 32px; font-family: "loos-wide", sans-serif; }
+    .diff-about-card .eyebrow { margin-bottom: 14px; }
+    .diff-about-card h3 { font-size: 20px; color: var(--navy); line-height: 1.2; margin-bottom: 14px; }
+    .diff-about-card p { font-size: 15px; color: var(--text-mid); line-height: 1.75; }
+
+    /* ─── PAGE HEADER ─── */
+    .about-page-header {
+      position: relative; padding: 180px 48px 100px;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; overflow: hidden; min-height: 420px;
+    }
+    .about-page-header .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('public/19564-hammond-road/Hammond-web-1.jpg');
+      background-size: cover; background-position: center 35%;
+    }
+    .about-page-header::after { content: ''; position: absolute; inset: 0; background: rgba(0,18,30,0.62); }
+    .about-page-header-inner { position: relative; z-index: 1; }
+    .about-page-header-inner .section-label { color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+    .about-page-header-inner h1 { font-size: clamp(32px, 5vw, 68px); color: var(--white); line-height: 1.05; letter-spacing: -0.03em; }
+    .about-page-header-inner .header-rule { width: 56px; height: 3px; background: var(--gold); margin: 28px auto 0; }
+
+    /* ─── SERVICE AREAS (map pin style) ─── */
+    .areas-about { background: var(--green); padding: 100px 48px; }
+    .areas-about-inner { max-width: 1200px; margin: 0 auto; }
+    .areas-about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .areas-about-text .eyebrow { color: rgba(255,255,255,0.45); }
+    .areas-about-text h2 { font-size: clamp(26px, 3.5vw, 42px); color: var(--white); line-height: 1.1; letter-spacing: -0.02em; margin: 16px 0 20px; }
+    .areas-about-text p { font-size: 16px; color: rgba(255,255,255,0.62); line-height: 1.75; margin-bottom: 32px; }
+    .areas-pin-list { display: grid; grid-template-columns: 1fr 1fr; column-gap: 32px; row-gap: 0; }
+    .area-pin-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: transform 0.25s ease;
+    }
+    .area-pin-item:hover { transform: translateX(4px); }
+    .area-pin-item:nth-child(odd):last-child { grid-column: span 2; }
+    .pin-icon { flex-shrink: 0; margin-top: 2px; }
+    .pin-icon svg { width: 16px; height: 16px; }
+    .pin-info { display: flex; flex-direction: column; gap: 3px; }
+    .pin-name { font-size: 15px; font-weight: 600; color: var(--white); }
+    .pin-status { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+
+    /* ─── TESTIMONIALS ─── */
+    .testi-about-wrap { background: var(--navy); padding: 100px 48px; overflow: hidden; }
+    .testi-about-inner { max-width: 1200px; margin: 0 auto; }
+    .testi-about-top { display: grid; grid-template-columns: 260px 1fr; gap: 80px; align-items: start; }
+    .testi-about-label { padding-top: 8px; }
+    .testi-about-label .eyebrow { color: var(--gold); }
+    .testi-about-label h2 { font-size: clamp(22px, 2.8vw, 36px); color: var(--white); line-height: 1.1; letter-spacing: -0.02em; margin-top: 10px; margin-bottom: 40px; }
+    .testi-about-controls { display: flex; align-items: center; gap: 12px; }
+    .ta-arrow { width: 44px; height: 44px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.3s, border-color 0.3s; flex-shrink: 0; }
+    .ta-arrow:hover { background: var(--gold); border-color: var(--gold); }
+    .ta-arrow svg { width: 16px; height: 16px; stroke: var(--white); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .ta-dots { display: flex; gap: 6px; }
+    .ta-dot { width: 24px; height: 3px; background: rgba(255,255,255,0.18); border: none; cursor: pointer; padding: 0; transition: background 0.3s, width 0.3s; }
+    .ta-dot.active { background: var(--gold); width: 36px; }
+    .testi-about-slider { overflow: hidden; }
+    .testi-about-track { display: flex; transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1); }
+    .testi-about-slide { min-width: 100%; padding: 0 2px; }
+    .testi-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 52px 56px 48px; position: relative; }
+    .testi-card-num { font-size: 120px; font-weight: 500; font-family: "loos-wide", sans-serif; color: rgba(255,255,255,0.04); line-height: 1; position: absolute; top: 24px; right: 40px; }
+    .testi-card-quote { font-size: clamp(16px, 1.8vw, 20px); color: rgba(255,255,255,0.88); line-height: 1.75; margin-bottom: 40px; font-style: italic; }
+    .testi-card-rule { width: 40px; height: 2px; background: var(--gold); margin-bottom: 20px; }
+    .testi-card-name { font-size: 15px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+    .testi-card-detail { font-size: 12px; color: rgba(255,255,255,0.38); letter-spacing: 0.08em; text-transform: uppercase; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .about-page-header { padding: 120px 24px 56px; }
+      .why-inner { grid-template-columns: 1fr; gap: 48px; }
+      .why-img { order: -1; }
+      .founder-inner { grid-template-columns: 1fr; gap: 48px; }
+      .founder-section { padding: 72px 24px; }
+      .values-grid { grid-template-columns: 1fr; }
+      .diff-about-grid { grid-template-columns: 1fr; }
+      .areas-about { padding: 72px 24px; }
+      .areas-about-layout { grid-template-columns: 1fr; gap: 40px; }
+      .areas-pin-list { grid-template-columns: 1fr; }
+      .area-pin-item:nth-child(odd):last-child { grid-column: span 1; }
+      .testi-about-wrap { padding: 72px 24px; }
+      .testi-about-top { grid-template-columns: 1fr; gap: 32px; }
+      .testi-card { padding: 36px 28px; }
+      .testi-card-num { font-size: 72px; }
+    }
+  </style>
+</head>
+<body>
+
+<header id="header" class="solid">
+  <a href="index.html" class="logo">
+    <img class="logo-white" src="public/Asset%201full-logo-white.svg" alt="Koze Design &amp; Build" />
+    <img class="logo-blue"  src="public/Asset%202full-logo-blue.svg"  alt="Koze Design &amp; Build" />
+  </a>
+  <nav id="nav">
+    <a href="about.html">About</a>
+    <a href="process.html">Our Process</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html" class="nav-cta">Contact Us</a>
+  </nav>
+  <div class="hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<section class="about-page-header">
+  <div class="hero-bg"></div>
+  <div class="about-page-header-inner reveal">
+    <span class="section-label">About Us</span>
+    <h1>The Builder Behind<br />Koze Design &amp; Build</h1>
+    <div class="header-rule"></div>
+  </div>
+</section>
+
+<!-- ═══ WHY KOZE EXISTS ═══ -->
+<section style="background: var(--white); padding: 100px 48px;">
+  <div class="why-inner">
+    <div class="why-text reveal-left">
+      <span class="section-label">Why We Exist</span>
+      <p class="opening-quote">"The building process was broken. Budget surprises, missed timelines, and poor communication had become the accepted cost of building. They don't have to be."</p>
+      <p>Koze Design &amp; Build was founded on a conviction that the best client experience and the best-built home are not competing priorities — they go hand in hand. Jason Craig built Koze after nearly a decade as a project manager watching homeowners navigate a process that was unnecessarily opaque, stressful, and expensive.</p>
+      <p>The problem wasn't the trades. It wasn't the materials. It was the process — or the lack of one. Budgets were set without real conversations about scope. Designs were created before anyone understood what was financially realistic. Clients were left managing multiple vendors with no single point of accountability.</p>
+      <p>Koze was built to solve this. Budget conversations happen before design begins. Scope is fully defined before a price is issued. One team handles everything — and one person is accountable for all of it.</p>
+    </div>
+    <div class="why-img reveal-right">
+      <img src="public/19564-hammond-road/Hammond-web-3.jpg" alt="Koze Design &amp; Build — Custom Home" />
+      <div class="wa"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MEET JASON ═══ -->
+<section class="founder-section">
+  <div class="founder-inner">
+    <div class="founder-img-col reveal-left">
+      <img src="public/19564-hammond-road/Hammond-web-4.jpg" alt="Jason Craig — Founder, Koze Design &amp; Build" />
+      <div class="founder-stats-grid">
+        <div class="founder-stat">
+          <div class="founder-stat-num">15+</div>
+          <div class="founder-stat-label">Years of Industry Experience</div>
+        </div>
+        <div class="founder-stat">
+          <div class="founder-stat-num">$2M+</div>
+          <div class="founder-stat-label">Delivered in the Last 12 Months</div>
+        </div>
+        <div class="founder-stat">
+          <div class="founder-stat-num">2023</div>
+          <div class="founder-stat-label">Year Koze Was Founded</div>
+        </div>
+        <div class="founder-stat">
+          <div class="founder-stat-num">100%</div>
+          <div class="founder-stat-label">Fixed-Price Contracts</div>
+        </div>
+      </div>
+    </div>
+    <div class="founder-text reveal-right">
+      <span class="section-label">Meet the Founder</span>
+      <h2>Jason Craig</h2>
+      <span class="founder-title">Founder &amp; Lead Builder — Koze Design &amp; Build</span>
+
+      <p>Jason didn't find construction — construction found him. He grew up watching his father develop properties across the Lower Mainland, and was working on job sites before he finished high school. By Grade 7 he was helping form foundations and performing labour work on active builds. By the time most of his peers were figuring out what they wanted to do, Jason already understood how a home came together from the ground up.</p>
+
+      <p>That hands-on foundation shaped everything that followed. After completing a Bachelor's Degree in Business, Jason returned to what he knew — but with a new perspective. He spent nearly a decade as a project manager, first supervising projects for his father's development company, then working alongside his brother's firm where he led a portfolio of construction projects across the Lower Mainland.</p>
+
+      <p>Nine years of project management gave Jason something rare in the trades: a deep, first-hand understanding of what clients actually experience. He saw what happens when communication breaks down, when budgets aren't anchored to reality, and when no single person is truly accountable for a project's outcome. He also saw what it looked like when everything worked — when a client was guided clearly, kept informed, and delivered exactly what they were promised.</p>
+
+      <div class="founder-quote-block">
+        <p>"Building expertise alone isn't enough. Running projects professionally, communicating clearly, managing budgets honestly — those things matter just as much as what gets built. That's what Koze is built around."</p>
+      </div>
+
+      <p>Jason founded Koze in 2023 with a focused mandate: to build a design-build firm where the process is as good as the finished product. He is a husband and father, and he brings the same values he holds at home — honesty, long-term thinking, and accountability — to every client relationship and every project he takes on.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CORE VALUES ═══ -->
+<section style="background: var(--light-bg); padding: 100px 48px;">
+  <div class="section-inner">
+    <div style="text-align: center;" class="reveal">
+      <span class="section-label">What We Believe</span>
+      <h2 style="font-size: clamp(26px, 3.5vw, 42px); color: var(--navy); line-height: 1.1; letter-spacing: -0.02em; margin-top: 8px;">The Values Every Koze Project Is Built Around</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal d1">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <h3>Radical Transparency</h3>
+        <p>You always know where your project stands, what it costs, and what comes next. No surprises, no silence, no chasing your builder for answers. We provide clear updates throughout every phase — because you deserve to know.</p>
+      </div>
+      <div class="value-card reveal d2">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>Budget First, Always</h3>
+        <p>Design should follow your investment — not the other way around. Every Koze project begins with an honest budget conversation before a single plan is drawn. This protects your money, your time, and the relationship.</p>
+      </div>
+      <div class="value-card reveal d3">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Built to Last</h3>
+        <p>We select materials that can be repaired, maintained, and improved over time — not simply replaced. Hardwood over disposable flooring. Durable finishes over trendy ones. We build homes designed to age gracefully, not be replaced.</p>
+      </div>
+      <div class="value-card reveal d1">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>The Right Relationship</h3>
+        <p>A custom home or major renovation lasts one to two years. We work only with clients where there's genuine alignment — on goals, budget, and communication style. Fit matters as much as capability.</p>
+      </div>
+      <div class="value-card reveal d2">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>One Point of Accountability</h3>
+        <p>Architecture, interior design, permits, and construction — coordinated through one team and one process. You never manage multiple vendors or navigate competing priorities. One team from concept to completion.</p>
+      </div>
+      <div class="value-card reveal d3">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Process Before Product</h3>
+        <p>A great home starts with a great process. Ours is built around the moments where projects typically go wrong — budget alignment, communication, and scope definition — and designed to prevent each one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICE AREAS ═══ -->
+<section class="areas-about">
+  <div class="areas-about-inner">
+    <div class="areas-about-layout">
+      <div class="areas-pin-list reveal-left">
+        <div class="area-pin-item">
+          <span class="pin-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="2.5" fill="var(--gold)" stroke="none"/></svg></span>
+          <span class="pin-info"><span class="pin-name">Pitt Meadows</span></span>
+        </div>
+        <div class="area-pin-item">
+          <span class="pin-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="2.5" fill="var(--gold)" stroke="none"/></svg></span>
+          <span class="pin-info"><span class="pin-name">Maple Ridge</span></span>
+        </div>
+        <div class="area-pin-item">
+          <span class="pin-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="2.5" fill="var(--gold)" stroke="none"/></svg></span>
+          <span class="pin-info"><span class="pin-name">Coquitlam</span></span>
+        </div>
+        <div class="area-pin-item">
+          <span class="pin-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="2.5" fill="var(--gold)" stroke="none"/></svg></span>
+          <span class="pin-info"><span class="pin-name">Burnaby</span></span>
+        </div>
+        <div class="area-pin-item">
+          <span class="pin-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="2.5" fill="var(--gold)" stroke="none"/></svg></span>
+          <span class="pin-info"><span class="pin-name">Vancouver</span></span>
+        </div>
+        <div class="area-pin-item">
+          <span class="pin-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="2.5" fill="var(--gold)" stroke="none"/></svg></span>
+          <span class="pin-info"><span class="pin-name">North Vancouver</span></span>
+        </div>
+        <div class="area-pin-item">
+          <span class="pin-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="2.5" fill="var(--gold)" stroke="none"/></svg></span>
+          <span class="pin-info"><span class="pin-name">West Vancouver</span></span>
+        </div>
+        <div class="area-pin-item">
+          <span class="pin-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="2.5" fill="var(--gold)" stroke="none"/></svg></span>
+          <span class="pin-info"><span class="pin-name">Richmond</span></span>
+        </div>
+        <div class="area-pin-item">
+          <span class="pin-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="2.5" fill="var(--gold)" stroke="none"/></svg></span>
+          <span class="pin-info"><span class="pin-name">Langley</span></span>
+        </div>
+        <div class="area-pin-item">
+          <span class="pin-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="2.5" fill="var(--gold)" stroke="none"/></svg></span>
+          <span class="pin-info"><span class="pin-name">South Surrey</span></span>
+        </div>
+      </div>
+      <div class="areas-about-text reveal-right">
+        <span class="eyebrow">Where We Build</span>
+        <h2>Serving the Lower Mainland</h2>
+        <p>Based in Pitt Meadows, we work across Metro Vancouver and the Fraser Valley — from the North Shore to Langley and South Surrey. We take on a focused number of projects at a time to ensure every client receives our full attention throughout the build.</p>
+        <a href="contact.html" class="btn-gold">Start Your Project &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FULL-WIDTH IMAGE BREAK ═══ -->
+<div style="height: 82vh; overflow: hidden; position: relative;">
+  <img src="public/19564-hammond-road/Hammond-web-9.jpg" alt="Koze Design &amp; Build" style="width: 100%; height: 100%; object-fit: cover; display: block; object-position: center 40%;" />
+  <div style="position: absolute; inset: 0; background: rgba(0,18,30,0.28);"></div>
+</div>
+
+<!-- ═══ WHAT SETS US APART ═══ -->
+<section style="background: var(--white); padding: 100px 48px;">
+  <div class="section-inner">
+    <div style="text-align: center;" class="reveal">
+      <span class="section-label">The Koze Difference</span>
+      <h2 style="font-size: clamp(26px, 3.5vw, 42px); color: var(--navy); line-height: 1.1; letter-spacing: -0.02em; margin-top: 8px;">Why Clients Choose Koze Over Other Builders</h2>
+    </div>
+    <div class="diff-about-grid">
+      <div class="diff-about-card reveal d1">
+        <div class="diff-about-num">01</div>
+        <span class="eyebrow">Budget-Led Design</span>
+        <h3>Clarity Before the First Sketch</h3>
+        <p>We discuss your goals and align on a realistic budget before design begins. Your plans are built around what's achievable — not scaled back after weeks of design work. Most builders design first and price later. We reverse the order because that's when it matters most.</p>
+      </div>
+      <div class="diff-about-card reveal d2">
+        <div class="diff-about-num">02</div>
+        <span class="eyebrow">Fixed-Price Contracts</span>
+        <h3>You Know the Number Before We Break Ground</h3>
+        <p>Scope, selections, and plans are fully defined before a contract is issued. You know exactly what your project costs before construction starts. No change orders driven by vague estimates — just one clear price for a clearly defined result.</p>
+      </div>
+      <div class="diff-about-card reveal d1">
+        <div class="diff-about-num">03</div>
+        <span class="eyebrow">Full-Service Design-Build</span>
+        <h3>One Team. One Process. One Price.</h3>
+        <p>We coordinate architecture, interior design, consultants, permits, and construction through our trusted network. You never manage multiple vendors or navigate competing timelines. One team is responsible for everything — from the first sketch to the final walkthrough.</p>
+      </div>
+      <div class="diff-about-card reveal d2">
+        <div class="diff-about-num">04</div>
+        <span class="eyebrow">Honest Qualification</span>
+        <h3>Clarity First. Construction Second.</h3>
+        <p>If your goals and budget don't align, we'll say so early. We'd rather lose a lead than build on unrealistic expectations. We qualify every project thoroughly — because a project that isn't the right fit isn't worth starting for either party.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="testi-about-wrap">
+  <div class="testi-about-inner">
+    <div class="testi-about-top reveal">
+      <div class="testi-about-label">
+        <span class="eyebrow">What Clients Say</span>
+        <h2>Built on Trust</h2>
+        <div class="testi-about-controls">
+          <div class="ta-arrow" onclick="taPrev()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+          <div class="ta-dots" id="taDots">
+            <button class="ta-dot active" onclick="taGo(0)"></button>
+            <button class="ta-dot" onclick="taGo(1)"></button>
+            <button class="ta-dot" onclick="taGo(2)"></button>
+          </div>
+          <div class="ta-arrow" onclick="taNext()"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+      </div>
+      <div class="testi-about-slider">
+        <div class="testi-about-track" id="taTrack">
+
+          <div class="testi-about-slide">
+            <div class="testi-card">
+              <div class="testi-card-num">01</div>
+              <p class="testi-card-quote">"I knew I was going to use Jason as our contractor the first time we met at my house. I have lived here for over 20 years and the kitchen has needed improving since I moved in. All the years I've been in the house I've thought of different ways to change the layout. I've asked others for ideas, but no one came up with a plan that met the needs of our family. Within half an hour of Jason listening to what we were looking for, he proposed the design we went with."</p>
+              <div class="testi-card-rule"></div>
+              <div class="testi-card-name">Stephen Quinlan</div>
+              <div class="testi-card-detail">Kitchen Renovation</div>
+            </div>
+          </div>
+
+          <div class="testi-about-slide">
+            <div class="testi-card">
+              <div class="testi-card-num">02</div>
+              <p class="testi-card-quote">"This is our second time working with Jason and his team. We can't say enough about their professionalism and the high quality of the workmanship. Any concerns we had were addressed quickly and dealt with promptly. Good communication skills and a sense of humour got us through the rough spots that are an inevitable part of any renovation or build. We now have a beautiful house to live in comfort."</p>
+              <div class="testi-card-rule"></div>
+              <div class="testi-card-name">R.K.</div>
+              <div class="testi-card-detail">Renovation &amp; Build — Repeat Client</div>
+            </div>
+          </div>
+
+          <div class="testi-about-slide">
+            <div class="testi-card">
+              <div class="testi-card-num">03</div>
+              <p class="testi-card-quote">"We were very fortunate to have Jason as the contractor for our kitchen renovation, and we couldn't have asked for better service. He helped us design and create a space that is perfect for our family, and he was always ready to offer suggestions when we got stuck making decisions. He is friendly, honest, reliable, dependable, and has a great eye for design. We absolutely love our kitchen and wouldn't hesitate to recommend him wholeheartedly!"</p>
+              <div class="testi-card-rule"></div>
+              <div class="testi-card-name">Erika Fryer</div>
+              <div class="testi-card-detail">Kitchen Renovation</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BOTTOM CTA ═══ -->
+<div class="bottom-cta">
+  <div class="bg" style="background-image: url('public/19564-hammond-road/Hammond-web-25.jpg');"></div>
+  <div class="content reveal">
+    <span class="eyebrow">Ready to Get Started?</span>
+    <h2>Let's Build Something That Lasts.</h2>
+    <p>Tell us about your project. We'll review your goals, discuss what's realistic for your budget, and let you know if we're the right fit — no pressure, no obligation.</p>
+    <div class="btn-group">
+      <a href="contact.html" class="btn-gold">Start Your Project &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="public/Asset%201full-logo-white.svg" alt="Koze Design &amp; Build" />
+      <p>Custom homes, major renovations, and ADUs built on clarity, trust, and craftsmanship. Serving the Lower Mainland since 2023.</p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/kozedesignandbuild/" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/kozedesignandbuild" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zM17.5 6.5h.01"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="custom-homes.html">Custom Homes</a></li>
+        <li><a href="renovations.html">Full Home Remodels</a></li>
+        <li><a href="adus.html">ADUs &amp; Coach Homes</a></li>
+        <li><a href="ssmuh.html">Small-Scale Multi-Unit</a></li>
+        <li><a href="design-build.html">Design-Build</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="process.html">Our Process</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <div class="fc-item">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>19554 Hammond Rd.<br />Pitt Meadows, BC V3Y 1L5</span>
+      </div>
+      <div class="fc-item">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81a19.79 19.79 0 01-3.07-8.63 2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 6.91a16 16 0 006.72 6.72l.72-.72a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <span>(604) 315-7095</span>
+      </div>
+      <div class="fc-item">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>info@kozedesignbuild.ca</span>
+      </div>
+      <div class="fc-item">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Mon – Fri, 8:00am – 5:00pm</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Koze Design and Build Inc. All rights reserved.</p>
+    <div class="footer-bottom-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 30);
+  }, { passive: true });
+
+  function toggleNav() { document.getElementById('nav').classList.toggle('open'); }
+  document.getElementById('nav').querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('nav').classList.remove('open'));
+  });
+
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  let taCurrent = 0;
+  const taTotal = 3;
+  const taTrack = document.getElementById('taTrack');
+  const taDotEls = document.querySelectorAll('.ta-dot');
+  let taTimer;
+
+  function taGo(n) {
+    taCurrent = (n + taTotal) % taTotal;
+    taTrack.style.transform = `translateX(-${taCurrent * 100}%)`;
+    taDotEls.forEach((d, i) => d.classList.toggle('active', i === taCurrent));
+    clearInterval(taTimer);
+    taTimer = setInterval(taNext, 6000);
+  }
+  function taNext() { taGo(taCurrent + 1); }
+  function taPrev() { taGo(taCurrent - 1); }
+  taTimer = setInterval(taNext, 6000);
+</script>
+</body>
+</html>

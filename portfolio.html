@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Koze Design &amp; Build</title>
+  <meta name="description" content="Explore the Koze Design &amp; Build portfolio — custom homes and full renovations delivered across the Lower Mainland, BC." />
+  <link rel="stylesheet" href="https://use.typekit.net/hci4ywt.css" />
+  <link rel="stylesheet" href="public/css/koze.css" />
+  <style>
+    .port-hero {
+      position: relative; padding: 180px 48px 100px;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; overflow: hidden; min-height: 420px;
+    }
+    .port-hero .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('public/19564-hammond-road/Hammond-web-1.jpg');
+      background-size: cover; background-position: center 35%;
+    }
+    .port-hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,18,30,0.62); }
+    .port-hero-inner { position: relative; z-index: 1; }
+    .port-hero-inner .section-label { color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+    .port-hero-inner h1 { font-size: clamp(32px, 5vw, 68px); color: var(--white); line-height: 1.05; letter-spacing: -0.03em; }
+    .header-rule { width: 56px; height: 3px; background: var(--gold); margin: 28px auto 0; }
+
+    .port-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+    }
+    .port-card { display: block; text-decoration: none; }
+    .port-card-img { overflow: hidden; }
+    .port-card-img img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform 0.6s ease; }
+    .port-card:hover .port-card-img img { transform: scale(1.04); }
+    .port-card-label { padding: 18px 0 0; }
+    .port-card-type { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; display: block; }
+    .port-card-label h3 { font-size: 20px; color: var(--navy); line-height: 1.2; }
+
+    @media (max-width: 700px) {
+      .port-hero { padding: 140px 24px 72px; }
+      .port-grid { grid-template-columns: 1fr; }
+      .port-grid-section { padding: 24px !important; }
+    }
+  </style>
+</head>
+<body>
+
+<header id="header" class="solid">
+  <a href="index.html" class="logo">
+    <img class="logo-white" src="public/Asset%201full-logo-white.svg" alt="Koze Design &amp; Build" />
+    <img class="logo-blue"  src="public/Asset%202full-logo-blue.svg"  alt="Koze Design &amp; Build" />
+  </a>
+  <nav id="nav">
+    <a href="about.html">About</a>
+    <a href="process.html">Our Process</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html" class="nav-cta">Contact Us</a>
+  </nav>
+  <div class="hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section class="port-hero">
+  <div class="hero-bg"></div>
+  <div class="port-hero-inner reveal">
+    <span class="section-label">Our Work</span>
+    <h1>Portfolio</h1>
+    <div class="header-rule"></div>
+  </div>
+</section>
+
+<!-- ═══ PROJECT GRID ═══ -->
+<section style="padding: 100px 48px; background: var(--white);">
+  <div class="section-inner">
+  <div class="port-grid">
+
+    <a href="19564-hammond-road.html" class="port-card reveal d1">
+      <div class="port-card-img">
+        <img src="public/19564-hammond-road/Hammond-web-1.jpg" alt="19564 Hammond Road" />
+      </div>
+      <div class="port-card-label">
+        <span class="port-card-type">Custom Home — Pitt Meadows, BC</span>
+        <h3>19564 Hammond Road</h3>
+      </div>
+    </a>
+
+    <a href="19452-fraser-crescent.html" class="port-card reveal d2">
+      <div class="port-card-img">
+        <img src="public/19452-fraser-unit-15/koze-fraser-web-1.jpg" alt="19452 Fraser Crescent" />
+      </div>
+      <div class="port-card-label">
+        <span class="port-card-type">Full Home Remodel — Lower Mainland, BC</span>
+        <h3>19452 Fraser Crescent</h3>
+      </div>
+    </a>
+
+  </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="public/Asset%201full-logo-white.svg" alt="Koze Design &amp; Build" />
+      <p>Custom homes, major renovations, and ADUs built on clarity, trust, and craftsmanship. Serving the Lower Mainland since 2023.</p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/kozedesignandbuild/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="https://www.instagram.com/kozedesignandbuild" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zM17.5 6.5h.01"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col"><h5>Services</h5><ul>
+      <li><a href="custom-homes.html">Custom Homes</a></li>
+      <li><a href="renovations.html">Full Home Remodels</a></li>
+      <li><a href="adus.html">ADUs &amp; Coach Homes</a></li>
+      <li><a href="ssmuh.html">Small-Scale Multi-Unit</a></li>
+      <li><a href="design-build.html">Design-Build</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Company</h5><ul>
+      <li><a href="about.html">About</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="process.html">Our Process</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Contact</h5>
+      <div class="fc-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>19554 Hammond Rd.<br />Pitt Meadows, BC V3Y 1L5</span></div>
+      <div class="fc-item"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81a19.79 19.79 0 01-3.07-8.63 2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 6.91a16 16 0 006.72 6.72l.72-.72a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><span>(604) 315-7095</span></div>
+      <div class="fc-item"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>info@kozedesignbuild.ca</span></div>
+      <div class="fc-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Mon – Fri, 8:00am – 5:00pm</span></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Koze Design and Build Inc. All rights reserved.</p>
+    <div class="footer-bottom-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a></div>
+  </div>
+</footer>
+
+<script>
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 30); }, { passive: true });
+  function toggleNav() { document.getElementById('nav').classList.toggle('open'); }
+  document.getElementById('nav').querySelectorAll('a').forEach(a => { a.addEventListener('click', () => document.getElementById('nav').classList.remove('open')); });
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => revealObserver.observe(el));
+</script>
+</body>
+</html>

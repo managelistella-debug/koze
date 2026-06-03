@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>19564 Hammond Road | Koze Design &amp; Build</title>
+  <meta name="description" content="Custom home build at 19564 Hammond Road, Pitt Meadows, BC — by Koze Design &amp; Build." />
+  <link rel="stylesheet" href="https://use.typekit.net/hci4ywt.css" />
+  <link rel="stylesheet" href="public/css/koze.css" />
+  <style>
+    /* Hero */
+    .prop-hero {
+      position: relative; padding: 180px 48px 100px;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; overflow: hidden; min-height: 420px;
+    }
+    .prop-hero .hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center 40%; }
+    .prop-hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,18,30,0.62); }
+    .prop-hero-inner { position: relative; z-index: 1; }
+    .prop-hero-inner .section-label { color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+    .prop-hero-inner h1 { font-size: clamp(28px, 4.5vw, 62px); color: var(--white); line-height: 1.05; letter-spacing: -0.025em; }
+    .prop-hero-inner .header-rule { width: 56px; height: 3px; background: var(--gold); margin: 24px auto 0; }
+
+    /* Gallery */
+    .gallery-section { padding: 80px 48px; background: var(--white); }
+    .gallery-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+    .gallery-item { overflow: hidden; aspect-ratio: 4/3; cursor: pointer; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.45s ease; }
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    /* Lightbox */
+    .lightbox {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.94); z-index: 9999;
+      align-items: center; justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lb-img { max-height: 88vh; max-width: 88vw; object-fit: contain; display: block; user-select: none; }
+    .lb-close {
+      position: fixed; top: 20px; right: 28px;
+      width: 44px; height: 44px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white); font-size: 22px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s; z-index: 10000;
+    }
+    .lb-close:hover { background: var(--gold); border-color: var(--gold); }
+    .lb-arrow {
+      position: fixed; top: 50%; transform: translateY(-50%);
+      width: 52px; height: 52px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s; z-index: 10000;
+    }
+    .lb-arrow:hover { background: var(--gold); border-color: var(--gold); }
+    .lb-arrow svg { width: 18px; height: 18px; stroke: var(--white); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .lb-prev { left: 20px; }
+    .lb-next { right: 20px; }
+    .lb-counter { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.5); font-family: "loos-normal", sans-serif; font-size: 13px; letter-spacing: 0.1em; z-index: 10000; }
+
+    @media (max-width: 900px) {
+      .prop-hero { padding: 140px 24px 72px; }
+      .gallery-section { padding: 48px 24px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .lb-arrow { display: none; }
+    }
+    @media (max-width: 500px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header id="header" class="solid">
+  <a href="index.html" class="logo">
+    <img class="logo-white" src="public/Asset%201full-logo-white.svg" alt="Koze Design &amp; Build" />
+    <img class="logo-blue" src="public/Asset%202full-logo-blue.svg" alt="Koze Design &amp; Build" />
+  </a>
+  <nav id="nav">
+    <a href="about.html">About</a>
+    <a href="process.html">Our Process</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html" class="nav-cta">Contact Us</a>
+  </nav>
+  <div class="hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section class="prop-hero">
+  <div class="hero-bg" style="background-image: url('public/19564-hammond-road/Hammond-web-1.jpg');"></div>
+  <div class="prop-hero-inner">
+    <span class="section-label">Custom Home — Pitt Meadows, BC</span>
+    <h1>19564 Hammond Road</h1>
+    <div class="header-rule"></div>
+  </div>
+</section>
+
+<!-- ═══ GALLERY ═══ -->
+<section class="gallery-section">
+  <div class="gallery-grid" id="galleryGrid">
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-1.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-2.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-3.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-4.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-5.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-6.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-7.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-8.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-9.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-10.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-11.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-12.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-13.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-14.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-15.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-16.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-17.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-18.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-19.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-20.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-21.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-22.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-23.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-24.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-25.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-26.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-27.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-28.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-29.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="public/19564-hammond-road/Hammond-web-30.jpg" alt="" /></div>
+  </div>
+</section>
+
+<!-- ═══ LIGHTBOX ═══ -->
+<div class="lightbox" id="lightbox">
+  <div class="lb-close" onclick="closeLightbox()">&#x2715;</div>
+  <div class="lb-arrow lb-prev" onclick="lbPrev()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+  <img class="lb-img" id="lbImg" src="" alt="" />
+  <div class="lb-arrow lb-next" onclick="lbNext()"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+  <div class="lb-counter" id="lbCounter"></div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="public/Asset%201full-logo-white.svg" alt="Koze Design &amp; Build" />
+      <p>Custom homes, major renovations, and ADUs built on clarity, trust, and craftsmanship. Serving the Lower Mainland since 2023.</p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/kozedesignandbuild/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="https://www.instagram.com/kozedesignandbuild" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zM17.5 6.5h.01"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col"><h5>Services</h5><ul>
+      <li><a href="custom-homes.html">Custom Homes</a></li>
+      <li><a href="renovations.html">Full Home Remodels</a></li>
+      <li><a href="adus.html">ADUs &amp; Coach Homes</a></li>
+      <li><a href="ssmuh.html">Small-Scale Multi-Unit</a></li>
+      <li><a href="design-build.html">Design-Build</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Company</h5><ul>
+      <li><a href="about.html">About</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="process.html">Our Process</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Contact</h5>
+      <div class="fc-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>19554 Hammond Rd.<br />Pitt Meadows, BC V3Y 1L5</span></div>
+      <div class="fc-item"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81a19.79 19.79 0 01-3.07-8.63 2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 6.91a16 16 0 006.72 6.72l.72-.72a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><span>(604) 315-7095</span></div>
+      <div class="fc-item"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>info@kozedesignbuild.ca</span></div>
+      <div class="fc-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Mon – Fri, 8:00am – 5:00pm</span></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Koze Design and Build Inc. All rights reserved.</p>
+    <div class="footer-bottom-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a></div>
+  </div>
+</footer>
+
+<script>
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 30); }, { passive: true });
+  function toggleNav() { document.getElementById('nav').classList.toggle('open'); }
+  document.getElementById('nav').querySelectorAll('a').forEach(a => { a.addEventListener('click', () => document.getElementById('nav').classList.remove('open')); });
+
+  // Lightbox
+  const items = Array.from(document.querySelectorAll('.gallery-item'));
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbCounter = document.getElementById('lbCounter');
+  let cur = 0;
+
+  function openLightbox(i) {
+    cur = i;
+    lbImg.src = items[i].querySelector('img').src;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    updateCounter();
+  }
+  function closeLightbox() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function lbPrev() { cur = (cur - 1 + items.length) % items.length; lbImg.src = items[cur].querySelector('img').src; updateCounter(); }
+  function lbNext() { cur = (cur + 1) % items.length; lbImg.src = items[cur].querySelector('img').src; updateCounter(); }
+  function updateCounter() { lbCounter.textContent = (cur + 1) + ' / ' + items.length; }
+
+  items.forEach((item, i) => item.addEventListener('click', () => openLightbox(i)));
+  lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') lbPrev();
+    if (e.key === 'ArrowRight') lbNext();
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Koze Design & Build | Custom Homes & Renovations — Lower Mainland, BC</title>
+  <meta name="description" content="Budget-led design. Fixed-price construction. One team from concept to completion. Custom homes and major renovations serving the Lower Mainland, BC." />
+  <link rel="stylesheet" href="https://use.typekit.net/hci4ywt.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #ffffff;
+      --navy: #002D40;
+      --green: #3E5B58;
+      --gold: #9C7942;
+      --gold-hover: #8a6a37;
+      --light-bg: #f7f6f4;
+      --text-dark: #1a1a1a;
+      --text-mid: #4a4a4a;
+      --border: #e5e2dc;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: "loos-normal", sans-serif; font-weight: 200; background: var(--white); color: var(--text-dark); overflow-x: hidden; }
+    h1, h2, h3, h4, h5, h6 { font-family: "loos-wide", sans-serif; font-weight: 500; }
+
+    /* ─── HEADER ─── */
+    #header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 0 48px; height: 80px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+    }
+    #header.scrolled { background: var(--white); box-shadow: 0 1px 0 var(--border); }
+    #header .logo img { height: 36px; display: block; }
+    #header .logo .logo-white { display: block; }
+    #header .logo .logo-blue  { display: none; }
+    #header.scrolled .logo .logo-white { display: none; }
+    #header.scrolled .logo .logo-blue  { display: block; }
+    #header nav { display: flex; align-items: center; gap: 36px; }
+    #header nav a {
+      font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.9);
+      text-decoration: none; letter-spacing: 0.01em; transition: color 0.3s;
+    }
+    #header.scrolled nav a { color: var(--navy); }
+    #header nav a:hover, #header.scrolled nav a:hover { color: var(--gold); }
+    #header .nav-cta {
+      background: var(--gold); color: var(--white) !important;
+      padding: 10px 22px; font-weight: 600; transition: background 0.3s !important;
+    }
+    #header .nav-cta:hover { background: var(--gold-hover) !important; }
+    .hamburger { display: none; cursor: pointer; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); margin: 5px 0; transition: background 0.3s; }
+    #header.scrolled .hamburger span { background: var(--navy); }
+
+    /* ─── BUTTONS ─── */
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold); color: var(--white);
+      font-size: 15px; font-weight: 600; padding: 16px 34px;
+      text-decoration: none; letter-spacing: 0.01em;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .btn-gold:hover { background: var(--gold-hover); transform: translateY(-1px); }
+    .btn-navy {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--navy); color: var(--white);
+      font-size: 15px; font-weight: 600; padding: 16px 34px;
+      text-decoration: none; transition: background 0.3s, transform 0.2s;
+    }
+    .btn-navy:hover { background: #003d56; transform: translateY(-1px); }
+    .btn-outline-white {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--white);
+      font-size: 15px; font-weight: 500; padding: 15px 32px;
+      border: 1.5px solid rgba(255,255,255,0.45); text-decoration: none;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .btn-outline-white:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+    .btn-outline-navy {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--navy);
+      font-size: 15px; font-weight: 600; padding: 15px 32px;
+      border: 1.5px solid var(--navy); text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+    }
+    .btn-outline-navy:hover { background: var(--navy); color: var(--white); }
+    .btn-group { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+
+    /* ─── HERO ─── */
+    #hero {
+      position: relative; width: 100%; height: 100vh; min-height: 640px;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; overflow: hidden;
+    }
+    #hero .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('public/19564-hammond-road/Hammond-web-1.jpg');
+      background-size: cover; background-position: center 30%;
+      transform: scale(1.05); transition: transform 8s ease;
+    }
+    #hero.loaded .hero-bg { transform: scale(1); }
+    #hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,18,30,0.52); }
+    #hero .hero-content {
+      position: relative; z-index: 1; padding: 0 48px;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .eyebrow {
+      display: inline-block; font-size: 12px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+    }
+    #hero h1 {
+      font-size: clamp(32px, 4.6vw, 62px); font-weight: 500;
+      line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 24px;
+      white-space: nowrap; color: var(--white);
+    }
+    #hero p {
+      font-size: 18px; font-weight: 400; color: rgba(255,255,255,0.8);
+      line-height: 1.7; margin-bottom: 40px; max-width: 560px;
+    }
+
+    /* ─── STATS ─── */
+    #stats { background: var(--navy); padding: 0 48px; }
+    #stats .stats-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border-left: 1px solid rgba(255,255,255,0.08);
+    }
+    .stat-item { padding: 44px 40px; border-right: 1px solid rgba(255,255,255,0.08); text-align: center; }
+    .stat-item .stat-num { font-size: 42px; font-weight: 800; color: var(--white); letter-spacing: -0.02em; line-height: 1; margin-bottom: 8px; }
+    .stat-item .stat-label { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.5); }
+
+    /* ─── GENERIC ─── */
+    section { padding: 100px 48px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    /* ─── INTRO ─── */
+    #intro .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    #intro .img-wrap { position: relative; overflow: hidden; aspect-ratio: 4/5; }
+    #intro .img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+    #intro .img-wrap:hover img { transform: scale(1.03); }
+    #intro .img-accent { position: absolute; bottom: -24px; right: -24px; width: 160px; aspect-ratio: 1; background: var(--gold); z-index: -1; }
+    #intro .text-col .eyebrow { color: var(--green); }
+    #intro h2 { font-size: clamp(26px, 3.5vw, 44px); font-weight: 800; color: var(--navy); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px; }
+    #intro .divider { width: 40px; height: 3px; background: var(--gold); margin: 28px 0; }
+    #intro p { font-size: 16px; color: var(--text-mid); line-height: 1.8; margin-bottom: 14px; }
+    .check-list { list-style: none; margin: 24px 0 36px; }
+    .check-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 15px; font-weight: 500; color: var(--text-dark);
+      padding: 10px 0; border-bottom: 1px solid var(--border);
+    }
+    .check-list li:last-child { border-bottom: none; }
+    .check-list li::before {
+      content: ''; flex-shrink: 0; width: 20px; height: 20px;
+      background: var(--navy) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%23ffffff' d='M8.3 13.7L4.5 9.9l1.4-1.4 2.4 2.4 5.8-5.8 1.4 1.4z'/%3E%3C/svg%3E") center/contain;
+    }
+
+    /* ─── CENTERED CTA (green) ─── */
+    #centered-cta { background: var(--green); text-align: center; }
+    #centered-cta .section-inner { max-width: 720px; }
+    #centered-cta .eyebrow { color: rgba(255,255,255,0.5); }
+    #centered-cta h2 { font-size: clamp(26px, 4vw, 46px); font-weight: 800; color: var(--white); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px; }
+    #centered-cta p { font-size: 17px; color: rgba(255,255,255,0.72); line-height: 1.75; margin-bottom: 36px; }
+
+    /* ─── DIFFERENCE ─── */
+    #difference { background: var(--white); padding: 0 48px; }
+    #difference .diff-layout {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+    }
+    #difference .diff-left { padding: 100px 0; }
+    .diff-left .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 16px; display: block; }
+    .diff-left .section-title { font-size: clamp(26px, 3.5vw, 42px); font-weight: 800; color: var(--navy); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 56px; }
+    .diff-feature { padding: 56px 0; border-top: 1px solid var(--border); cursor: default; }
+    .diff-feature:last-child { border-bottom: 1px solid var(--border); }
+    .diff-feature .feat-num { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .diff-feature h3 { font-size: 20px; font-weight: 800; color: var(--navy); line-height: 1.2; margin-bottom: 10px; transition: color 0.3s; }
+    .diff-feature p { font-size: 15px; color: var(--text-mid); line-height: 1.75; }
+    .diff-feature.active h3 { color: var(--green); }
+    .diff-feature .feat-bar { width: 0; height: 2px; background: var(--gold); margin-top: 18px; transition: width 0.5s ease; }
+    .diff-feature.active .feat-bar { width: 48px; }
+    .diff-right-col {
+      padding-top: 100px;
+    }
+    #difference .diff-right {
+      position: sticky; top: 100px;
+      height: calc(100vh - 200px); max-height: 620px;
+      overflow: hidden;
+    }
+    .diff-img { position: absolute; inset: 0; opacity: 0; transition: opacity 0.7s ease; }
+    .diff-img.active { opacity: 1; }
+    .diff-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .diff-img-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,45,64,0.25) 0%, transparent 50%); }
+
+    /* ─── SCROLLING DIFF (price-pierce style) ─── */
+    #scrolling-diff { background: var(--white); padding: 0; }
+    .sd-rows { position: relative; }
+    .sd-row { position: relative; height: 100vh; overflow-y: clip; }
+    .sd-row-inner { position: absolute; left: 0; right: 0; transform-style: preserve-3d; z-index: 2; }
+    .sd-row:first-child .sd-row-inner { top: 0; height: 200vh; }
+    .sd-row:not(:first-child) .sd-row-inner { top: -100vh; height: 300vh; }
+    .sd-row:last-child .sd-row-inner { height: 200vh; }
+    .sd-sections {
+      height: 100vh; position: sticky; top: 80px;
+      display: grid; grid-template-columns: 62fr 38fr; overflow: hidden;
+    }
+    .sd-img-col { position: relative; overflow: hidden; }
+    .sd-img-col img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .sd-overlay { position: absolute; inset: 0; background: rgba(0,18,30,0.52); z-index: 1; }
+    .sd-heading {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 42vh; z-index: 2;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 0 52px 56px;
+      border-top: 1px solid rgba(255,255,255,0.18);
+    }
+    .sd-feat-num { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 14px; display: block; }
+    .sd-heading h3 { font-size: clamp(24px, 3.2vw, 46px); font-weight: 500; color: var(--white); line-height: 1.1; }
+    .sd-desc-col { background: var(--white); display: flex; flex-direction: column; }
+    .sd-col-title {
+      height: 58vh; padding: 80px 52px 0;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .sd-col-title .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 16px; display: block; }
+    .sd-col-title h2 { font-size: clamp(20px, 2.6vw, 34px); font-weight: 500; color: var(--navy); line-height: 1.1; letter-spacing: -0.02em; }
+    .sd-corner-num {
+      position: absolute; top: 28px; left: 40px; z-index: 3;
+      font-size: clamp(32px, 4vw, 56px); font-weight: 500;
+      color: var(--white); line-height: 1;
+    }
+    .sd-desc-inner {
+      flex: 1; border-top: 1px solid var(--border);
+      padding: 28px 52px 56px;
+      display: flex; flex-direction: column; justify-content: flex-start;
+    }
+    .sd-step-title { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; display: block; }
+    .sd-desc-inner p { font-size: 16px; color: var(--text-mid); line-height: 1.8; max-width: 380px; }
+
+    /* ─── SERVICES ─── */
+    #services { background: var(--navy); }
+    #services .section-header { text-align: center; margin-bottom: 48px; }
+    #services .section-header .eyebrow { color: var(--gold); }
+    #services h2 { font-size: clamp(26px, 4vw, 44px); font-weight: 800; color: var(--white); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 12px; }
+    #services .section-header p { font-size: 16px; color: rgba(255,255,255,0.5); max-width: 480px; margin: 0 auto; line-height: 1.7; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .service-card { position: relative; overflow: hidden; aspect-ratio: 3/4; cursor: default; }
+    .service-card img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.6s ease, filter 0.5s ease;
+      filter: brightness(0.72);
+    }
+    .service-card:hover img { transform: scale(1.05); filter: brightness(0.45); }
+    .service-card .card-hover-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,45,64,0.9) 0%, rgba(0,45,64,0.2) 60%, transparent 100%);
+      opacity: 0; transition: opacity 0.5s ease;
+    }
+    .service-card:hover .card-hover-bg { opacity: 1; }
+    .service-card .card-content {
+      position: absolute; bottom: 0; left: 0; right: 0; padding: 28px;
+      transition: transform 0.4s ease;
+    }
+    .service-card:hover .card-content { transform: translateY(-6px); }
+    .service-card .card-num { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+    .service-card h3 { font-size: 20px; font-weight: 800; color: var(--white); line-height: 1.2; text-shadow: 0 1px 12px rgba(0,0,0,0.7); }
+    .service-card p {
+      font-size: 14px; color: rgba(255,255,255,0.78); line-height: 1.65; margin-top: 8px;
+      max-height: 0; overflow: hidden; opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.4s ease;
+    }
+    .service-card:hover p { max-height: 120px; opacity: 1; }
+
+    /* ─── PORTFOLIO ─── */
+    #portfolio { background: var(--white); }
+    #portfolio .port-header { margin-bottom: 44px; }
+    #portfolio .port-header .eyebrow { color: var(--green); }
+    #portfolio .port-header h2 { font-size: clamp(26px, 4vw, 46px); font-weight: 800; color: var(--navy); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 12px; }
+    #portfolio .port-header p { font-size: 16px; color: var(--text-mid); max-width: 500px; line-height: 1.7; }
+    .portfolio-panels {
+      display: flex; gap: 3px; height: 580px; overflow: hidden;
+    }
+    .p-panel {
+      flex: 1; position: relative; overflow: hidden; cursor: pointer;
+      transition: flex 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .portfolio-panels.has-hover .p-panel { flex: 0.62; }
+    .portfolio-panels.has-hover .p-panel.active { flex: 1.76; }
+    .p-panel img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; display: block; transition: transform 0.6s ease;
+    }
+    .p-panel.active img { transform: scale(1.03); }
+    .p-panel .p-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,45,64,0.88) 0%, rgba(0,45,64,0.1) 55%, transparent 100%);
+    }
+    .p-panel .p-label {
+      position: absolute; bottom: 0; left: 0; right: 0; padding: 32px;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      transform: translateY(4px);
+    }
+    .p-panel.active .p-label { transform: translateY(0); }
+    .portfolio-panels.has-hover .p-panel:not(.active) .p-label { opacity: 0; }
+    .p-label .p-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .p-label h3 { font-size: 22px; font-weight: 800; color: var(--white); margin-bottom: 6px; }
+    .p-label p { font-size: 14px; color: rgba(255,255,255,0.7); }
+    .port-cta { text-align: center; margin-top: 48px; }
+
+    /* ─── PROCESS ─── */
+    #process { background: var(--white); }
+    #process .proc-header { text-align: center; margin-bottom: 80px; }
+    #process .proc-header .eyebrow { color: var(--green); }
+    #process h2 { font-size: clamp(26px, 4vw, 44px); font-weight: 800; color: var(--navy); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 14px; }
+    #process .proc-header p { font-size: 16px; color: var(--text-mid); max-width: 500px; margin: 0 auto; line-height: 1.7; }
+    .proc-track {
+      position: relative; display: grid; grid-template-columns: repeat(3, 1fr);
+      margin-bottom: 64px;
+    }
+    .proc-line-wrap {
+      position: absolute;
+      top: 31px;
+      left: calc(16.66% + 4px);
+      right: calc(16.66% + 4px);
+      height: 2px;
+      background: var(--border);
+      overflow: hidden;
+    }
+    .proc-traveler {
+      position: absolute; top: 0; height: 100%; width: 80px;
+      background: linear-gradient(to right, transparent 0%, var(--gold) 50%, transparent 100%);
+      animation: lineTravel 5s cubic-bezier(0.4, 0, 0.6, 1) infinite alternate;
+    }
+    @keyframes lineTravel {
+      0%   { left: -80px; }
+      100% { left: 100%; }
+    }
+    .proc-step { padding: 0 28px; text-align: center; }
+    .step-dot {
+      width: 64px; height: 64px;
+      background: var(--navy); display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px; position: relative; z-index: 1;
+      font-size: 20px; font-weight: 800; color: var(--white);
+      transition: background 0.3s, transform 0.3s;
+    }
+    .proc-step:hover .step-dot { background: var(--green); transform: translateY(-3px); }
+    .proc-step h4 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .proc-step p { font-size: 14px; color: var(--text-mid); line-height: 1.7; }
+    .proc-cta { text-align: center; }
+
+    /* ─── AREAS ─── */
+    #areas { position: relative; background: var(--green); padding: 100px 48px; overflow: hidden; }
+    .areas-bgs { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+    .area-bg-layer {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      opacity: 0; transition: opacity 0.7s ease;
+    }
+    .area-bg-layer.active { opacity: 0.14; }
+    #areas .areas-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; }
+    .areas-top { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: start; }
+    .areas-text .eyebrow { color: rgba(255,255,255,0.45); }
+    .areas-text h2 { font-size: clamp(26px, 3.5vw, 46px); font-weight: 800; color: var(--white); line-height: 1.08; letter-spacing: -0.02em; margin: 16px 0 20px; }
+    .areas-text p { font-size: 16px; color: rgba(255,255,255,0.62); line-height: 1.75; margin-bottom: 32px; }
+    .areas-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
+    .area-item {
+      padding: 18px 22px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: space-between;
+      cursor: default;
+      transition: background 0.35s, border-color 0.35s, transform 0.3s;
+    }
+    .area-item:hover { background: rgba(255,255,255,0.13); border-color: rgba(156,121,66,0.45); transform: translateX(5px); }
+    .area-item .area-name { font-size: 15px; font-weight: 600; color: var(--white); }
+    .area-item .area-badge {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--gold); padding: 3px 8px; border: 1px solid rgba(156,121,66,0.4);
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    #testimonial { background: var(--navy); padding: 100px 48px; overflow: hidden; }
+    .testi-header { text-align: center; margin-bottom: 56px; }
+    .testi-header .eyebrow { color: var(--gold); }
+    .testi-header h2 { font-size: clamp(24px, 3vw, 38px); font-weight: 800; color: var(--white); line-height: 1.1; letter-spacing: -0.02em; }
+    .testi-slider-wrap { position: relative; max-width: 840px; margin: 0 auto; overflow: hidden; }
+    .testi-track { display: flex; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+    .testi-slide { min-width: 100%; padding: 0 16px; text-align: center; }
+    .testi-quote-mark { font-size: 72px; line-height: 0.5; color: var(--gold); margin-bottom: 28px; display: block; }
+    .testi-slide blockquote { font-size: clamp(17px, 2.4vw, 23px); font-weight: 600; color: var(--white); line-height: 1.55; font-style: italic; margin-bottom: 28px; }
+    .testi-slide cite { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.4); letter-spacing: 0.06em; text-transform: uppercase; font-style: normal; }
+    .testi-slide cite strong { color: var(--gold); }
+    .testi-controls { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 40px; }
+    .testi-arrow {
+      width: 44px; height: 44px; background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .testi-arrow:hover { background: var(--gold); border-color: var(--gold); }
+    .testi-arrow svg { width: 16px; height: 16px; stroke: var(--white); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .testi-dots { display: flex; gap: 6px; }
+    .testi-dot {
+      width: 24px; height: 3px; background: rgba(255,255,255,0.2);
+      border: none; cursor: pointer; padding: 0;
+      transition: background 0.3s, width 0.3s;
+    }
+    .testi-dot.active { background: var(--gold); width: 36px; }
+
+    /* ─── FAQ ─── */
+    #faq { background: var(--light-bg); }
+    .faq-inner { max-width: 800px; margin: 0 auto; }
+    .faq-header { text-align: center; margin-bottom: 56px; }
+    .faq-header .eyebrow { color: var(--green); }
+    .faq-header h2 { font-size: clamp(26px, 4vw, 42px); font-weight: 800; color: var(--navy); line-height: 1.1; letter-spacing: -0.02em; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; text-align: left; background: none; border: none; cursor: pointer;
+      padding: 24px 0; display: flex; align-items: center; justify-content: space-between; gap: 20px;
+      font-family: "loos-wide", sans-serif; font-size: 16px; font-weight: 500; color: var(--navy); line-height: 1.4;
+    }
+    .faq-q:hover { color: var(--green); }
+    .faq-icon {
+      flex-shrink: 0; width: 28px; height: 28px;
+      background: rgba(0,45,64,0.08); display: flex; align-items: center; justify-content: center;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .faq-icon svg { width: 12px; height: 12px; stroke: var(--navy); fill: none; stroke-width: 2.5; stroke-linecap: round; }
+    .faq-item.open .faq-icon { background: var(--gold); transform: rotate(45deg); }
+    .faq-item.open .faq-icon svg { stroke: white; }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .faq-item.open .faq-a { max-height: 280px; }
+    .faq-a p { font-size: 15px; color: var(--text-mid); line-height: 1.8; padding-bottom: 24px; }
+
+    /* ─── BOTTOM CTA ─── */
+    #bottom-cta { position: relative; padding: 120px 48px; text-align: center; overflow: hidden; }
+    #bottom-cta .bg { position: absolute; inset: 0; background-image: url('public/19452-fraser-unit-15/koze-fraser-web-1.jpg'); background-size: cover; background-position: center; }
+    #bottom-cta::after { content: ''; position: absolute; inset: 0; background: rgba(0,18,30,0.72); }
+    #bottom-cta .content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    #bottom-cta .eyebrow { color: var(--gold); }
+    #bottom-cta h2 { font-size: clamp(30px, 5vw, 58px); font-weight: 800; color: var(--white); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 20px; }
+    #bottom-cta p { font-size: 18px; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 40px; }
+    #bottom-cta .btn-group { justify-content: center; }
+
+    /* ─── MAP ─── */
+    #map { height: 480px; }
+    #map iframe { width: 100%; height: 100%; border: none; display: block; filter: grayscale(15%) contrast(0.95); }
+
+    /* ─── FOOTER ─── */
+    footer { background: var(--navy); padding: 72px 48px 32px; }
+    .footer-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+      padding-bottom: 56px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 32px;
+    }
+    .footer-brand img { height: 32px; margin-bottom: 20px; display: block; }
+    .footer-brand p { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.75; max-width: 280px; margin-bottom: 24px; }
+    .social-links { display: flex; gap: 10px; }
+    .social-links a { width: 36px; height: 36px; background: rgba(255,255,255,0.07); display: flex; align-items: center; justify-content: center; transition: background 0.3s; }
+    .social-links a:hover { background: var(--gold); }
+    .social-links a svg { width: 16px; height: 16px; fill: rgba(255,255,255,0.65); }
+    .footer-col h5 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 20px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s; }
+    .footer-col ul li a:hover { color: var(--white); }
+    .fc-item { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 12px; }
+    .fc-item svg { width: 14px; height: 14px; stroke: var(--gold); fill: none; stroke-width: 2; flex-shrink: 0; margin-top: 2px; }
+    .fc-item span { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.55; }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.28); }
+    .footer-bottom a { color: rgba(255,255,255,0.35); text-decoration: none; font-size: 13px; }
+    .footer-bottom a:hover { color: var(--gold); }
+    .footer-bottom-links { display: flex; gap: 20px; }
+
+    /* ─── REVEAL ─── */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    .d1 { transition-delay: 0.1s !important; }
+    .d2 { transition-delay: 0.2s !important; }
+    .d3 { transition-delay: 0.3s !important; }
+    .d4 { transition-delay: 0.4s !important; }
+    .d5 { transition-delay: 0.5s !important; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      #header { padding: 0 24px; }
+      #header nav { display: none; }
+      #header nav.open {
+        display: flex; flex-direction: column; position: fixed;
+        inset: 80px 0 0 0; background: var(--navy); padding: 40px 24px;
+        gap: 24px; z-index: 999;
+      }
+      #header nav.open a { font-size: 22px; color: var(--white) !important; }
+      #header nav.open .nav-cta { background: var(--gold); }
+      .hamburger { display: block; }
+      #hero h1 { white-space: normal; font-size: clamp(28px, 7.5vw, 44px); }
+      #hero .hero-content { padding: 0 24px; }
+      section { padding: 72px 24px; }
+      #stats { padding: 0 24px; }
+      #stats .stats-inner { grid-template-columns: repeat(2,1fr); }
+      #intro .two-col { grid-template-columns: 1fr; gap: 40px; }
+      #difference { padding: 0 24px; }
+      #difference .diff-layout { grid-template-columns: 1fr; }
+      #difference .diff-right { display: none; }
+      #scrolling-diff { display: none; }
+      .services-grid { grid-template-columns: 1fr; }
+      .portfolio-panels { flex-direction: column; height: auto; }
+      .p-panel { min-height: 320px; flex: 1 !important; }
+      .portfolio-panels.has-hover .p-panel,
+      .portfolio-panels.has-hover .p-panel.active { flex: 1 !important; }
+      .proc-track { grid-template-columns: 1fr; gap: 40px; }
+      .proc-line-wrap { display: none; }
+      .areas-top { grid-template-columns: 1fr; gap: 40px; }
+      .areas-grid { grid-template-columns: 1fr; }
+      #areas { padding: 72px 24px; }
+      footer { padding: 56px 24px 28px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .footer-grid .footer-brand { grid-column: span 2; }
+      #bottom-cta { padding: 80px 24px; }
+    }
+    @media (max-width: 600px) {
+      #stats .stats-inner { grid-template-columns: repeat(2,1fr); }
+      .stat-item { padding: 28px 16px; }
+      .stat-item .stat-num { font-size: 30px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-grid .footer-brand { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header id="header">
+  <a href="/" class="logo">
+    <img class="logo-white" src="public/Asset%201full-logo-white.svg" alt="Koze Design &amp; Build" />
+    <img class="logo-blue"  src="public/Asset%202full-logo-blue.svg"  alt="Koze Design &amp; Build" />
+  </a>
+  <nav id="nav">
+    <a href="about.html">About</a>
+    <a href="process.html">Our Process</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html" class="nav-cta">Contact Us</a>
+  </nav>
+  <div class="hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="eyebrow">Custom Homes &amp; Renovations — Lower Mainland, BC</span>
+    <h1>Built Around Your Budget.<br />Built Around Your Life.</h1>
+    <p>Budget-led design. Fixed-price construction. One team from concept to completion — for homeowners who value quality and clarity.</p>
+    <a href="#bottom-cta" class="btn-gold">Start Your Project &rarr;</a>
+  </div>
+</section>
+
+<!-- ═══ STATS ═══ -->
+<div id="stats">
+  <div class="stats-inner">
+    <div class="stat-item reveal d1">
+      <div class="stat-num">15+</div>
+      <div class="stat-label">Years of Industry Experience</div>
+    </div>
+    <div class="stat-item reveal d2">
+      <div class="stat-num">$2M+</div>
+      <div class="stat-label">Delivered in the Last 12 Months</div>
+    </div>
+    <div class="stat-item reveal d3">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Service Areas Across the Lower Mainland</div>
+    </div>
+    <div class="stat-item reveal d4">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Fixed-Price Contracts — Every Project</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ INTRO ═══ -->
+<section id="intro">
+  <div class="section-inner">
+    <div class="two-col">
+      <div class="img-wrap reveal-left">
+        <img src="public/19564-hammond-road/Hammond-web-3.jpg" alt="Koze Design &amp; Build — Custom Home Interior" />
+        <div class="img-accent"></div>
+      </div>
+      <div class="text-col reveal-right">
+        <span class="eyebrow">About Koze Design &amp; Build</span>
+        <h2>Raised in Construction. Trained in Business. Built Through Experience.</h2>
+        <div class="divider"></div>
+        <p>Jason Craig grew up on construction sites — his father was a developer, and he was laying foundations before high school. After a business degree and nearly a decade as a project manager, he founded Koze on one belief: great building requires more than skilled hands. It takes clear communication, honest budgeting, and a process that puts clients first.</p>
+        <ul class="check-list">
+          <li>Budget-led design — aligned before a line is drawn</li>
+          <li>Fixed-price contracts before construction begins</li>
+          <li>One team: architecture, interiors, permits, build</li>
+          <li>Materials selected for longevity, not replacement</li>
+        </ul>
+        <a href="#process" class="btn-navy">See How We Work &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CENTERED CTA ═══ -->
+<section id="centered-cta">
+  <div class="section-inner">
+    <span class="eyebrow reveal">The Koze Difference</span>
+    <h2 class="reveal d1">Design Built Around Your Budget — Not a Budget Forced to Fit the Design.</h2>
+    <p class="reveal d2">Most builders say yes to everything, then hand you a price well beyond what you expected. We start with your goals and your budget — and only then do we design. No wasted design fees. No renegotiations. No surprises.</p>
+    <a href="#bottom-cta" class="btn-gold reveal d3">Start Your Project &rarr;</a>
+  </div>
+</section>
+
+<!-- ═══ SCROLLING DIFFERENCE (price-pierce style) ═══ -->
+<section id="scrolling-diff">
+  <div class="sd-rows">
+
+    <div class="sd-row">
+      <div class="sd-row-inner">
+        <div class="sd-sections">
+          <div class="sd-img-col">
+            <img src="public/19564-hammond-road/Hammond-web-8.jpg" alt="Budget-Led Design" />
+            <div class="sd-overlay"></div>
+            <div class="sd-corner-num">01</div>
+            <div class="sd-heading">
+              <span class="sd-feat-num">Budget-Led Design</span>
+              <h3>Clarity Before the First Sketch</h3>
+            </div>
+          </div>
+          <div class="sd-desc-col">
+            <div class="sd-col-title">
+              <span class="section-label">What Sets Us Apart</span>
+              <h2>One Team.<br />One Process.<br />One Price.</h2>
+            </div>
+            <div class="sd-desc-inner">
+              <span class="sd-step-title">Budget-Led Design</span>
+              <p>We discuss your goals and align on a realistic budget before design begins. Your plans are built around what's achievable — not scaled back after the fact.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sd-row">
+      <div class="sd-row-inner">
+        <div class="sd-sections">
+          <div class="sd-img-col">
+            <img src="public/19564-hammond-road/Hammond-web-10.jpg" alt="Fixed-Price Contracts" />
+            <div class="sd-overlay"></div>
+            <div class="sd-corner-num">02</div>
+            <div class="sd-heading">
+              <span class="sd-feat-num">Fixed-Price Contracts</span>
+              <h3>You Know the Number Before We Break Ground</h3>
+            </div>
+          </div>
+          <div class="sd-desc-col">
+            <div class="sd-col-title">
+              <span class="section-label">What Sets Us Apart</span>
+              <h2>One Team.<br />One Process.<br />One Price.</h2>
+            </div>
+            <div class="sd-desc-inner">
+              <span class="sd-step-title">Fixed-Price Contracts</span>
+              <p>Scope, selections, and plans are finalized before we issue a contract. No change orders driven by vague estimates — just a clear price for a clearly defined result.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sd-row">
+      <div class="sd-row-inner">
+        <div class="sd-sections">
+          <div class="sd-img-col">
+            <img src="public/19564-hammond-road/Hammond-web-5.jpg" alt="Full-Service Design-Build" />
+            <div class="sd-overlay"></div>
+            <div class="sd-corner-num">03</div>
+            <div class="sd-heading">
+              <span class="sd-feat-num">Full-Service Design-Build</span>
+              <h3>One Point of Accountability</h3>
+            </div>
+          </div>
+          <div class="sd-desc-col">
+            <div class="sd-col-title">
+              <span class="section-label">What Sets Us Apart</span>
+              <h2>One Team.<br />One Process.<br />One Price.</h2>
+            </div>
+            <div class="sd-desc-inner">
+              <span class="sd-step-title">Full-Service Design-Build</span>
+              <p>We coordinate architecture, interior design, permits, and construction. You never manage multiple vendors — one team, one person to call.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sd-row">
+      <div class="sd-row-inner">
+        <div class="sd-sections">
+          <div class="sd-img-col">
+            <img src="public/19564-hammond-road/Hammond-web-17.jpg" alt="Honest Qualification" />
+            <div class="sd-overlay"></div>
+            <div class="sd-corner-num">04</div>
+            <div class="sd-heading">
+              <span class="sd-feat-num">Honest Qualification</span>
+              <h3>Clarity First. Construction Second.</h3>
+            </div>
+          </div>
+          <div class="sd-desc-col">
+            <div class="sd-col-title">
+              <span class="section-label">What Sets Us Apart</span>
+              <h2>One Team.<br />One Process.<br />One Price.</h2>
+            </div>
+            <div class="sd-desc-inner">
+              <span class="sd-step-title">Honest Qualification</span>
+              <p>If your goals and budget don't align, we'll tell you early. We'd rather lose the lead than set expectations we can't meet.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ DIFFERENCE ═══ -->
+<section id="difference" style="display:none;">
+  <div class="diff-layout">
+    <div class="diff-left">
+      <span class="section-label">What Sets Us Apart</span>
+      <h2 class="section-title">One Team.<br />One Process.<br />One Price.</h2>
+
+      <div class="diff-feature active" data-img="0">
+        <div class="feat-num">01 — Budget-Led Design</div>
+        <h3>Clarity Before the First Sketch</h3>
+        <p>We discuss your goals and align on a realistic budget before design begins. Your plans are built around what's achievable — not scaled back after the fact.</p>
+        <div class="feat-bar"></div>
+      </div>
+      <div class="diff-feature" data-img="1">
+        <div class="feat-num">02 — Fixed-Price Contracts</div>
+        <h3>You Know the Number Before We Break Ground</h3>
+        <p>Scope, selections, and plans are finalized before we issue a contract. No change orders driven by vague estimates — just a clear price for a clearly defined result.</p>
+        <div class="feat-bar"></div>
+      </div>
+      <div class="diff-feature" data-img="2">
+        <div class="feat-num">03 — Full-Service Design-Build</div>
+        <h3>One Point of Accountability</h3>
+        <p>We coordinate architecture, interior design, permits, and construction. You never manage multiple vendors — one team, one person to call.</p>
+        <div class="feat-bar"></div>
+      </div>
+      <div class="diff-feature" data-img="3">
+        <div class="feat-num">04 — Honest Qualification</div>
+        <h3>Clarity First. Construction Second.</h3>
+        <p>If your goals and budget don't align, we'll tell you early. We'd rather lose the lead than set expectations we can't meet.</p>
+        <div class="feat-bar"></div>
+      </div>
+    </div>
+
+    <div class="diff-right-col">
+      <div class="diff-right">
+        <div class="diff-img active">
+          <img src="public/19564-hammond-road/Hammond-web-8.jpg" alt="Budget-Led Design" />
+          <div class="diff-img-overlay"></div>
+        </div>
+        <div class="diff-img">
+          <img src="public/19564-hammond-road/Hammond-web-10.jpg" alt="Fixed-Price Contracts" />
+          <div class="diff-img-overlay"></div>
+        </div>
+        <div class="diff-img">
+          <img src="public/19564-hammond-road/Hammond-web-5.jpg" alt="Full-Service" />
+          <div class="diff-img-overlay"></div>
+        </div>
+        <div class="diff-img">
+          <img src="public/19564-hammond-road/Hammond-web-17.jpg" alt="Honest Qualification" />
+          <div class="diff-img-overlay"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="eyebrow">What We Build</span>
+      <h2>Our Services</h2>
+      <p>From ground-up custom homes to whole-home renovations and income-generating suites — all under one roof.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal d1">
+        <img src="public/19564-hammond-road/Hammond-web-2.jpg" alt="Custom Homes" />
+        <div class="card-hover-bg"></div>
+        <div class="card-content">
+          <div class="card-num">01</div>
+          <h3>Custom Homes</h3>
+          <p>Fully personalized homes designed around your lifestyle, your lot, and your budget — from first sketch to final walkthrough.</p>
+        </div>
+      </div>
+      <div class="service-card reveal d2">
+        <img src="public/19564-hammond-road/Hammond-web-12.jpg" alt="Full Home Remodels" />
+        <div class="card-hover-bg"></div>
+        <div class="card-content">
+          <div class="card-num">02</div>
+          <h3>Full Home Remodels</h3>
+          <p>Whole-home transformations that modernize your space while preserving what already works.</p>
+        </div>
+      </div>
+      <div class="service-card reveal d3">
+        <img src="public/19452-fraser-unit-15/koze-fraser-web-3.jpg" alt="ADUs &amp; Suites" />
+        <div class="card-hover-bg"></div>
+        <div class="card-content">
+          <div class="card-num">03</div>
+          <h3>ADUs &amp; Coach Homes</h3>
+          <p>Add a legal suite or coach home — creating rental income, housing family, or increasing resale value.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PORTFOLIO ═══ -->
+<section id="portfolio">
+  <div class="section-inner">
+    <div class="port-header">
+      <span class="eyebrow reveal">Recent Projects</span>
+      <h2 class="reveal d1">Our Work</h2>
+      <p class="reveal d2">Hover to explore each property.</p>
+    </div>
+    <div class="portfolio-panels reveal" id="portfolioPanels">
+      <div class="p-panel" data-index="0">
+        <img src="public/19564-hammond-road/Hammond-web-1.jpg" alt="19564 Hammond Road" />
+        <div class="p-overlay"></div>
+        <div class="p-label">
+          <div class="p-tag">Custom Home &mdash; Pitt Meadows</div>
+          <h3>19564 Hammond Road</h3>
+          <p>Ground-up design-build custom home in Pitt Meadows, BC.</p>
+        </div>
+      </div>
+      <div class="p-panel" data-index="1">
+        <img src="public/19452-fraser-unit-15/koze-fraser-web-1.jpg" alt="19452 Fraser Crescent" />
+        <div class="p-overlay"></div>
+        <div class="p-label">
+          <div class="p-tag">Full Home Remodel &mdash; Lower Mainland</div>
+          <h3>19452 Fraser Crescent</h3>
+          <p>Complete interior renovation with a fully redesigned main floor.</p>
+        </div>
+      </div>
+    </div>
+    <div class="port-cta reveal">
+      <a href="#" class="btn-navy">View Full Portfolio &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROCESS ═══ -->
+<section id="process">
+  <div class="section-inner">
+    <div class="proc-header">
+      <span class="eyebrow reveal">How It Works</span>
+      <h2 class="reveal d1">Our Process</h2>
+      <p class="reveal d2">Three phases. Complete transparency. One fixed price before construction starts.</p>
+    </div>
+    <div class="proc-track reveal">
+      <div class="proc-line-wrap">
+        <div class="proc-traveler"></div>
+      </div>
+      <div class="proc-step">
+        <div class="step-dot">1</div>
+        <h4>Discover &amp; Align</h4>
+        <p>We start with your budget and goals — not a design concept. A questionnaire and discovery call help us confirm we're the right fit before any planning investment begins.</p>
+      </div>
+      <div class="proc-step">
+        <div class="step-dot">2</div>
+        <h4>Design &amp; Pre-Construction</h4>
+        <p>Our team coordinates architecture, interior design, permits, and consultants. You review plans, finalize selections, and receive a single fixed-price contract before we break ground.</p>
+      </div>
+      <div class="proc-step">
+        <div class="step-dot">3</div>
+        <h4>Build &amp; Deliver</h4>
+        <p>With a locked price and finalized plans, construction begins. We manage every trade, communicate proactively, and deliver exactly what we promised.</p>
+      </div>
+    </div>
+    <div class="proc-cta reveal d2">
+      <a href="#bottom-cta" class="btn-navy">Start Your Project &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AREAS ═══ -->
+<section id="areas">
+  <div class="areas-bgs">
+    <div class="area-bg-layer" data-area="0" style="background-image: url('public/19564-hammond-road/Hammond-web-2.jpg')"></div>
+    <div class="area-bg-layer" data-area="1" style="background-image: url('public/19564-hammond-road/Hammond-web-1.jpg')"></div>
+    <div class="area-bg-layer" data-area="2" style="background-image: url('public/19564-hammond-road/Hammond-web-4.jpg')"></div>
+    <div class="area-bg-layer" data-area="3" style="background-image: url('public/19564-hammond-road/Hammond-web-6.jpg')"></div>
+    <div class="area-bg-layer" data-area="4" style="background-image: url('public/19564-hammond-road/Hammond-web-9.jpg')"></div>
+    <div class="area-bg-layer" data-area="5" style="background-image: url('public/19564-hammond-road/Hammond-web-11.jpg')"></div>
+    <div class="area-bg-layer" data-area="6" style="background-image: url('public/19452-fraser-unit-15/koze-fraser-web-1.jpg')"></div>
+    <div class="area-bg-layer" data-area="7" style="background-image: url('public/19452-fraser-unit-15/koze-fraser-web-4.jpg')"></div>
+    <div class="area-bg-layer" data-area="8" style="background-image: url('public/19452-fraser-unit-15/koze-fraser-web-7.jpg')"></div>
+    <div class="area-bg-layer" data-area="9" style="background-image: url('public/19452-fraser-unit-15/koze-fraser-web-6.jpg')"></div>
+  </div>
+  <div class="areas-inner">
+    <div class="areas-top">
+      <div class="areas-text reveal-left">
+        <span class="eyebrow">Where We Build</span>
+        <h2>Serving the Lower Mainland</h2>
+        <p>Based in Pitt Meadows, we work across Metro Vancouver and the Fraser Valley — from the North Shore to Langley and South Surrey.</p>
+        <a href="#bottom-cta" class="btn-gold">Start Your Project &rarr;</a>
+      </div>
+      <div class="areas-grid">
+        <div class="area-item reveal d1" data-area="0"><span class="area-name">Pitt Meadows</span><span class="area-badge">Home Base</span></div>
+        <div class="area-item reveal d2" data-area="1"><span class="area-name">Maple Ridge</span><span class="area-badge">Primary</span></div>
+        <div class="area-item reveal d3" data-area="2"><span class="area-name">Coquitlam</span><span class="area-badge">Primary</span></div>
+        <div class="area-item reveal d4" data-area="3"><span class="area-name">Burnaby</span><span class="area-badge">Primary</span></div>
+        <div class="area-item reveal d1" data-area="4"><span class="area-name">Langley</span><span class="area-badge">Serving</span></div>
+        <div class="area-item reveal d2" data-area="5"><span class="area-name">South Surrey</span><span class="area-badge">Serving</span></div>
+        <div class="area-item reveal d3" data-area="6"><span class="area-name">Vancouver</span><span class="area-badge">Serving</span></div>
+        <div class="area-item reveal d4" data-area="7"><span class="area-name">North Vancouver</span><span class="area-badge">Serving</span></div>
+        <div class="area-item reveal d1" data-area="8"><span class="area-name">West Vancouver</span><span class="area-badge">Serving</span></div>
+        <div class="area-item reveal d2" data-area="9"><span class="area-name">Richmond</span><span class="area-badge">Serving</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section id="testimonial">
+  <div class="section-inner">
+    <div class="testi-header reveal">
+      <span class="eyebrow">What Clients Say</span>
+      <h2>Built on Trust</h2>
+    </div>
+    <div class="testi-slider-wrap reveal d1">
+      <div class="testi-track" id="testiTrack">
+        <div class="testi-slide">
+          <span class="testi-quote-mark">&ldquo;</span>
+          <blockquote>Jason and the Koze team made the entire process feel manageable. We always knew where our money was going, and the finished home exceeded everything we'd imagined.</blockquote>
+          <cite><strong>K. &amp; T. Hartmann</strong> — Custom Home, Pitt Meadows BC</cite>
+        </div>
+        <div class="testi-slide">
+          <span class="testi-quote-mark">&ldquo;</span>
+          <blockquote>What stood out was their honesty from day one. They told us upfront what was realistic for our budget, and then delivered exactly what they promised.</blockquote>
+          <cite><strong>M. &amp; S. Erikson</strong> — Full Home Remodel, Maple Ridge BC</cite>
+        </div>
+        <div class="testi-slide">
+          <span class="testi-quote-mark">&ldquo;</span>
+          <blockquote>We'd worked with contractors before who kept moving the goalposts. Koze gave us a fixed price and held to it. That alone was worth everything.</blockquote>
+          <cite><strong>D. Patel</strong> — ADU Build, Coquitlam BC</cite>
+        </div>
+      </div>
+      <div class="testi-controls">
+        <div class="testi-arrow" onclick="prevSlide()">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </div>
+        <div class="testi-dots" id="testiDots">
+          <button class="testi-dot active" onclick="goToSlide(0)"></button>
+          <button class="testi-dot" onclick="goToSlide(1)"></button>
+          <button class="testi-dot" onclick="goToSlide(2)"></button>
+        </div>
+        <div class="testi-arrow" onclick="nextSlide()">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section id="faq">
+  <div class="faq-inner">
+    <div class="faq-header">
+      <span class="eyebrow reveal">Common Questions</span>
+      <h2 class="reveal d1">FAQ</h2>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        What does &ldquo;budget-led design&rdquo; actually mean?
+        <span class="faq-icon"><svg viewBox="0 0 12 12"><path d="M6 2v8M2 6h8" stroke-linecap="round"/></svg></span>
+      </button>
+      <div class="faq-a"><p>Most builders design exactly what you ask for, then hand you a price well beyond your budget. We do the opposite — before any design begins, we align on a realistic budget. Your design is then created to fit within that number. No expensive revision process, no budget shock at the end.</p></div>
+    </div>
+    <div class="faq-item reveal d1">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        What is a fixed-price contract and when do I receive it?
+        <span class="faq-icon"><svg viewBox="0 0 12 12"><path d="M6 2v8M2 6h8" stroke-linecap="round"/></svg></span>
+      </button>
+      <div class="faq-a"><p>Once your plans are finalized, selections are made, and scope is fully defined — we present a single fixed-price proposal. You know exactly what your project costs before construction starts. No surprises during the build.</p></div>
+    </div>
+    <div class="faq-item reveal d2">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Do I need to find my own architect and interior designer?
+        <span class="faq-icon"><svg viewBox="0 0 12 12"><path d="M6 2v8M2 6h8" stroke-linecap="round"/></svg></span>
+      </button>
+      <div class="faq-a"><p>No. Koze is a full-service design-build firm. We coordinate architecture, interior design, consultant work, permitting, and construction through our network of trusted partners. You have one point of contact throughout — never juggling multiple vendors.</p></div>
+    </div>
+    <div class="faq-item reveal d3">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        What is your minimum project budget?
+        <span class="faq-icon"><svg viewBox="0 0 12 12"><path d="M6 2v8M2 6h8" stroke-linecap="round"/></svg></span>
+      </button>
+      <div class="faq-a"><p>Our target minimum is $500,000, with an average project value around $800,000. We work with clients who understand that quality craftsmanship and a well-managed process represent a real investment — one that pays off over the life of a well-built home.</p></div>
+    </div>
+    <div class="faq-item reveal d4">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        How long does a custom home or major renovation take?
+        <span class="faq-icon"><svg viewBox="0 0 12 12"><path d="M6 2v8M2 6h8" stroke-linecap="round"/></svg></span>
+      </button>
+      <div class="faq-a"><p>A full custom home typically takes 12–18 months from design through occupancy. Major renovations vary by scope — most whole-home remodels range from 6–12 months. We provide a clear timeline during pre-construction so you can plan ahead.</p></div>
+    </div>
+    <div class="faq-item reveal d5">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        What areas do you serve?
+        <span class="faq-icon"><svg viewBox="0 0 12 12"><path d="M6 2v8M2 6h8" stroke-linecap="round"/></svg></span>
+      </button>
+      <div class="faq-a"><p>We're based in Pitt Meadows and serve the broader Lower Mainland — Maple Ridge, Coquitlam, Burnaby, Langley, South Surrey, Vancouver, North Vancouver, West Vancouver, and Richmond. Not sure if we cover your area? Reach out and ask.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BOTTOM CTA ═══ -->
+<section id="bottom-cta">
+  <div class="bg"></div>
+  <div class="content">
+    <span class="eyebrow reveal">Ready to Get Started?</span>
+    <h2 class="reveal d1">Let's Build Something That Lasts.</h2>
+    <p class="reveal d2">Tell us about your project. We'll review your goals, discuss what's realistic, and let you know if we're the right fit — no pressure, no obligation.</p>
+    <div class="btn-group reveal d3">
+      <a href="mailto:info@kozedesignbuild.ca" class="btn-gold">Start Your Project &rarr;</a>
+      <a href="tel:+16043157095" class="btn-outline-white">(604) 315-7095</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MAP ═══ -->
+<div id="map">
+  <iframe
+    src="https://maps.google.com/maps?q=19554+Hammond+Rd+Pitt+Meadows+BC+V3Y+1L5&output=embed"
+    title="Koze Design &amp; Build — Office Location"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    allowfullscreen>
+  </iframe>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="public/Asset%201full-logo-white.svg" alt="Koze Design &amp; Build" />
+      <p>Custom homes, major renovations, and ADUs built on clarity, trust, and craftsmanship. Serving the Lower Mainland since 2023.</p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/kozedesignandbuild/" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/kozedesignandbuild" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zM17.5 6.5h.01"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="custom-homes.html">Custom Homes</a></li>
+        <li><a href="renovations.html">Full Home Remodels</a></li>
+        <li><a href="adus.html">ADUs &amp; Suites</a></li>
+        <li><a href="ssmuh.html">Multi-Unit Housing</a></li>
+        <li><a href="design-build.html">Design-Build</a></li>
+        <li><a href="process.html">Pre-Construction</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="process.html">Our Process</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <div class="fc-item">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>19554 Hammond Rd.<br />Pitt Meadows, BC V3Y 1L5</span>
+      </div>
+      <div class="fc-item">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81a19.79 19.79 0 01-3.07-8.63 2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 6.91a16 16 0 006.72 6.72l.72-.72a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <span>(604) 315-7095</span>
+      </div>
+      <div class="fc-item">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>info@kozedesignbuild.ca</span>
+      </div>
+      <div class="fc-item">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Mon – Fri, 8:00am – 5:00pm</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Koze Design and Build Inc. All rights reserved.</p>
+    <div class="footer-bottom-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('load', () => document.getElementById('hero').classList.add('loaded'));
+
+
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 30);
+  }, { passive: true });
+
+  function toggleNav() { document.getElementById('nav').classList.toggle('open'); }
+  document.getElementById('nav').querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('nav').classList.remove('open'));
+  });
+
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // Portfolio expanding panels
+  const panels = document.querySelectorAll('#portfolioPanels .p-panel');
+  const panelWrap = document.getElementById('portfolioPanels');
+  panels.forEach(panel => {
+    panel.addEventListener('mouseenter', () => {
+      panels.forEach(p => p.classList.remove('active'));
+      panel.classList.add('active');
+      panelWrap.classList.add('has-hover');
+    });
+  });
+  panelWrap.addEventListener('mouseleave', () => {
+    panels.forEach(p => p.classList.remove('active'));
+    panelWrap.classList.remove('has-hover');
+  });
+
+  // Difference sticky image crossfade
+  const diffFeatures = document.querySelectorAll('.diff-feature');
+  const diffImgs = document.querySelectorAll('.diff-img');
+  const featureObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const idx = parseInt(e.target.dataset.img);
+        diffFeatures.forEach(f => f.classList.remove('active'));
+        diffImgs.forEach(i => i.classList.remove('active'));
+        e.target.classList.add('active');
+        if (diffImgs[idx]) diffImgs[idx].classList.add('active');
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '-5% 0px -55% 0px' });
+  diffFeatures.forEach(f => featureObserver.observe(f));
+
+  // Areas hover — background image fade
+  const areaItems = document.querySelectorAll('.area-item[data-area]');
+  const areaBgLayers = document.querySelectorAll('.area-bg-layer');
+  areaItems.forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      const idx = item.dataset.area;
+      areaBgLayers.forEach(bg => bg.classList.toggle('active', bg.dataset.area === idx));
+    });
+    item.addEventListener('mouseleave', () => {
+      areaBgLayers.forEach(bg => bg.classList.remove('active'));
+    });
+  });
+
+  // Testimonial slider
+  let currentSlide = 0;
+  const totalSlides = 3;
+  const track = document.getElementById('testiTrack');
+  const dots = document.querySelectorAll('.testi-dot');
+  let autoTimer;
+
+  function goToSlide(n) {
+    currentSlide = (n + totalSlides) % totalSlides;
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+    clearInterval(autoTimer);
+    autoTimer = setInterval(nextSlide, 5500);
+  }
+  function nextSlide() { goToSlide(currentSlide + 1); }
+  function prevSlide() { goToSlide(currentSlide - 1); }
+  autoTimer = setInterval(nextSlide, 5500);
+</script>
+</body>
+</html>
