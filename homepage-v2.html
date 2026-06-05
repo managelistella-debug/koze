@@ -295,6 +295,10 @@
       transition: max-height 0.4s ease, opacity 0.4s ease;
     }
     .service-card:hover p { max-height: 120px; opacity: 1; }
+    .service-card.card-active img { transform: scale(1.05); filter: brightness(0.55); }
+    .service-card.card-active .card-hover-bg { opacity: 1; }
+    .service-card.card-active .card-content { transform: translateY(-6px); }
+    .service-card.card-active p { max-height: 120px; opacity: 1; }
 
     /* ─── PORTFOLIO ─── */
     #portfolio { background: var(--white); }
@@ -394,14 +398,17 @@
       border: 1px solid rgba(255,255,255,0.1);
       display: flex; align-items: center; justify-content: space-between;
       cursor: default;
-      transition: background 0.35s, border-color 0.35s, transform 0.3s;
+      transition: background 0.35s, border-color 0.35s;
     }
-    .area-item:hover { background: rgba(255,255,255,0.13); border-color: rgba(156,121,66,0.45); transform: translateX(5px); }
-    .area-item .area-name { font-size: 15px; font-weight: 600; color: var(--white); }
+    .area-item:hover { background: var(--gold); border-color: var(--gold); }
+    .area-item .area-name { font-size: 15px; font-weight: 600; color: var(--white); transition: color 0.35s; }
+    .area-item:hover .area-name { color: var(--navy); }
     .area-item .area-badge {
       font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
       color: var(--gold); padding: 3px 8px; border: 1px solid rgba(156,121,66,0.4);
+      transition: color 0.35s, border-color 0.35s, background 0.35s;
     }
+    .area-item:hover .area-badge { color: var(--navy); border-color: rgba(0,0,0,0.15); background: rgba(255,255,255,0.75); }
 
     /* ─── TESTIMONIALS ─── */
     #testimonial { background: var(--navy); padding: 100px 48px; overflow: hidden; }
@@ -524,10 +531,14 @@
       #header nav.open .nav-cta { background: var(--gold); }
       .hamburger { display: block; }
       #hero h1 { white-space: normal; font-size: clamp(28px, 7.5vw, 44px); }
+      #hero .h1-w1, #hero .h1-w2 { display: block; }
       #hero .hero-content { padding: 0 24px; }
       section { padding: 72px 24px; }
       #stats { padding: 0 24px; }
-      #stats .stats-inner { grid-template-columns: repeat(2,1fr); }
+      #stats .stats-inner { grid-template-columns: repeat(2,1fr); border-left: none; }
+      .stat-item { border-right: none; border-bottom: none; }
+      .stat-item:nth-child(odd)  { border-right: 1px solid rgba(255,255,255,0.1); }
+      .stat-item:nth-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,0.1); }
       #intro .two-col { grid-template-columns: 1fr; gap: 40px; }
       #difference { padding: 0 24px; }
       #difference .diff-layout { grid-template-columns: 1fr; }
@@ -551,7 +562,10 @@
       #bottom-cta { padding: 80px 24px; }
     }
     @media (max-width: 600px) {
-      #stats .stats-inner { grid-template-columns: repeat(2,1fr); }
+      #stats .stats-inner { grid-template-columns: repeat(2,1fr); border-left: none; }
+      .stat-item { border-right: none; border-bottom: none; }
+      .stat-item:nth-child(odd)  { border-right: 1px solid rgba(255,255,255,0.1); }
+      .stat-item:nth-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,0.1); }
       .stat-item { padding: 28px 16px; }
       .stat-item .stat-num { font-size: 30px; }
       .footer-grid { grid-template-columns: 1fr; }
@@ -650,7 +664,7 @@
   <div class="hero-bg"></div>
   <div class="hero-content">
     <span class="eyebrow">Custom Homes &amp; Renovations — Lower Mainland, BC</span>
-    <h1>Built Around Your Budget.<br />Built Around Your Life.</h1>
+    <h1><span class="h1-w1">Built Around</span> <span class="h1-w2">Your Budget.</span><br /><span class="h1-w1">Built Around</span> <span class="h1-w2">Your Life.</span></h1>
     <p>Budget-led design. Fixed-price construction. One team from concept to completion — for homeowners who value quality and clarity.</p>
     <a href="#bottom-cta" class="btn-gold">Start Your Project &rarr;</a>
   </div>
@@ -1032,7 +1046,7 @@
     <div class="areas-top">
       <div class="areas-text reveal-left">
         <span class="eyebrow">Where We Build</span>
-        <h2>Serving the Lower Mainland</h2>
+        <h2>Serving the Lower&nbsp;Mainland</h2>
         <p>Based in Pitt Meadows, we work across Metro Vancouver and the Fraser Valley — from the North Shore to Langley and South Surrey.</p>
         <a href="#bottom-cta" class="btn-gold">Start Your Project &rarr;</a>
       </div>
@@ -1193,7 +1207,6 @@
         <li><a href="adus.html">ADUs &amp; Suites</a></li>
         <li><a href="ssmuh.html">Multi-Unit Housing</a></li>
         <li><a href="design-build.html">Design-Build</a></li>
-        <li><a href="process.html">Pre-Construction</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -1294,18 +1307,7 @@
   }, { threshold: 0.15, rootMargin: '-5% 0px -55% 0px' });
   diffFeatures.forEach(f => featureObserver.observe(f));
 
-  // Areas hover — background image fade
-  const areaItems = document.querySelectorAll('.area-item[data-area]');
-  const areaBgLayers = document.querySelectorAll('.area-bg-layer');
-  areaItems.forEach(item => {
-    item.addEventListener('mouseenter', () => {
-      const idx = item.dataset.area;
-      areaBgLayers.forEach(bg => bg.classList.toggle('active', bg.dataset.area === idx));
-    });
-    item.addEventListener('mouseleave', () => {
-      areaBgLayers.forEach(bg => bg.classList.remove('active'));
-    });
-  });
+
 
   // Testimonial slider
   let currentSlide = 0;
@@ -1320,21 +1322,6 @@
     dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
     clearInterval(autoTimer);
     autoTimer = setInterval(nextSlide, 5500);
-
-  // Services carousel
-  let svcIndex = 0;
-  const SVC_TOTAL = 5;
-  function svcVisible() { return window.innerWidth <= 900 ? 1 : 3; }
-  function svcMax() { return SVC_TOTAL - svcVisible(); }
-  function shiftServices(dir) {
-    svcIndex = Math.max(0, Math.min(svcIndex + dir, svcMax()));
-    const track = document.getElementById('servicesTrack');
-    const card = track.querySelector('.service-card');
-    track.style.transform = 'translateX(-' + (svcIndex * (card.offsetWidth + 2)) + 'px)';
-    document.getElementById('svcPrev').classList.toggle('disabled', svcIndex === 0);
-    document.getElementById('svcNext').classList.toggle('disabled', svcIndex >= svcMax());
-  }
-  window.addEventListener('resize', () => { svcIndex = Math.min(svcIndex, svcMax()); shiftServices(0); });
   }
   function nextSlide() { goToSlide(currentSlide + 1); }
   function prevSlide() { goToSlide(currentSlide - 1); }
@@ -1345,13 +1332,19 @@
   const SVC_TOTAL = 5;
   function svcVisible() { return window.innerWidth <= 900 ? 1 : 3; }
   function svcMax() { return SVC_TOTAL - svcVisible(); }
+  let svcAutoTimer;
   function shiftServices(dir) {
     svcIndex = Math.max(0, Math.min(svcIndex + dir, svcMax()));
     const track = document.getElementById('servicesTrack');
-    const card = track.querySelector('.service-card');
-    track.style.transform = 'translateX(-' + (svcIndex * (card.offsetWidth + 2)) + 'px)';
+    const cards = track.querySelectorAll('.service-card');
+    track.style.transform = 'translateX(-' + (svcIndex * (cards[0].offsetWidth + 2)) + 'px)';
     document.getElementById('svcPrev').classList.toggle('disabled', svcIndex === 0);
     document.getElementById('svcNext').classList.toggle('disabled', svcIndex >= svcMax());
+    if (window.innerWidth <= 900) {
+      cards.forEach(c => c.classList.remove('card-active'));
+      clearTimeout(svcAutoTimer);
+      svcAutoTimer = setTimeout(() => cards[svcIndex].classList.add('card-active'), 700);
+    }
   }
   window.addEventListener('resize', () => { svcIndex = Math.min(svcIndex, svcMax()); shiftServices(0); });
 
