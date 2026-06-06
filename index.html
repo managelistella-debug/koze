@@ -458,9 +458,8 @@
       .services-track { gap: 0; }
       .service-card { flex: 0 0 100vw; }
       .services-header-wrap { padding: 0 24px; }
-      .portfolio-grid { grid-template-columns: 1fr 1fr; }
-      .p-panel { min-height: 220px; }
-      .portfolio-panels.has-hover .p-panel, .portfolio-panels.has-hover .p-panel.active { flex: 1 !important; }
+      .portfolio-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .p-panel { aspect-ratio: 3/4; min-height: unset; }
       .proc-track { grid-template-columns: 1fr; gap: 40px; }
       .proc-line-wrap { display: none; }
       .areas-top { grid-template-columns: 1fr; gap: 40px; }
@@ -472,11 +471,17 @@
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
       .footer-grid .footer-brand { grid-column: span 2; }
       #bottom-cta { padding: 80px 24px; }
+      #portfolio .port-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .btn-group { flex-direction: column; align-items: center; gap: 12px; }
+      .testi-nav { justify-content: center; }
       .pa-inner { grid-template-columns: 1fr; grid-template-rows: auto auto auto auto; }
       .pa-heading-col { grid-column: 1; grid-row: 1; padding: 72px 24px 40px; }
       .pa-heading-col h2 { font-size: clamp(28px, 7vw, 42px); }
-      .pa-img-right { grid-column: 1; grid-row: 2; min-height: 240px; }
-      .pa-img-left { grid-column: 1; grid-row: 3; min-height: 240px; }
+      .pa-img-right { grid-column: 1; grid-row: 2; min-height: 260px; overflow: hidden; padding-right: 0; }
+      .pa-img-right-inner { position: relative; width: 100%; height: 260px; overflow: hidden; }
+      .pa-img-right-inner img { position: relative; width: 100%; height: 100%; object-fit: cover; right: auto; top: auto; }
+      .pa-img-left { grid-column: 1; grid-row: 3; min-height: 260px; padding-left: 0; overflow: hidden; }
+      .pa-img-left img { width: 100%; height: 100%; object-fit: cover; }
       .pa-body-col { grid-column: 1; grid-row: 4; padding: 40px 24px 72px; }
     }
     @media (max-width: 600px) {
@@ -484,6 +489,8 @@
       .stat-item .stat-num { font-size: 36px; }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-grid .footer-brand { grid-column: span 1; }
+      .portfolio-grid { grid-template-columns: 1fr; gap: 8px; }
+      .p-panel { aspect-ratio: 4/3; }
     }
   </style>
   <style>
