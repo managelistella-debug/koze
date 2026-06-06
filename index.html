@@ -3,51 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Koze Design & Build | Custom Homes & Renovations — Lower Mainland, BC</title>
+  <title>Koze Design & Build | Custom Homes & Renovations, Lower Mainland, BC</title>
   <meta name="description" content="Budget-led design. Fixed-price construction. One team from concept to completion. Custom homes and major renovations serving the Lower Mainland, BC." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://use.typekit.net/hci4ywt.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --white: #ffffff;
+      --off-white: #F9F7F2;
       --navy: #002D40;
       --green: #3E5B58;
       --gold: #9C7942;
       --gold-hover: #8a6a37;
-      --light-bg: #f7f6f4;
       --text-dark: #1a1a1a;
       --text-mid: #4a4a4a;
-      --border: #e5e2dc;
+      --border: #e0ddd7;
     }
 
     html { scroll-behavior: smooth; }
-    body { font-family: "loos-normal", sans-serif; font-weight: 200; background: var(--white); color: var(--text-dark); overflow-x: hidden; }
-    h1, h2, h3, h4, h5, h6 { font-family: "loos-wide", sans-serif; font-weight: 500; }
+    body { font-family: 'Good Sans', 'DM Sans', sans-serif; font-size: 16px; font-weight: 300; background: var(--off-white); color: var(--text-dark); overflow-x: hidden; line-height: 1.7; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Cormorant Garamond', serif; font-weight: 400; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.08; }
+
+    /* ─── HERO ANIMATION ─── */
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
 
     /* ─── HEADER ─── */
     #header {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      padding: 0 48px; height: 80px;
+      padding: 0 40px; height: 80px;
       display: flex; align-items: center; justify-content: space-between;
       transition: background 0.4s ease, box-shadow 0.4s ease;
     }
-    #header.scrolled { background: var(--white); box-shadow: 0 1px 0 var(--border); }
+    #header.scrolled { background: var(--off-white); box-shadow: 0 1px 0 var(--border); }
     #header .logo img { height: 36px; display: block; }
     #header .logo .logo-white { display: block; }
     #header .logo .logo-blue  { display: none; }
     #header.scrolled .logo .logo-white { display: none; }
     #header.scrolled .logo .logo-blue  { display: block; }
-    #header nav { display: flex; align-items: center; gap: 36px; }
+    #header nav { display: flex; align-items: center; gap: 32px; }
     #header nav a {
-      font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.9);
-      text-decoration: none; letter-spacing: 0.01em; transition: color 0.3s;
+      font-family: 'Good Sans', 'DM Sans', sans-serif;
+      font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.9);
+      text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase;
+      transition: color 0.3s;
     }
     #header.scrolled nav a { color: var(--navy); }
     #header nav a:hover, #header.scrolled nav a:hover { color: var(--gold); }
     #header .nav-cta {
       background: var(--gold); color: var(--white) !important;
-      padding: 10px 22px; font-weight: 600; transition: background 0.3s !important;
+      padding: 9px 18px; font-size: 11px; letter-spacing: 0.1em; transition: background 0.3s !important;
     }
     #header .nav-cta:hover { background: var(--gold-hover) !important; }
     .hamburger { display: none; cursor: pointer; }
@@ -55,38 +66,26 @@
     #header.scrolled .hamburger span { background: var(--navy); }
 
     /* ─── BUTTONS ─── */
-    .btn-gold {
-      display: inline-flex; align-items: center; gap: 8px;
+    .btn-gold, .btn-navy, .btn-outline-white, .btn-outline-navy {
+      font-family: 'Good Sans', 'DM Sans', sans-serif;
+      display: inline-flex; align-items: center;
       background: var(--gold); color: var(--white);
-      font-size: 15px; font-weight: 600; padding: 16px 34px;
-      text-decoration: none; letter-spacing: 0.01em;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 12px 26px;
+      text-decoration: none; border: none; cursor: pointer;
       transition: background 0.3s, transform 0.2s;
     }
-    .btn-gold:hover { background: var(--gold-hover); transform: translateY(-1px); }
-    .btn-navy {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--navy); color: var(--white);
-      font-size: 15px; font-weight: 600; padding: 16px 34px;
-      text-decoration: none; transition: background 0.3s, transform 0.2s;
+    .btn-gold:hover, .btn-navy:hover, .btn-outline-white:hover, .btn-outline-navy:hover {
+      background: var(--gold-hover); transform: translateY(-1px);
     }
-    .btn-navy:hover { background: #003d56; transform: translateY(-1px); }
-    .btn-outline-white {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: transparent; color: var(--white);
-      font-size: 15px; font-weight: 500; padding: 15px 32px;
-      border: 1.5px solid rgba(255,255,255,0.45); text-decoration: none;
-      transition: border-color 0.3s, background 0.3s;
-    }
-    .btn-outline-white:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
-    .btn-outline-navy {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: transparent; color: var(--navy);
-      font-size: 15px; font-weight: 600; padding: 15px 32px;
-      border: 1.5px solid var(--navy); text-decoration: none;
-      transition: background 0.3s, color 0.3s;
-    }
-    .btn-outline-navy:hover { background: var(--navy); color: var(--white); }
     .btn-group { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+
+    /* ─── EYEBROW ─── */
+    .eyebrow {
+      font-family: 'Good Sans', 'DM Sans', sans-serif;
+      display: inline-block; font-size: 14px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+    }
 
     /* ─── HERO ─── */
     #hero {
@@ -96,8 +95,8 @@
     }
     #hero .hero-bg {
       position: absolute; inset: 0;
-      background-image: url('public/IMG_2779.jpeg');
-      background-size: cover; background-position: center 40%;
+      background-image: url('public/19452-fraser-unit-15/koze-fraser-web-3.jpg');
+      background-size: cover; background-position: center 60%;
       transform: scale(1.05); transition: transform 8s ease;
     }
     #hero.loaded .hero-bg { transform: scale(1); }
@@ -106,394 +105,319 @@
       position: relative; z-index: 1; padding: 0 48px;
       display: flex; flex-direction: column; align-items: center;
       margin-top: 80px;
+      animation: heroFadeUp 1s ease 0.15s both;
     }
-    .eyebrow {
-      display: inline-block; font-size: 12px; font-weight: 600;
-      letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
-    }
-    #hero .eyebrow { color: rgba(255,255,255,0.6); }
+    #hero .eyebrow { color: rgba(255,255,255,0.65); font-size: 13px; }
     #hero h1 {
-      font-size: clamp(32px, 4.6vw, 62px); font-weight: 500;
-      line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 24px;
-      white-space: nowrap; color: var(--white);
+      font-size: clamp(28px, 3.2vw, 49px); font-weight: 400; letter-spacing: 0.04em;
+      line-height: 1.08; margin-bottom: 24px; white-space: nowrap; color: var(--white);
     }
     #hero p {
-      font-size: 18px; font-weight: 400; color: rgba(255,255,255,0.8);
-      line-height: 1.7; margin-bottom: 40px; max-width: 560px;
+      font-size: 16px; color: rgba(255,255,255,0.78);
+      line-height: 1.75; margin-bottom: 40px; max-width: 540px;
     }
 
     /* ─── STATS ─── */
-    #stats { background: var(--navy); padding: 0 48px; }
-    #stats .stats-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      border-left: 1px solid rgba(255,255,255,0.08);
+    #stats { background: var(--navy); padding: 72px 60px; }
+    #stats .stats-inner { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .stat-item { padding: 20px 40px 0; text-align: center; position: relative; }
+    .stat-item::after {
+      content: ''; display: block;
+      width: 44px; height: 1px; background: rgba(255,255,255,0.2);
+      margin: 20px auto 0;
     }
-    .stat-item { padding: 44px 40px; border-right: 1px solid rgba(255,255,255,0.08); text-align: center; }
-    .stat-item .stat-num { font-size: 42px; font-weight: 800; color: var(--white); letter-spacing: -0.02em; line-height: 1; margin-bottom: 8px; }
-    .stat-item .stat-label { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.5); }
+    .stat-item .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 46px; font-weight: 400; color: var(--off-white); letter-spacing: 0.02em; line-height: 1; margin-bottom: 12px; }
+    .stat-item .stat-label { font-size: 13px; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; }
 
-    /* ─── GENERIC ─── */
-    section { padding: 100px 48px; }
-    .section-inner { max-width: 1200px; margin: 0 auto; }
+    /* ─── GENERIC SECTION ─── */
+    section { padding: 100px 60px; }
+    .section-inner { /* section provides horizontal padding */ }
 
     /* ─── INTRO ─── */
-    #intro .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    #intro .img-wrap { position: relative; overflow: hidden; aspect-ratio: 4/5; }
+    #intro .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    #intro .img-wrap { position: relative; overflow: hidden; aspect-ratio: 5/5; }
     #intro .img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
     #intro .img-wrap:hover img { transform: scale(1.03); }
-    #intro .img-accent { position: absolute; bottom: -24px; right: -24px; width: 160px; aspect-ratio: 1; background: var(--gold); z-index: -1; }
+    #intro .img-accent { position: absolute; bottom: -20px; right: -20px; width: 120px; aspect-ratio: 1; background: var(--gold); z-index: -1; }
     #intro .text-col .eyebrow { color: var(--green); }
-    #intro h2 { font-size: clamp(26px, 3.5vw, 44px); font-weight: 800; color: var(--navy); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px; }
-    #intro .divider { width: 40px; height: 3px; background: var(--gold); margin: 28px 0; }
+    #intro h2 { font-size: clamp(28px, 3.2vw, 49px); color: var(--navy); margin-bottom: 20px; }
+    #intro .divider { width: 40px; height: 2px; background: var(--gold); margin: 24px 0; }
     #intro p { font-size: 16px; color: var(--text-mid); line-height: 1.8; margin-bottom: 14px; }
     .check-list { list-style: none; margin: 24px 0 36px; }
     .check-list li {
-      display: flex; align-items: flex-start; gap: 12px;
-      font-size: 15px; font-weight: 500; color: var(--text-dark);
-      padding: 10px 0; border-bottom: 1px solid var(--border);
+      display: flex; align-items: flex-start; gap: 14px;
+      font-size: 15px; color: var(--text-dark);
+      padding: 11px 0; border-bottom: 1px solid var(--border);
     }
     .check-list li:last-child { border-bottom: none; }
     .check-list li::before {
-      content: ''; flex-shrink: 0; width: 20px; height: 20px;
-      background: var(--navy) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%23ffffff' d='M8.3 13.7L4.5 9.9l1.4-1.4 2.4 2.4 5.8-5.8 1.4 1.4z'/%3E%3C/svg%3E") center/contain;
+      content: ''; flex-shrink: 0; width: 18px; height: 18px; margin-top: 2px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%239C7942' d='M8.3 13.7L4.5 9.9l1.4-1.4 2.4 2.4 5.8-5.8 1.4 1.4z'/%3E%3C/svg%3E") center/contain no-repeat;
     }
 
-    /* ─── CENTERED CTA (green) ─── */
+    /* ─── GOLD BADGE SECTION DIVIDERS ─── */
+    #intro   { position: relative; z-index: 1; }
+    #process { position: relative; z-index: 1; }
+    .gold-badge {
+      position: absolute; bottom: 0; transform: translateY(50%);
+      pointer-events: none; z-index: 30;
+    }
+    .gold-badge img { width: 150px; display: block; }
+    .gold-badge.right { right: 60px; }
+    .gold-badge.left  { left: 60px; }
+
+    /* ─── CENTERED CTA ─── */
     #centered-cta { background: var(--green); text-align: center; }
-    #centered-cta .section-inner { max-width: 720px; }
-    #centered-cta .eyebrow { color: rgba(255,255,255,0.5); }
-    #centered-cta h2 { font-size: clamp(26px, 3.5vw, 44px); font-weight: 800; color: var(--white); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px; }
+    #centered-cta .section-inner { max-width: 720px; margin: 0 auto; }
+    #centered-cta .eyebrow { color: rgba(255,255,255,0.55); }
+    #centered-cta h2 { font-size: clamp(26px, 3.2vw, 49px); color: var(--white); margin-bottom: 20px; }
     #centered-cta p { font-size: 17px; color: rgba(255,255,255,0.72); line-height: 1.75; margin-bottom: 36px; }
 
-    /* ─── DIFFERENCE ─── */
-    #difference { background: var(--white); padding: 0 48px; }
-    #difference .diff-layout {
-      max-width: 1200px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+    /* ─── SCROLLING DIFF ─── */
+    #scrolling-diff { background: var(--off-white); padding: 0; }
+    .sd-track { position: relative; height: 500vh; }
+    .sd-sticky {
+      position: sticky; top: 80px;
+      height: calc(100vh - 80px);
+      display: grid; grid-template-columns: 38fr 50fr;
+      overflow: hidden; z-index: 1;
     }
-    #difference .diff-left { padding: 100px 0; }
-    .diff-left .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 16px; display: block; }
-    .diff-left .section-title { font-size: clamp(26px, 3.5vw, 42px); font-weight: 800; color: var(--navy); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 56px; }
-    .diff-feature { padding: 56px 0; border-top: 1px solid var(--border); cursor: default; }
-    .diff-feature:last-child { border-bottom: 1px solid var(--border); }
-    .diff-feature .feat-num { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
-    .diff-feature h3 { font-size: 20px; font-weight: 800; color: var(--navy); line-height: 1.2; margin-bottom: 10px; transition: color 0.3s; }
-    .diff-feature p { font-size: 15px; color: var(--text-mid); line-height: 1.75; }
-    .diff-feature.active h3 { color: var(--green); }
-    .diff-feature .feat-bar { width: 0; height: 2px; background: var(--gold); margin-top: 18px; transition: width 0.5s ease; }
-    .diff-feature.active .feat-bar { width: 48px; }
-    .diff-right-col {
-      padding-top: 100px;
-    }
-    #difference .diff-right {
-      position: sticky; top: 100px;
-      height: calc(100vh - 200px); max-height: 620px;
-      overflow: hidden;
-    }
-    .diff-img { position: absolute; inset: 0; opacity: 0; transition: opacity 0.7s ease; }
-    .diff-img.active { opacity: 1; }
-    .diff-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .diff-img-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,45,64,0.25) 0%, transparent 50%); }
-
-    /* ─── SCROLLING DIFF (price-pierce style) ─── */
-    #scrolling-diff { background: var(--white); padding: 0; }
-    .sd-rows { position: relative; }
-    .sd-row { position: relative; height: 100vh; overflow-y: clip; }
-    .sd-row-inner { position: absolute; left: 0; right: 0; transform-style: preserve-3d; z-index: 2; }
-    .sd-row:first-child .sd-row-inner { top: 0; height: 200vh; }
-    .sd-row:not(:first-child) .sd-row-inner { top: -100vh; height: 300vh; }
-    .sd-row:last-child .sd-row-inner { height: 200vh; }
-    .sd-sections {
-      height: calc(100vh - 80px); position: sticky; top: 80px;
-      display: grid; grid-template-columns: 62fr 38fr; overflow: hidden;
-    }
-    .sd-img-col { position: relative; overflow: hidden; }
-    .sd-img-col img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
-    .sd-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.52); z-index: 1; }
-    .sd-heading {
-      position: absolute; bottom: 0; left: 0; right: 0; height: 42vh; z-index: 2;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 0 52px 56px;
-      border-top: 1px solid rgba(255,255,255,0.18);
-    }
-    .sd-feat-num { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 14px; display: block; }
-    .sd-heading h3 { font-size: clamp(24px, 3.2vw, 46px); font-weight: 500; color: var(--white); line-height: 1.1; }
-    .sd-desc-col { background: var(--white); display: flex; flex-direction: column; }
-    .sd-col-title {
-      height: 58vh; padding: 80px 52px 0;
-      display: flex; flex-direction: column; justify-content: center;
-    }
-    .sd-col-title .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 16px; display: block; }
-    .sd-col-title h2 { font-size: clamp(26px, 3.5vw, 44px); font-weight: 500; color: var(--navy); line-height: 1.1; letter-spacing: -0.02em; }
+    /* Image side */
+    .sd-img-slot { position: relative; overflow: hidden; padding: 32px 40px 32px 20px; background: var(--off-white); display: flex; align-items: stretch; }
+    .sd-img-inner { position: relative; flex: 1; overflow: hidden; border-radius: 0; }
+    .sd-img-layer { position: absolute; inset: 0; opacity: 0; transition: opacity 0.85s ease; }
+    .sd-img-layer.active { opacity: 1; }
+    .sd-img-layer img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.7s ease; }
+    .sd-img-inner:hover .sd-img-layer.active img { transform: scale(1.05); }
+    .sd-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.45); z-index: 1; }
     .sd-corner-num {
       position: absolute; top: 28px; left: 40px; z-index: 3;
-      font-size: clamp(32px, 4vw, 56px); font-weight: 500;
+      font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4.5vw, 64px); font-weight: 400;
       color: var(--white); line-height: 1;
     }
-    .sd-desc-inner {
-      flex: 1; border-top: 1px solid var(--border);
+    .sd-heading {
+      position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
       padding: 28px 52px 56px;
-      display: flex; flex-direction: column; justify-content: flex-start;
     }
-    .sd-step-title { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; display: block; }
-    .sd-desc-inner p { font-size: 16px; color: var(--text-mid); line-height: 1.8; max-width: 380px; }
+    .sd-feat-num { font-family: 'Good Sans','DM Sans',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 14px; display: block; }
+    .sd-heading h3 { font-size: clamp(24px, 3.2vw, 46px); color: var(--white); line-height: 1.08; }
+    /* Description side */
+    .sd-desc-col { background: var(--off-white); display: flex; flex-direction: column; align-items: center; }
+    .sd-col-title { padding: 80px 40px 40px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: flex-end; width: 100%; max-width: 420px; }
+    .sd-col-title .section-label { font-family: 'Good Sans','DM Sans',sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 16px; display: block; }
+    .sd-col-title h2 { font-size: clamp(26px, 3.2vw, 49px); color: var(--navy); }
+    .sd-desc-slot { flex: 1; position: relative; width: 100%; max-width: 420px; }
+    .sd-desc-layer { position: absolute; inset: 0; opacity: 0; transition: opacity 0.85s ease; padding: 36px 40px 56px; display: flex; flex-direction: column; justify-content: center; }
+    .sd-desc-layer.active { opacity: 1; }
+    .sd-step-title { font-family: 'Good Sans','DM Sans',sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; display: block; }
+    .sd-desc-layer p { font-size: 16px; color: var(--text-mid); line-height: 1.8; max-width: 380px; }
 
     /* ─── SERVICES ─── */
-    #services { background: var(--navy); }
-    #services .section-header { text-align: center; margin-bottom: 48px; }
+    #services { background: var(--off-white); padding: 100px 0 60px; }
+    .services-header-wrap { padding: 0 60px; margin-bottom: 44px; }
+    #services .section-header { text-align: center; }
     #services .section-header .eyebrow { color: var(--gold); }
-    #services h2 { font-size: clamp(26px, 3.5vw, 44px); font-weight: 800; color: var(--white); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 12px; }
-    #services .section-header p { font-size: 16px; color: rgba(255,255,255,0.5); max-width: 480px; margin: 0 auto; line-height: 1.7; }
-    .services-carousel-wrap { position: relative; }
-    .services-carousel { overflow: hidden; }
-    .services-track { display: flex; gap: 2px; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); will-change: transform; }
+    #services h2 { font-size: clamp(28px, 3.2vw, 49px); color: var(--navy); margin-bottom: 12px; }
+    #services .section-header p { font-size: 16px; color: var(--text-mid); max-width: 480px; margin: 0 auto; line-height: 1.7; }
+    .services-full { width: 100%; }
+    .services-carousel { overflow: hidden; width: 100%; position: relative; }
+    .services-track { display: flex; gap: 2px; will-change: transform; }
     .service-card { flex: 0 0 calc((100% - 4px) / 3); position: relative; overflow: hidden; aspect-ratio: 3/4; cursor: default; }
-    .svc-arrow {
-      position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
-      width: 48px; height: 48px; background: var(--white); border: none; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.15); transition: background 0.25s, opacity 0.25s;
-    }
-    .svc-arrow svg { width: 18px; height: 18px; stroke: var(--navy); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-    .svc-arrow:hover { background: var(--gold); }
-    .svc-arrow:hover svg { stroke: var(--white); }
-    .svc-arrow.disabled { opacity: 0.2; pointer-events: none; }
-    .svc-prev { left: -24px; }
-    .svc-next { right: -24px; }
-    .service-card img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-      transition: transform 0.6s ease, filter 0.5s ease;
-    }
-    .service-card:hover img { transform: scale(1.05); filter: brightness(0.55); }
-    .service-card::before {
-      content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-      background: linear-gradient(to top, rgba(0,0,0,0.48) 0%, rgba(0,0,0,0.12) 38%, transparent 62%);
-    }
+    .service-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease, filter 0.45s ease; }
+    .service-card:hover img, .service-card.card-active img { transform: scale(1.04); filter: brightness(0.7); }
     .service-card .card-hover-bg {
       position: absolute; inset: 0; z-index: 2;
-      background: linear-gradient(to top, rgba(0,45,64,0.9) 0%, rgba(0,45,64,0.2) 60%, transparent 100%);
-      opacity: 0; transition: opacity 0.5s ease;
+      background: rgba(0,0,0,0.62);
+      opacity: 0; transition: opacity 0.45s ease;
     }
     .service-card:hover .card-hover-bg { opacity: 1; }
     .service-card .card-content {
-      position: absolute; bottom: 0; left: 0; right: 0; padding: 28px;
-      transition: transform 0.4s ease; z-index: 3;
+      position: absolute; inset: 0; z-index: 3;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 32px; text-align: center;
+      opacity: 0; transition: opacity 0.45s ease;
     }
-    .service-card:hover .card-content { transform: translateY(-6px); }
-    .service-card .card-num { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
-    .service-card h3 { font-size: 20px; font-weight: 800; color: var(--white); line-height: 1.2; }
-    .service-card p {
-      font-size: 14px; color: rgba(255,255,255,0.78); line-height: 1.65; margin-top: 8px;
-      max-height: 0; overflow: hidden; opacity: 0;
-      transition: max-height 0.4s ease, opacity 0.4s ease;
-    }
-    .service-card:hover p { max-height: 120px; opacity: 1; }
-    .service-card.card-active img { transform: scale(1.05); filter: brightness(0.55); }
+    .service-card:hover .card-content { opacity: 1; }
+    .service-card .card-num { font-family: 'Good Sans','DM Sans',sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+    .service-card h3 { font-size: clamp(18px, 1.8vw, 22px); color: var(--white); margin-bottom: 12px; }
+    .service-card p { font-size: 14px; color: rgba(255,255,255,0.78); line-height: 1.65; }
     .service-card.card-active .card-hover-bg { opacity: 1; }
-    .service-card.card-active .card-content { transform: translateY(-6px); }
-    .service-card.card-active p { max-height: 120px; opacity: 1; }
+    .service-card.card-active .card-content { opacity: 1; }
+    .service-card .card-label {
+      position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+      padding: 64px 24px 22px;
+      background: linear-gradient(to top, rgba(0,0,0,0.58) 0%, transparent 100%);
+      transition: opacity 0.45s ease; pointer-events: none;
+    }
+    .service-card .card-label span {
+      font-family: 'Cormorant Garamond', serif; font-size: clamp(18px, 2vw, 24px);
+      font-weight: 400; text-transform: uppercase; letter-spacing: 0.06em; color: var(--white);
+    }
+    .service-card:hover .card-label,
+    .service-card.card-active .card-label { opacity: 0; }
+    .svc-nav-row { display: flex; justify-content: center; align-items: center; gap: 36px; padding-top: 28px; }
+    .svc-nav-btn {
+      background: none; border: none; cursor: pointer;
+      font-size: 20px; color: var(--navy); padding: 6px 10px;
+      transition: color 0.3s; line-height: 1;
+    }
+    .svc-nav-btn svg { width: 32px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+    .svc-nav-btn:hover { color: var(--gold); }
+    .svc-nav-btn.disabled { opacity: 0.2; pointer-events: none; }
 
     /* ─── PORTFOLIO ─── */
-    #portfolio { background: var(--white); }
-    #portfolio .port-header { margin-bottom: 44px; }
-    #portfolio .port-header .eyebrow { color: var(--green); }
-    #portfolio .port-header h2 { font-size: clamp(26px, 3.5vw, 44px); font-weight: 800; color: var(--navy); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 12px; }
-    #portfolio .port-header p { font-size: 16px; color: var(--text-mid); max-width: 500px; line-height: 1.7; }
-    .portfolio-panels {
-      display: flex; gap: 3px; height: 580px; overflow: hidden;
-    }
-    .p-panel {
-      flex: 1; position: relative; overflow: hidden; cursor: pointer;
-      transition: flex 0.55s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .portfolio-panels.has-hover .p-panel { flex: 0.62; }
-    .portfolio-panels.has-hover .p-panel.active { flex: 1.76; }
-    .p-panel img {
-      position: absolute; inset: 0; width: 100%; height: 100%;
-      object-fit: cover; display: block; transition: transform 0.6s ease;
-    }
-    .p-panel.active img { transform: scale(1.03); }
-    .p-panel .p-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.1) 42%, transparent 68%);
-    }
-    .p-panel .p-label {
-      position: absolute; bottom: 0; left: 0; right: 0; padding: 32px;
-      transition: opacity 0.4s ease, transform 0.4s ease;
-      transform: translateY(4px);
-    }
-    .p-panel.active .p-label { transform: translateY(0); }
-    .portfolio-panels.has-hover .p-panel:not(.active) .p-label { opacity: 0; }
-    .p-label .p-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
-    .p-label h3 { font-size: 22px; font-weight: 800; color: var(--white); margin-bottom: 6px; }
-    .p-label p { font-size: 14px; color: rgba(255,255,255,0.7); }
-    .port-cta { text-align: center; margin-top: 48px; }
+    #portfolio { background: var(--navy); }
+    #portfolio .port-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 44px; }
+    #portfolio .port-header .eyebrow { color: var(--gold); }
+    #portfolio .port-header h2 { font-size: clamp(28px, 3.2vw, 49px); color: var(--white); margin-bottom: 0; }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr); gap: 16px; }
+    .p-panel { position: relative; overflow: hidden; cursor: pointer; aspect-ratio: 4/3; }
+    .p-panel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+    .p-panel:hover img { transform: scale(1.07); }
+    .p-panel .p-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.08) 42%, transparent 68%); }
+    .p-panel .p-label { position: absolute; bottom: 0; left: 0; right: 0; padding: 24px 28px; transition: transform 0.4s ease; transform: translateY(4px); }
+    .p-panel:hover .p-label { transform: translateY(0); }
+    .p-label .p-tag { font-family: 'Good Sans','DM Sans',sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .p-label h3 { font-size: clamp(16px, 1.6vw, 20px); color: var(--white); margin-bottom: 6px; }
 
     /* ─── PROCESS ─── */
-    #process { background: var(--white); }
-    #process .proc-header { text-align: center; margin-bottom: 80px; }
+    #process { background: var(--off-white); }
+    #process .proc-header { text-align: center; margin-bottom: 72px; }
     #process .proc-header .eyebrow { color: var(--green); }
-    #process h2 { font-size: clamp(26px, 3.5vw, 44px); font-weight: 800; color: var(--navy); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 14px; }
+    #process h2 { font-size: clamp(28px, 3.2vw, 49px); color: var(--navy); margin-bottom: 14px; }
     #process .proc-header p { font-size: 16px; color: var(--text-mid); max-width: 500px; margin: 0 auto; line-height: 1.7; }
-    .proc-track {
-      position: relative; display: grid; grid-template-columns: repeat(3, 1fr);
-      margin-bottom: 64px;
-    }
-    .proc-line-wrap {
-      position: absolute;
-      top: 31px;
-      left: calc(16.66% + 4px);
-      right: calc(16.66% + 4px);
-      height: 2px;
-      background: var(--border);
-      overflow: hidden;
-    }
-    .proc-traveler {
-      position: absolute; top: 0; height: 100%; width: 80px;
-      background: linear-gradient(to right, transparent 0%, var(--gold) 50%, transparent 100%);
-      animation: lineTravel 5s cubic-bezier(0.4, 0, 0.6, 1) infinite alternate;
-    }
-    @keyframes lineTravel {
-      0%   { left: -80px; }
-      100% { left: 100%; }
-    }
-    .proc-step { padding: 0 28px; text-align: center; }
+    .proc-track { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); margin-bottom: 64px; }
+    .proc-line-wrap { position: absolute; top: 38px; left: calc(16.66% + 4px); right: calc(16.66% + 4px); height: 1px; background: var(--border); overflow: hidden; }
+    .proc-traveler { position: absolute; top: 0; height: 100%; width: 80px; background: linear-gradient(to right, transparent 0%, var(--gold) 50%, transparent 100%); animation: lineTravel 5s cubic-bezier(0.4, 0, 0.6, 1) infinite alternate; }
+    @keyframes lineTravel { 0% { left: -80px; } 100% { left: 100%; } }
+    .proc-step { padding: 0 32px; text-align: center; }
     .step-dot {
-      width: 64px; height: 64px;
-      background: var(--navy); display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 20px; position: relative; z-index: 1;
-      font-size: 20px; font-weight: 800; color: var(--white);
-      transition: background 0.3s, transform 0.3s;
+      font-family: 'Cormorant Garamond', serif; font-size: 72px; font-weight: 400;
+      text-transform: uppercase; color: var(--gold); line-height: 1;
+      margin: 0 auto 20px; display: inline-block; text-align: center;
+      background: var(--off-white); padding: 0 10px;
+      position: relative; z-index: 2;
     }
-    .proc-step:hover .step-dot { background: var(--green); transform: translateY(-3px); }
-    .proc-step h4 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
-    .proc-step p { font-size: 14px; color: var(--text-mid); line-height: 1.7; }
+    .proc-step h4 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; text-transform: uppercase; letter-spacing: 0.04em; color: var(--navy); margin-bottom: 12px; }
+    .proc-step p { font-size: 15px; color: var(--text-mid); line-height: 1.75; }
     .proc-cta { text-align: center; }
 
     /* ─── AREAS ─── */
-    #areas { position: relative; background: var(--green); padding: 100px 48px; overflow: hidden; }
+    #areas { position: relative; background: var(--green); padding: 100px 60px; overflow: hidden; }
     .areas-bgs { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
-    .area-bg-layer {
-      position: absolute; inset: 0;
-      background-size: cover; background-position: center;
-      opacity: 0; transition: opacity 0.7s ease;
-    }
+    .area-bg-layer { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 0.7s ease; }
     .area-bg-layer.active { opacity: 0.14; }
-    #areas .areas-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; }
+    #areas .areas-inner { position: relative; z-index: 1; }
     .areas-top { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: start; }
     .areas-text .eyebrow { color: rgba(255,255,255,0.45); }
-    .areas-text h2 { font-size: clamp(26px, 3.5vw, 44px); font-weight: 800; color: var(--white); line-height: 1.08; letter-spacing: -0.02em; margin: 16px 0 20px; }
+    .areas-text h2 { font-size: clamp(28px, 3.2vw, 49px); color: var(--white); margin: 16px 0 20px; }
     .areas-text p { font-size: 16px; color: rgba(255,255,255,0.62); line-height: 1.75; margin-bottom: 32px; }
-    .areas-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
-    .area-item {
-      padding: 18px 22px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      display: flex; align-items: center; justify-content: space-between;
-      cursor: default;
-      transition: background 0.35s, border-color 0.35s;
-    }
-    .area-item:hover { background: var(--gold); border-color: var(--gold); }
-    .area-item .area-name { font-size: 15px; font-weight: 600; color: var(--white); transition: color 0.35s; }
+    .areas-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px 32px; }
+    .area-item { padding: 10px 0; background: none; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; gap: 10px; cursor: default; transition: opacity 0.3s; }
+    .area-item:hover { opacity: 0.75; }
+    .area-item .area-pin { flex-shrink: 0; color: var(--gold); }
+    .area-item .area-name { font-family: 'Good Sans','DM Sans',sans-serif; font-size: 15px; font-weight: 400; color: var(--white); transition: color 0.35s; }
 
-    .area-item .area-badge {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--gold); padding: 3px 8px; border: 1px solid rgba(156,121,66,0.4);
-      transition: color 0.35s, border-color 0.35s, background 0.35s;
+    /* ─── PROBLEM AGITATION ─── */
+    #problem-agit { background: var(--off-white); overflow: hidden; padding: 100px 0; }
+    .pa-inner {
+      display: grid;
+      grid-template-columns: 30% 50% 20%;
+      grid-template-rows: auto 220px auto;
     }
-    .area-item:hover .area-badge { color: var(--navy); border-color: rgba(0,0,0,0.15); background: rgba(255,255,255,0.75); }
+    /* Heading: left 80%, upper row, bottom-aligned */
+    .pa-heading-col {
+      grid-column: 1 / 3; grid-row: 1;
+      padding: 0 80px 60px 60px;
+      display: flex; flex-direction: column; justify-content: flex-end;
+    }
+    .pa-heading-col .eyebrow { color: var(--green); }
+    .pa-heading-col h2 { font-size: clamp(28px, 3.2vw, 49px); color: var(--navy); margin-top: 16px; max-width: 480px; }
+    /* Right image: rightmost 20%, spans upper + middle rows, expanded 40% larger anchored top-right */
+    .pa-img-right { grid-column: 3; grid-row: 1 / 3; overflow: visible; min-height: 380px; padding-right: 0; position: relative; z-index: 2; }
+    .pa-img-right-inner { position: absolute; top: 0; right: 60px; width: 140%; height: 140%; overflow: hidden; }
+    .pa-img-right-inner img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.7s ease; }
+    .pa-img-right:hover .pa-img-right-inner img { transform: scale(1.05); }
+    /* Left image: leftmost 30%, spans middle + lower rows */
+    .pa-img-left { grid-column: 1; grid-row: 2 / 4; overflow: hidden; min-height: 440px; padding-left: 60px; }
+    .pa-img-left img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.7s ease; }
+    .pa-img-left:hover img { transform: scale(1.05); }
+    /* Body text: center column, middle row — floats in open white zone */
+    .pa-body-col {
+      grid-column: 2; grid-row: 2;
+      padding: 0 60px;
+      display: flex; align-items: center;
+    }
+    .pa-body-col p { font-size: 16px; color: var(--text-mid); line-height: 1.75; max-width: 300px; }
 
     /* ─── TESTIMONIALS ─── */
-    #testimonial { background: var(--navy); padding: 100px 48px; overflow: hidden; }
+    #testimonial { background: var(--navy); }
     .testi-header { text-align: center; margin-bottom: 56px; }
     .testi-header .eyebrow { color: var(--gold); }
-    .testi-header h2 { font-size: clamp(26px, 3.5vw, 44px); font-weight: 800; color: var(--white); line-height: 1.1; letter-spacing: -0.02em; }
-    .testi-slider-wrap { position: relative; max-width: 840px; margin: 0 auto; overflow: hidden; }
-    .testi-track { display: flex; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
-    .testi-slide { min-width: 100%; padding: 0 16px; text-align: center; }
-    .testi-quote-mark { font-size: 72px; line-height: 0.5; color: var(--gold); margin-bottom: 28px; display: block; }
-    .testi-slide blockquote { font-size: clamp(17px, 2.4vw, 23px); font-weight: 600; color: var(--white); line-height: 1.55; font-style: italic; margin-bottom: 28px; }
-    .testi-slide cite { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.4); letter-spacing: 0.06em; text-transform: uppercase; font-style: normal; }
-    .testi-slide cite strong { color: var(--gold); }
-    .testi-controls { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 40px; }
-    .testi-arrow {
-      width: 44px; height: 44px; background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15); cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.3s, border-color 0.3s;
-    }
-    .testi-arrow:hover { background: var(--gold); border-color: var(--gold); }
-    .testi-arrow svg { width: 16px; height: 16px; stroke: var(--white); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-    .testi-dots { display: flex; gap: 6px; }
-    .testi-dot {
-      width: 24px; height: 3px; background: rgba(255,255,255,0.2);
-      border: none; cursor: pointer; padding: 0;
-      transition: background 0.3s, width 0.3s;
-    }
-    .testi-dot.active { background: var(--gold); width: 36px; }
+    .testi-header h2 { font-size: clamp(28px, 3.2vw, 49px); color: var(--white); }
+    .testi-track-wrap { overflow: hidden; }
+    .testi-track { display: flex; gap: 24px; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+    .testi-card { flex: 0 0 calc(50% - 12px); border: 1px solid rgba(255,255,255,0.14); padding: 44px 40px; }
+    .testi-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(18px, 1.8vw, 22px); font-weight: 400; font-style: italic; color: var(--white); line-height: 1.65; margin-bottom: 28px; }
+    .testi-cite { font-family: 'Good Sans','DM Sans',sans-serif; font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; text-transform: uppercase; }
+    .testi-cite strong { color: var(--gold); }
+    .testi-nav { display: flex; justify-content: flex-end; gap: 28px; margin-top: 28px; align-items: center; }
+    .testi-nav-btn { background: none; border: none; cursor: pointer; padding: 6px; color: rgba(255,255,255,0.45); transition: color 0.3s; }
+    .testi-nav-btn svg { width: 32px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+    .testi-nav-btn:hover { color: var(--gold); }
 
     /* ─── FAQ ─── */
-    #faq { background: var(--light-bg); }
-    .faq-inner { max-width: 800px; margin: 0 auto; }
+    #faq { background: var(--off-white); }
+    .faq-inner { max-width: 760px; margin: 0 auto; }
     .faq-header { text-align: center; margin-bottom: 56px; }
     .faq-header .eyebrow { color: var(--green); }
-    .faq-header h2 { font-size: clamp(26px, 3.5vw, 44px); font-weight: 800; color: var(--navy); line-height: 1.1; letter-spacing: -0.02em; }
+    .faq-header h2 { font-size: clamp(28px, 3.2vw, 49px); color: var(--navy); }
     .faq-item { border-bottom: 1px solid var(--border); }
     .faq-q {
       width: 100%; text-align: left; background: none; border: none; cursor: pointer;
       padding: 24px 0; display: flex; align-items: center; justify-content: space-between; gap: 20px;
-      font-family: "loos-wide", sans-serif; font-size: 16px; font-weight: 500; color: var(--navy); line-height: 1.4;
+      font-family: 'Good Sans','DM Sans',sans-serif; font-size: 16px; color: var(--navy); line-height: 1.4;
     }
     .faq-q:hover { color: var(--green); }
-    .faq-icon {
-      flex-shrink: 0; width: 28px; height: 28px;
-      background: rgba(0,45,64,0.08); display: flex; align-items: center; justify-content: center;
-      transition: background 0.3s, transform 0.3s;
-    }
-    .faq-icon svg { width: 12px; height: 12px; stroke: var(--navy); fill: none; stroke-width: 2.5; stroke-linecap: round; }
-    .faq-item.open .faq-icon { background: var(--gold); transform: rotate(45deg); }
-    .faq-item.open .faq-icon svg { stroke: white; }
+    .faq-icon { flex-shrink: 0; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; transition: transform 0.3s; }
+    .faq-icon svg { width: 14px; height: 14px; stroke: var(--gold); fill: none; stroke-width: 2; stroke-linecap: round; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
     .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
     .faq-item.open .faq-a { max-height: 280px; }
     .faq-a p { font-size: 15px; color: var(--text-mid); line-height: 1.8; padding-bottom: 24px; }
 
     /* ─── BOTTOM CTA ─── */
-    #bottom-cta { position: relative; padding: 120px 48px; text-align: center; overflow: hidden; }
+    #bottom-cta { position: relative; padding: 120px 60px; text-align: center; overflow: hidden; }
     #bottom-cta .bg { position: absolute; inset: 0; background-image: url('public/19564-hammond-road/Hammond-web-27.jpg'); background-size: cover; background-position: center; }
-    #bottom-cta::after { content: ''; position: absolute; inset: 0; background: rgba(0,18,30,0.72); }
-    #bottom-cta .content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    #bottom-cta::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.65); }
+    #bottom-cta .content { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
     #bottom-cta .eyebrow { color: var(--gold); }
-    #bottom-cta h2 { font-size: clamp(30px, 5vw, 58px); font-weight: 800; color: var(--white); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 20px; }
-    #bottom-cta p { font-size: 18px; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 40px; }
+    #bottom-cta h2 { font-size: clamp(30px, 4vw, 56px); color: var(--white); margin-bottom: 20px; }
+    #bottom-cta p { font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 40px; }
     #bottom-cta .btn-group { justify-content: center; }
 
     /* ─── MAP ─── */
     #map { height: 480px; }
-    #map iframe { width: 100%; height: 100%; border: none; display: block; filter: grayscale(15%) contrast(0.95); }
+    #map iframe { width: 100%; height: 100%; border: none; display: block; filter: grayscale(100%) contrast(0.75) brightness(1.35) sepia(2%); }
 
     /* ─── FOOTER ─── */
-    footer { background: var(--navy); padding: 72px 48px 32px; }
-    .footer-grid {
-      max-width: 1200px; margin: 0 auto;
-      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
-      padding-bottom: 56px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 32px;
-    }
+    footer { background: var(--navy); padding: 72px 60px 32px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 56px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 32px; }
     .footer-brand img { height: 32px; margin-bottom: 20px; display: block; }
     .footer-brand p { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.75; max-width: 280px; margin-bottom: 24px; }
     .social-links { display: flex; gap: 10px; }
-    .social-links a { width: 36px; height: 36px; background: rgba(255,255,255,0.07); display: flex; align-items: center; justify-content: center; transition: background 0.3s; }
-    .social-links a:hover { background: var(--gold); }
+    .social-links a { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; transition: opacity 0.3s; }
+    .social-links a:hover { opacity: 0.6; }
     .social-links a svg { width: 16px; height: 16px; fill: rgba(255,255,255,0.65); }
-    .footer-col h5 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 20px; }
+    .footer-col h5 { font-family: 'Good Sans','DM Sans',sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 20px; }
     .footer-col ul { list-style: none; }
     .footer-col ul li { margin-bottom: 10px; }
-    .footer-col ul li a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s; }
+    .footer-col ul li a { font-size: 14px; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s; }
     .footer-col ul li a:hover { color: var(--white); }
     .fc-item { display: flex; gap: 10px; align-items: center; margin-bottom: 12px; }
     .fc-item svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; stroke-width: 2; flex-shrink: 0; }
     .fc-item span { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.55; }
-    .footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
     .footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.28); }
     .footer-bottom a { color: rgba(255,255,255,0.35); text-decoration: none; font-size: 13px; }
     .footer-bottom a:hover { color: var(--gold); }
@@ -516,53 +440,48 @@
     @media (max-width: 900px) {
       #header { padding: 0 24px; }
       #header nav { display: none; }
-      #header nav.open {
-        display: flex; flex-direction: column; position: fixed;
-        inset: 80px 0 0 0; background: var(--navy); padding: 40px 24px;
-        gap: 24px; z-index: 999;
-      }
-      #header nav.open a { font-size: 22px; color: var(--white) !important; }
+      #header nav.open { display: flex; flex-direction: column; position: fixed; inset: 80px 0 0 0; background: var(--navy); padding: 40px 24px; gap: 24px; z-index: 999; }
+      #header nav.open a { font-size: 20px; color: var(--white) !important; }
       #header nav.open .nav-cta { background: var(--gold); }
       .hamburger { display: block; }
-      #hero h1 { white-space: normal; font-size: clamp(36px, 9vw, 52px); }
+      #hero h1 { white-space: normal; font-size: clamp(26px, 7vw, 40px); }
       #hero .h1-w1, #hero .h1-w2 { display: block; }
       #hero h1 br { display: none; }
       #hero .hero-content { padding: 0 24px; }
       section { padding: 72px 24px; }
-      #stats { padding: 0 24px; }
-      #stats .stats-inner { grid-template-columns: repeat(2,1fr); border-left: none; }
-      .stat-item { border-right: none; border-bottom: none; }
-      .stat-item:nth-child(odd)  { border-right: 1px solid rgba(255,255,255,0.1); }
-      .stat-item:nth-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,0.1); }
+      #stats { padding: 56px 24px; }
+      #stats .stats-inner { grid-template-columns: repeat(2,1fr); }
       #intro .two-col { grid-template-columns: 1fr; gap: 40px; }
-      #difference { padding: 0 24px; }
-      #difference .diff-layout { grid-template-columns: 1fr; }
-      #difference .diff-right { display: none; }
+      .gold-badge { display: none; }
       #scrolling-diff { display: none; }
-      .service-card { flex: 0 0 100%; }
-      .svc-prev { left: 8px; }
-      .svc-next { right: 8px; }
-      .portfolio-panels { flex-direction: column; height: auto; }
-      .p-panel { min-height: 320px; flex: 1 !important; }
-      .portfolio-panels.has-hover .p-panel,
-      .portfolio-panels.has-hover .p-panel.active { flex: 1 !important; }
+      #services { padding: 72px 0 36px; }
+      .services-track { gap: 0; }
+      .service-card { flex: 0 0 100vw; }
+      .services-header-wrap { padding: 0 24px; }
+      .portfolio-grid { grid-template-columns: 1fr 1fr; }
+      .p-panel { min-height: 220px; }
+      .portfolio-panels.has-hover .p-panel, .portfolio-panels.has-hover .p-panel.active { flex: 1 !important; }
       .proc-track { grid-template-columns: 1fr; gap: 40px; }
       .proc-line-wrap { display: none; }
       .areas-top { grid-template-columns: 1fr; gap: 40px; }
       .areas-grid { grid-template-columns: 1fr; }
       #areas { padding: 72px 24px; }
+      .testi-card { flex: 0 0 100%; }
+      .faq-inner { padding: 0; }
       footer { padding: 56px 24px 28px; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
       .footer-grid .footer-brand { grid-column: span 2; }
       #bottom-cta { padding: 80px 24px; }
+      .pa-inner { grid-template-columns: 1fr; grid-template-rows: auto auto auto auto; }
+      .pa-heading-col { grid-column: 1; grid-row: 1; padding: 72px 24px 40px; }
+      .pa-heading-col h2 { font-size: clamp(28px, 7vw, 42px); }
+      .pa-img-right { grid-column: 1; grid-row: 2; min-height: 240px; }
+      .pa-img-left { grid-column: 1; grid-row: 3; min-height: 240px; }
+      .pa-body-col { grid-column: 1; grid-row: 4; padding: 40px 24px 72px; }
     }
     @media (max-width: 600px) {
-      #stats .stats-inner { grid-template-columns: repeat(2,1fr); border-left: none; }
-      .stat-item { border-right: none; border-bottom: none; }
-      .stat-item:nth-child(odd)  { border-right: 1px solid rgba(255,255,255,0.1); }
-      .stat-item:nth-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,0.1); }
-      .stat-item { padding: 28px 16px; }
-      .stat-item .stat-num { font-size: 30px; }
+      .stat-item { padding: 20px 16px 0; }
+      .stat-item .stat-num { font-size: 36px; }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-grid .footer-brand { grid-column: span 1; }
     }
@@ -572,9 +491,9 @@
     .nav-dropdown { position: relative; display: flex; align-items: center; }
     .nav-drop-toggle {
       background: none; border: none; cursor: pointer; padding: 0;
-      font-size: 14px; font-weight: 500; font-family: inherit;
-      color: rgba(255,255,255,0.9); letter-spacing: 0.01em;
-      transition: color 0.3s; display: flex; align-items: center; gap: 5px;
+      font-family: 'Good Sans','DM Sans',sans-serif;
+      font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.9); transition: color 0.3s; display: flex; align-items: center; gap: 5px;
     }
     #header.scrolled .nav-drop-toggle { color: var(--navy); }
     .nav-drop-toggle:hover, #header.scrolled .nav-drop-toggle:hover { color: var(--gold); }
@@ -583,44 +502,28 @@
     .nav-dropdown::after { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 24px; }
     .nav-drop-menu {
       position: absolute; top: calc(100% + 20px); left: 50%;
-      background: #ffffff; min-width: 210px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-      border-top: 2px solid #9C7942;
-      opacity: 0; pointer-events: none;
-      transform: translateX(-50%) translateY(-6px);
-      transition: opacity 0.22s ease, transform 0.22s ease;
-      z-index: 200;
+      background: var(--off-white); min-width: 210px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1); border-top: 2px solid var(--gold);
+      opacity: 0; pointer-events: none; transform: translateX(-50%) translateY(-6px);
+      transition: opacity 0.22s ease, transform 0.22s ease; z-index: 200;
     }
-    .nav-dropdown:hover .nav-drop-menu {
-      opacity: 1; pointer-events: auto;
-      transform: translateX(-50%) translateY(0);
-    }
+    .nav-dropdown:hover .nav-drop-menu { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
     .nav-drop-menu a {
       display: block; padding: 13px 20px;
-      font-size: 13px; font-weight: 500; color: #002D40 !important;
-      text-decoration: none; letter-spacing: 0.01em;
-      border-bottom: 1px solid #e5e2dc;
-      transition: background 0.2s, color 0.2s !important;
-      white-space: nowrap;
+      font-family: 'Good Sans','DM Sans',sans-serif;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--navy) !important; text-decoration: none;
+      border-bottom: 1px solid var(--border); transition: background 0.2s, color 0.2s !important; white-space: nowrap;
     }
     .nav-drop-menu a:last-child { border-bottom: none; }
-    .nav-drop-menu a:hover { background: #f7f6f4; color: #9C7942 !important; }
+    .nav-drop-menu a:hover { background: rgba(156,121,66,0.08); color: var(--gold) !important; }
     @media (max-width: 900px) {
       #header nav.open .nav-dropdown { flex-direction: column; align-items: flex-start; width: 100%; }
-      #header nav.open .nav-drop-toggle { font-size: 22px; color: #ffffff !important; font-weight: 500; }
+      #header nav.open .nav-drop-toggle { font-size: 20px; color: #ffffff !important; font-weight: 500; }
       #header nav.open .nav-drop-toggle svg { display: none; }
-      #header nav.open .nav-drop-menu {
-        position: static; opacity: 1; pointer-events: auto;
-        transform: none; box-shadow: none; border-top: none;
-        background: transparent; min-width: unset; width: 100%;
-        padding-left: 16px; border-left: 2px solid rgba(156,121,66,0.45);
-        margin-top: 6px; margin-bottom: 4px;
-      }
-      #header nav.open .nav-drop-menu a {
-        color: rgba(255,255,255,0.75) !important; background: transparent;
-        border-bottom: none; font-size: 17px; padding: 7px 0;
-      }
-      #header nav.open .nav-drop-menu a:hover { color: #9C7942 !important; }
+      #header nav.open .nav-drop-menu { position: static; opacity: 1; pointer-events: auto; transform: none; box-shadow: none; border-top: none; background: transparent; min-width: unset; width: 100%; padding-left: 16px; border-left: 2px solid rgba(156,121,66,0.45); margin-top: 6px; margin-bottom: 4px; }
+      #header nav.open .nav-drop-menu a { color: rgba(255,255,255,0.75) !important; background: transparent; border-bottom: none; font-size: 15px; padding: 7px 0; }
+      #header nav.open .nav-drop-menu a:hover { color: var(--gold) !important; }
     }
   </style>
 </head>
@@ -658,10 +561,10 @@
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <span class="eyebrow">Custom Homes &amp; Renovations — Lower&nbsp;Mainland, BC</span>
-    <h1><span class="h1-w1">Built Around</span> <span class="h1-w2">Your Budget.</span><br /><span class="h1-w1">Built Around</span> <span class="h1-w2">Your Life.</span></h1>
-    <p>Budget-led design. Fixed-price construction. One team from concept to completion — for homeowners who value quality and clarity.</p>
-    <a href="#bottom-cta" class="btn-gold">Start Your Project &rarr;</a>
+    <span class="eyebrow">Custom Homes &amp; Renovations, Lower&nbsp;Mainland, BC</span>
+    <h1><span class="h1-w1">Built Around</span> <span class="h1-w2">Your <em>Budget.</em></span><br /><span class="h1-w1">Built Around</span> <span class="h1-w2">Your <em>Life.</em></span></h1>
+    <p>Budget-led design. Fixed-price construction. One team from concept to completion, for homeowners who value quality and clarity.</p>
+    <a href="#bottom-cta" class="btn-gold">Start Your Project</a>
   </div>
 </section>
 
@@ -682,7 +585,7 @@
     </div>
     <div class="stat-item reveal d4">
       <div class="stat-num" data-target="100" data-suffix="%">100%</div>
-      <div class="stat-label">Fixed-Price Contracts — Every Project</div>
+      <div class="stat-label">Fixed-Price Contracts, Every Project</div>
     </div>
   </div>
 </div>
@@ -691,198 +594,95 @@
 <section id="intro">
   <div class="section-inner">
     <div class="two-col">
-      <div class="img-wrap reveal-left">
-        <img src="public/19564-hammond-road/Hammond-web-3.jpg" alt="Koze Design &amp; Build — Custom Home Interior" />
+      <div class="img-wrap reveal">
+        <img src="public/19452-fraser-unit-15/koze-fraser-web-11.jpg" alt="Koze Design &amp; Build, Custom Home Interior" />
         <div class="img-accent"></div>
       </div>
-      <div class="text-col reveal-right">
+      <div class="text-col reveal d1">
         <span class="eyebrow">About Koze Design &amp; Build</span>
-        <h2>Raised in Construction. Trained in Business. Built Through Experience.</h2>
+        <h2 class="reveal d1">Raised in Construction. Built on <em>Experience.</em></h2>
         <div class="divider"></div>
-        <p>Jason Craig grew up on construction sites — his father was a developer, and he was laying foundations before high school. After a business degree and nearly a decade as a project manager, he founded Koze on one belief: great building requires more than skilled hands. It takes clear communication, honest budgeting, and a process that puts clients first.</p>
+        <p>Jason Craig grew up on construction sites. After a business degree and nearly a decade as a project manager, he founded Koze on one belief: great building requires more than skilled hands. It takes clear communication, honest budgeting, and a process that puts clients first.</p>
         <ul class="check-list">
-          <li>Budget-led design — aligned before a line is drawn</li>
+          <li>Budget-led design, aligned before a line is drawn</li>
           <li>Fixed-price contracts before construction begins</li>
           <li>One team: architecture, interiors, permits, build</li>
           <li>Materials selected for longevity, not replacement</li>
         </ul>
-        <a href="#process" class="btn-navy">See How We Work &rarr;</a>
+        <a href="#process" class="btn-gold">See How We Work</a>
       </div>
     </div>
   </div>
+  <div class="gold-badge right"><img src="public/Asset%202gold-icon.svg" alt="" /></div>
 </section>
 
 <!-- ═══ CENTERED CTA ═══ -->
 <section id="centered-cta">
   <div class="section-inner">
     <span class="eyebrow reveal">The Koze Difference</span>
-    <h2 class="reveal d1">Design Built Around Your Budget — Not a Budget Forced to Fit the Design.</h2>
-    <p class="reveal d2">Most builders say yes to everything, then hand you a price well beyond what you expected. We start with your goals and your budget — and only then do we design. No wasted design fees. No renegotiations. No surprises.</p>
-    <a href="#bottom-cta" class="btn-gold reveal d3">Start Your Project &rarr;</a>
+    <h2 class="reveal d1">Design Built Around Your <em>Budget.</em> Not a Budget Forced to Fit the Design.</h2>
+    <p class="reveal d2">Most builders say yes to everything, then hand you a price well beyond what you expected. We start with your goals and your budget, and only then do we design. No wasted design fees. No renegotiations. No surprises.</p>
+    <a href="#bottom-cta" class="btn-gold reveal d3">Start Your Project</a>
   </div>
 </section>
 
-<!-- ═══ SCROLLING DIFFERENCE (price-pierce style) ═══ -->
+<!-- ═══ SCROLLING DIFFERENCE ═══ -->
 <section id="scrolling-diff">
-  <div class="sd-rows">
-
-    <div class="sd-row">
-      <div class="sd-row-inner">
-        <div class="sd-sections">
-          <div class="sd-img-col">
+  <div class="sd-track">
+    <!-- Sticky crossfade panel -->
+    <div class="sd-sticky">
+      <!-- Description side -->
+      <div class="sd-desc-col">
+        <div class="sd-col-title">
+          <span class="section-label">What Sets Us Apart</span>
+          <h2 class="reveal d1">One Team.<br /><em>One Process.</em><br />One Price.</h2>
+        </div>
+        <div class="sd-desc-slot">
+          <div class="sd-desc-layer active" data-sd="0">
+            <span class="sd-step-title">Budget-Led Design</span>
+            <p>We discuss your goals and align on a realistic budget before design begins. Your plans are built around what's achievable, not scaled back after the fact.</p>
+          </div>
+          <div class="sd-desc-layer" data-sd="1">
+            <span class="sd-step-title">Fixed-Price Contracts</span>
+            <p>Scope, selections, and plans are finalized before we issue a contract. No change orders driven by vague estimates, just a clear price for a clearly defined result.</p>
+          </div>
+          <div class="sd-desc-layer" data-sd="2">
+            <span class="sd-step-title">Full-Service Design-Build</span>
+            <p>We coordinate architecture, interior design, permits, and construction. You never manage multiple vendors, one team, one person to call.</p>
+          </div>
+          <div class="sd-desc-layer" data-sd="3">
+            <span class="sd-step-title">Honest Qualification</span>
+            <p>If your goals and budget don't align, we'll tell you early. We'd rather lose the lead than set expectations we can't meet.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Image side -->
+      <div class="sd-img-slot reveal">
+        <div class="sd-img-inner">
+          <div class="sd-img-layer active" data-sd="0">
             <img src="public/sets-us-apart/01.jpg" alt="Budget-Led Design" />
             <div class="sd-overlay"></div>
             <div class="sd-corner-num">01</div>
-            <div class="sd-heading">
-              <span class="sd-feat-num">Budget-Led Design</span>
-              <h3>Clarity Before the First Sketch</h3>
-            </div>
+            <div class="sd-heading"><span class="sd-feat-num">Budget-Led Design</span><h3><em>Clarity</em> Before the First Sketch</h3></div>
           </div>
-          <div class="sd-desc-col">
-            <div class="sd-col-title">
-              <span class="section-label">What Sets Us Apart</span>
-              <h2>One Team.<br />One Process.<br />One Price.</h2>
-            </div>
-            <div class="sd-desc-inner">
-              <span class="sd-step-title">Budget-Led Design</span>
-              <p>We discuss your goals and align on a realistic budget before design begins. Your plans are built around what's achievable — not scaled back after the fact.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="sd-row">
-      <div class="sd-row-inner">
-        <div class="sd-sections">
-          <div class="sd-img-col">
+          <div class="sd-img-layer" data-sd="1">
             <img src="public/sets-us-apart/02.jpg" alt="Fixed-Price Contracts" />
             <div class="sd-overlay"></div>
             <div class="sd-corner-num">02</div>
-            <div class="sd-heading">
-              <span class="sd-feat-num">Fixed-Price Contracts</span>
-              <h3>You Know the Number Before We Break Ground</h3>
-            </div>
+            <div class="sd-heading"><span class="sd-feat-num">Fixed-Price Contracts</span><h3>You Know the Number <em>Before</em> We Break Ground</h3></div>
           </div>
-          <div class="sd-desc-col">
-            <div class="sd-col-title">
-              <span class="section-label">What Sets Us Apart</span>
-              <h2>One Team.<br />One Process.<br />One Price.</h2>
-            </div>
-            <div class="sd-desc-inner">
-              <span class="sd-step-title">Fixed-Price Contracts</span>
-              <p>Scope, selections, and plans are finalized before we issue a contract. No change orders driven by vague estimates — just a clear price for a clearly defined result.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="sd-row">
-      <div class="sd-row-inner">
-        <div class="sd-sections">
-          <div class="sd-img-col">
+          <div class="sd-img-layer" data-sd="2">
             <img src="public/sets-us-apart/03.jpg" alt="Full-Service Design-Build" />
             <div class="sd-overlay"></div>
             <div class="sd-corner-num">03</div>
-            <div class="sd-heading">
-              <span class="sd-feat-num">Full-Service Design-Build</span>
-              <h3>One Point of Accountability</h3>
-            </div>
+            <div class="sd-heading"><span class="sd-feat-num">Full-Service Design-Build</span><h3>One Point of <em>Accountability</em></h3></div>
           </div>
-          <div class="sd-desc-col">
-            <div class="sd-col-title">
-              <span class="section-label">What Sets Us Apart</span>
-              <h2>One Team.<br />One Process.<br />One Price.</h2>
-            </div>
-            <div class="sd-desc-inner">
-              <span class="sd-step-title">Full-Service Design-Build</span>
-              <p>We coordinate architecture, interior design, permits, and construction. You never manage multiple vendors — one team, one person to call.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="sd-row">
-      <div class="sd-row-inner">
-        <div class="sd-sections">
-          <div class="sd-img-col">
+          <div class="sd-img-layer" data-sd="3">
             <img src="public/sets-us-apart/04.jpg" alt="Honest Qualification" />
             <div class="sd-overlay"></div>
             <div class="sd-corner-num">04</div>
-            <div class="sd-heading">
-              <span class="sd-feat-num">Honest Qualification</span>
-              <h3>Clarity First. Construction Second.</h3>
-            </div>
+            <div class="sd-heading"><span class="sd-feat-num">Honest Qualification</span><h3><em>Clarity</em> First. Construction&nbsp;Second.</h3></div>
           </div>
-          <div class="sd-desc-col">
-            <div class="sd-col-title">
-              <span class="section-label">What Sets Us Apart</span>
-              <h2>One Team.<br />One Process.<br />One Price.</h2>
-            </div>
-            <div class="sd-desc-inner">
-              <span class="sd-step-title">Honest Qualification</span>
-              <p>If your goals and budget don't align, we'll tell you early. We'd rather lose the lead than set expectations we can't meet.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ═══ DIFFERENCE ═══ -->
-<section id="difference" style="display:none;">
-  <div class="diff-layout">
-    <div class="diff-left">
-      <span class="section-label">What Sets Us Apart</span>
-      <h2 class="section-title">One Team.<br />One Process.<br />One Price.</h2>
-
-      <div class="diff-feature active" data-img="0">
-        <div class="feat-num">01 — Budget-Led Design</div>
-        <h3>Clarity Before the First Sketch</h3>
-        <p>We discuss your goals and align on a realistic budget before design begins. Your plans are built around what's achievable — not scaled back after the fact.</p>
-        <div class="feat-bar"></div>
-      </div>
-      <div class="diff-feature" data-img="1">
-        <div class="feat-num">02 — Fixed-Price Contracts</div>
-        <h3>You Know the Number Before We Break Ground</h3>
-        <p>Scope, selections, and plans are finalized before we issue a contract. No change orders driven by vague estimates — just a clear price for a clearly defined result.</p>
-        <div class="feat-bar"></div>
-      </div>
-      <div class="diff-feature" data-img="2">
-        <div class="feat-num">03 — Full-Service Design-Build</div>
-        <h3>One Point of Accountability</h3>
-        <p>We coordinate architecture, interior design, permits, and construction. You never manage multiple vendors — one team, one person to call.</p>
-        <div class="feat-bar"></div>
-      </div>
-      <div class="diff-feature" data-img="3">
-        <div class="feat-num">04 — Honest Qualification</div>
-        <h3>Clarity First. Construction Second.</h3>
-        <p>If your goals and budget don't align, we'll tell you early. We'd rather lose the lead than set expectations we can't meet.</p>
-        <div class="feat-bar"></div>
-      </div>
-    </div>
-
-    <div class="diff-right-col">
-      <div class="diff-right">
-        <div class="diff-img active">
-          <img src="public/sets-us-apart/01.jpg" alt="Budget-Led Design" />
-          <div class="diff-img-overlay"></div>
-        </div>
-        <div class="diff-img">
-          <img src="public/sets-us-apart/02.jpg" alt="Fixed-Price Contracts" />
-          <div class="diff-img-overlay"></div>
-        </div>
-        <div class="diff-img">
-          <img src="public/sets-us-apart/03.jpg" alt="Full-Service" />
-          <div class="diff-img-overlay"></div>
-        </div>
-        <div class="diff-img">
-          <img src="public/sets-us-apart/04.jpg" alt="Honest Qualification" />
-          <div class="diff-img-overlay"></div>
         </div>
       </div>
     </div>
@@ -891,67 +691,74 @@
 
 <!-- ═══ SERVICES ═══ -->
 <section id="services">
-  <div class="section-inner">
+  <div class="services-header-wrap">
     <div class="section-header reveal">
       <span class="eyebrow">What We Build</span>
-      <h2>Our Services</h2>
-      <p>From ground-up custom homes to whole-home renovations and income-generating suites — all under one roof.</p>
+      <h2 class="reveal d1">Our <em>Services</em></h2>
+      <p>From ground-up custom homes to whole-home renovations and income-generating suites, all under one roof.</p>
     </div>
-    <div class="services-carousel-wrap">
-      <div class="services-carousel">
-        <div class="services-track" id="servicesTrack">
-          <div class="service-card">
-            <img src="public/19564-hammond-road/Hammond-web-2.jpg" alt="Custom Homes" />
-            <div class="card-hover-bg"></div>
-            <div class="card-content">
-              <div class="card-num">01</div>
-              <h3>Custom Homes</h3>
-              <p>Fully personalized homes designed around your lifestyle, your lot, and your budget — from first sketch to final walkthrough.</p>
-            </div>
+  </div>
+  <div class="services-full">
+    <div class="services-carousel">
+      <div class="services-track" id="servicesTrack">
+        <div class="service-card">
+          <img src="public/19564-hammond-road/Hammond-web-2.jpg" alt="Custom Homes" />
+          <div class="card-label"><span>Custom Homes</span></div>
+          <div class="card-hover-bg"></div>
+          <div class="card-content">
+            <div class="card-num">01</div>
+            <h3>Custom Homes</h3>
+            <p>Fully personalized homes designed around your lifestyle, your lot, and your budget, from first sketch to final walkthrough.</p>
           </div>
-          <div class="service-card">
-            <img src="public/19452-fraser-unit-15/koze-fraser-web-8.jpg" alt="Major Renovations" />
-            <div class="card-hover-bg"></div>
-            <div class="card-content">
-              <div class="card-num">02</div>
-              <h3>Major Renovations</h3>
-              <p>Whole-home transformations that modernize your space while preserving what already works.</p>
-            </div>
+        </div>
+        <div class="service-card">
+          <img src="public/19452-fraser-unit-15/koze-fraser-web-8.jpg" alt="Major Renovations" />
+          <div class="card-label"><span>Major Renovations</span></div>
+          <div class="card-hover-bg"></div>
+          <div class="card-content">
+            <div class="card-num">02</div>
+            <h3>Major Renovations</h3>
+            <p>Whole-home transformations that modernize your space while preserving what already works.</p>
           </div>
-          <div class="service-card">
-            <img src="public/19564-hammond-road/Hammond-web-6.jpg" alt="ADUs &amp; Coach Homes" />
-            <div class="card-hover-bg"></div>
-            <div class="card-content">
-              <div class="card-num">03</div>
-              <h3>ADUs &amp; Coach Homes</h3>
-              <p>Add a legal suite or coach home — creating rental income, housing family, or increasing resale value.</p>
-            </div>
+        </div>
+        <div class="service-card">
+          <img src="public/19564-hammond-road/Hammond-web-6.jpg" alt="ADUs &amp; Coach Homes" />
+          <div class="card-label"><span>ADUs &amp; Coach Homes</span></div>
+          <div class="card-hover-bg"></div>
+          <div class="card-content">
+            <div class="card-num">03</div>
+            <h3>ADUs &amp; Coach Homes</h3>
+            <p>Add a legal suite or coach home, creating rental income, housing family, or increasing resale value.</p>
           </div>
-          <div class="service-card">
-            <img src="public/19564-hammond-road/Hammond-web-19.jpg" alt="Multi-Unit Housing" />
-            <div class="card-hover-bg"></div>
-            <div class="card-content">
-              <div class="card-num">04</div>
-              <h3>Multi-Unit Housing</h3>
-              <p>SSMUH-compliant multi-unit builds that maximize your lot's potential under BC's small-scale housing policy.</p>
-            </div>
+        </div>
+        <div class="service-card">
+          <img src="public/19564-hammond-road/Hammond-web-19.jpg" alt="Multi-Unit Housing" />
+          <div class="card-label"><span>Multi-Unit Housing</span></div>
+          <div class="card-hover-bg"></div>
+          <div class="card-content">
+            <div class="card-num">04</div>
+            <h3>Multi-Unit Housing</h3>
+            <p>SSMUH-compliant multi-unit builds that maximize your lot's potential under BC's small-scale housing policy.</p>
           </div>
-          <div class="service-card">
-            <img src="public/19564-hammond-road/Hammond-web-12.jpg" alt="Design-Build" />
-            <div class="card-hover-bg"></div>
-            <div class="card-content">
-              <div class="card-num">05</div>
-              <h3>Design-Build</h3>
-              <p>One team for architecture, design, permits, and construction — seamless process, single point of contact.</p>
-            </div>
+        </div>
+        <div class="service-card">
+          <img src="public/19564-hammond-road/Hammond-web-12.jpg" alt="Design-Build" />
+          <div class="card-label"><span>Design-Build</span></div>
+          <div class="card-hover-bg"></div>
+          <div class="card-content">
+            <div class="card-num">05</div>
+            <h3>Design-Build</h3>
+            <p>One team for architecture, design, permits, and construction, seamless process, single point of contact.</p>
           </div>
         </div>
       </div>
-      <button class="svc-arrow svc-prev disabled" id="svcPrev" onclick="shiftServices(-1)" aria-label="Previous services">
-        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </div>
+    <div class="svc-nav-row">
+      <button class="svc-nav-btn disabled" id="svcPrev" onclick="shiftServices(-1)" aria-label="Previous">
+        <svg viewBox="0 0 32 14"><line x1="30" y1="7" x2="6" y2="7"/><polyline points="12,1 5,7 12,13"/></svg>
       </button>
-      <button class="svc-arrow svc-next" id="svcNext" onclick="shiftServices(1)" aria-label="Next services">
-        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      <button class="svc-nav-btn" id="svcNext" onclick="shiftServices(1)" aria-label="Next">
+        <svg viewBox="0 0 32 14"><line x1="2" y1="7" x2="26" y2="7"/><polyline points="20,1 27,7 20,13"/></svg>
       </button>
     </div>
   </div>
@@ -961,30 +768,61 @@
 <section id="portfolio">
   <div class="section-inner">
     <div class="port-header">
-      <span class="eyebrow reveal">Recent Projects</span>
-      <h2 class="reveal d1">Our Work</h2>
-      <p class="reveal d2">Hover to explore each property.</p>
+      <div class="port-header-left">
+        <span class="eyebrow reveal">Recent Projects</span>
+        <h2 class="reveal d1">Our <em>Work</em></h2>
+      </div>
+      <a href="#" class="btn-gold reveal d2">View Full Portfolio</a>
     </div>
-    <div class="portfolio-panels reveal" id="portfolioPanels">
-      <div class="p-panel" data-index="0">
+    <div class="portfolio-grid">
+      <div class="p-panel reveal d1">
         <img src="public/19564-hammond-road/Hammond-web-9.jpg" alt="19564 Hammond Road" />
         <div class="p-overlay"></div>
         <div class="p-label">
-          <div class="p-tag">Custom Home &mdash; Pitt Meadows</div>
+          <div class="p-tag">Custom Home, Pitt Meadows</div>
           <h3>19564 Hammond Road</h3>
         </div>
       </div>
-      <div class="p-panel" data-index="1">
+      <div class="p-panel reveal d2">
         <img src="public/19452-fraser-unit-15/koze-fraser-web-12.jpg" alt="19452 Fraser Crescent" />
         <div class="p-overlay"></div>
         <div class="p-label">
-          <div class="p-tag">Major Renovation &mdash; Lower Mainland</div>
+          <div class="p-tag">Major Renovation, Lower Mainland</div>
           <h3>19452 Fraser Crescent</h3>
         </div>
       </div>
-    </div>
-    <div class="port-cta reveal">
-      <a href="#" class="btn-navy">View Full Portfolio &rarr;</a>
+      <div class="p-panel reveal d1">
+        <img src="public/19564-hammond-road/Hammond-web-9.jpg" alt="19564 Hammond Road" />
+        <div class="p-overlay"></div>
+        <div class="p-label">
+          <div class="p-tag">Custom Home, Pitt Meadows</div>
+          <h3>19564 Hammond Road</h3>
+        </div>
+      </div>
+      <div class="p-panel reveal d2">
+        <img src="public/19452-fraser-unit-15/koze-fraser-web-12.jpg" alt="19452 Fraser Crescent" />
+        <div class="p-overlay"></div>
+        <div class="p-label">
+          <div class="p-tag">Major Renovation, Lower Mainland</div>
+          <h3>19452 Fraser Crescent</h3>
+        </div>
+      </div>
+      <div class="p-panel reveal d1">
+        <img src="public/19564-hammond-road/Hammond-web-9.jpg" alt="19564 Hammond Road" />
+        <div class="p-overlay"></div>
+        <div class="p-label">
+          <div class="p-tag">Custom Home, Pitt Meadows</div>
+          <h3>19564 Hammond Road</h3>
+        </div>
+      </div>
+      <div class="p-panel reveal d2">
+        <img src="public/19452-fraser-unit-15/koze-fraser-web-12.jpg" alt="19452 Fraser Crescent" />
+        <div class="p-overlay"></div>
+        <div class="p-label">
+          <div class="p-tag">Major Renovation, Lower Mainland</div>
+          <h3>19452 Fraser Crescent</h3>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -994,7 +832,7 @@
   <div class="section-inner">
     <div class="proc-header">
       <span class="eyebrow reveal">How It Works</span>
-      <h2 class="reveal d1">Our Process</h2>
+      <h2 class="reveal d1">Our <em>Process</em></h2>
       <p class="reveal d2">Three phases. Complete transparency. One fixed price before construction starts.</p>
     </div>
     <div class="proc-track reveal">
@@ -1003,24 +841,25 @@
       </div>
       <div class="proc-step">
         <div class="step-dot">1</div>
-        <h4>Discover &amp; Align</h4>
-        <p>We start with your budget and goals — not a design concept. A questionnaire and discovery call help us confirm we're the right fit before any planning investment begins.</p>
+        <h4 class="reveal d2">Discover &amp; Align</h4>
+        <p>We start with your budget and goals, not a design concept. A questionnaire and discovery call help us confirm we're the right fit before any planning investment begins.</p>
       </div>
       <div class="proc-step">
         <div class="step-dot">2</div>
-        <h4>Design &amp; Pre-Construction</h4>
+        <h4 class="reveal d2">Design &amp; Pre-Construction</h4>
         <p>Our team coordinates architecture, interior design, permits, and consultants. You review plans, finalize selections, and receive a single fixed-price contract before we break ground.</p>
       </div>
       <div class="proc-step">
         <div class="step-dot">3</div>
-        <h4>Build &amp; Deliver</h4>
+        <h4 class="reveal d2">Build &amp; Deliver</h4>
         <p>With a locked price and finalized plans, construction begins. We manage every trade, communicate proactively, and deliver exactly what we promised.</p>
       </div>
     </div>
     <div class="proc-cta reveal d2">
-      <a href="process.html" class="btn-navy">View the Full Process &rarr;</a>
+      <a href="process.html" class="btn-gold">View the Full Process</a>
     </div>
   </div>
+  <div class="gold-badge left"><img src="public/Asset%202gold-icon.svg" alt="" /></div>
 </section>
 
 <!-- ═══ AREAS ═══ -->
@@ -1041,22 +880,43 @@
     <div class="areas-top">
       <div class="areas-text reveal-left">
         <span class="eyebrow">Where We Build</span>
-        <h2>Serving the Lower&nbsp;Mainland</h2>
-        <p>Based in Pitt Meadows, we work across Metro Vancouver and the Fraser Valley — from the North Shore to Langley and South Surrey.</p>
-        <a href="#bottom-cta" class="btn-gold">Start Your Project &rarr;</a>
+        <h2 class="reveal d1">Serving the <em>Lower&nbsp;Mainland</em></h2>
+        <p>Based in Pitt Meadows, we work across Metro Vancouver and the Fraser Valley, from the North Shore to Langley and South Surrey.</p>
+        <a href="#bottom-cta" class="btn-gold">Start Your Project</a>
       </div>
       <div class="areas-grid">
-        <div class="area-item reveal d1" data-area="0"><span class="area-name">Pitt Meadows</span><span class="area-badge">Home Base</span></div>
-        <div class="area-item reveal d2" data-area="1"><span class="area-name">Maple Ridge</span><span class="area-badge">Primary</span></div>
-        <div class="area-item reveal d3" data-area="2"><span class="area-name">Coquitlam</span><span class="area-badge">Primary</span></div>
-        <div class="area-item reveal d4" data-area="3"><span class="area-name">Burnaby</span><span class="area-badge">Primary</span></div>
-        <div class="area-item reveal d1" data-area="4"><span class="area-name">Langley</span><span class="area-badge">Serving</span></div>
-        <div class="area-item reveal d2" data-area="5"><span class="area-name">South Surrey</span><span class="area-badge">Serving</span></div>
-        <div class="area-item reveal d3" data-area="6"><span class="area-name">Vancouver</span><span class="area-badge">Serving</span></div>
-        <div class="area-item reveal d4" data-area="7"><span class="area-name">North Vancouver</span><span class="area-badge">Serving</span></div>
-        <div class="area-item reveal d1" data-area="8"><span class="area-name">West Vancouver</span><span class="area-badge">Serving</span></div>
-        <div class="area-item reveal d2" data-area="9"><span class="area-name">Richmond</span><span class="area-badge">Serving</span></div>
+        <div class="area-item reveal d1" data-area="0"><span class="area-pin"><svg width="12" height="16" viewBox="0 0 12 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 0C2.686 0 0 2.686 0 6c0 4.5 6 10 6 10s6-5.5 6-10c0-3.314-2.686-6-6-6zm0 8.5A2.5 2.5 0 1 1 6 3.5a2.5 2.5 0 0 1 0 5z"/></svg></span><span class="area-name">Pitt Meadows</span></div>
+        <div class="area-item reveal d2" data-area="1"><span class="area-pin"><svg width="12" height="16" viewBox="0 0 12 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 0C2.686 0 0 2.686 0 6c0 4.5 6 10 6 10s6-5.5 6-10c0-3.314-2.686-6-6-6zm0 8.5A2.5 2.5 0 1 1 6 3.5a2.5 2.5 0 0 1 0 5z"/></svg></span><span class="area-name">Maple Ridge</span></div>
+        <div class="area-item reveal d3" data-area="2"><span class="area-pin"><svg width="12" height="16" viewBox="0 0 12 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 0C2.686 0 0 2.686 0 6c0 4.5 6 10 6 10s6-5.5 6-10c0-3.314-2.686-6-6-6zm0 8.5A2.5 2.5 0 1 1 6 3.5a2.5 2.5 0 0 1 0 5z"/></svg></span><span class="area-name">Coquitlam</span></div>
+        <div class="area-item reveal d4" data-area="3"><span class="area-pin"><svg width="12" height="16" viewBox="0 0 12 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 0C2.686 0 0 2.686 0 6c0 4.5 6 10 6 10s6-5.5 6-10c0-3.314-2.686-6-6-6zm0 8.5A2.5 2.5 0 1 1 6 3.5a2.5 2.5 0 0 1 0 5z"/></svg></span><span class="area-name">Burnaby</span></div>
+        <div class="area-item reveal d1" data-area="4"><span class="area-pin"><svg width="12" height="16" viewBox="0 0 12 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 0C2.686 0 0 2.686 0 6c0 4.5 6 10 6 10s6-5.5 6-10c0-3.314-2.686-6-6-6zm0 8.5A2.5 2.5 0 1 1 6 3.5a2.5 2.5 0 0 1 0 5z"/></svg></span><span class="area-name">Langley</span></div>
+        <div class="area-item reveal d2" data-area="5"><span class="area-pin"><svg width="12" height="16" viewBox="0 0 12 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 0C2.686 0 0 2.686 0 6c0 4.5 6 10 6 10s6-5.5 6-10c0-3.314-2.686-6-6-6zm0 8.5A2.5 2.5 0 1 1 6 3.5a2.5 2.5 0 0 1 0 5z"/></svg></span><span class="area-name">South Surrey</span></div>
+        <div class="area-item reveal d3" data-area="6"><span class="area-pin"><svg width="12" height="16" viewBox="0 0 12 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 0C2.686 0 0 2.686 0 6c0 4.5 6 10 6 10s6-5.5 6-10c0-3.314-2.686-6-6-6zm0 8.5A2.5 2.5 0 1 1 6 3.5a2.5 2.5 0 0 1 0 5z"/></svg></span><span class="area-name">Vancouver</span></div>
+        <div class="area-item reveal d4" data-area="7"><span class="area-pin"><svg width="12" height="16" viewBox="0 0 12 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 0C2.686 0 0 2.686 0 6c0 4.5 6 10 6 10s6-5.5 6-10c0-3.314-2.686-6-6-6zm0 8.5A2.5 2.5 0 1 1 6 3.5a2.5 2.5 0 0 1 0 5z"/></svg></span><span class="area-name">North Vancouver</span></div>
+        <div class="area-item reveal d1" data-area="8"><span class="area-pin"><svg width="12" height="16" viewBox="0 0 12 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 0C2.686 0 0 2.686 0 6c0 4.5 6 10 6 10s6-5.5 6-10c0-3.314-2.686-6-6-6zm0 8.5A2.5 2.5 0 1 1 6 3.5a2.5 2.5 0 0 1 0 5z"/></svg></span><span class="area-name">West Vancouver</span></div>
+        <div class="area-item reveal d2" data-area="9"><span class="area-pin"><svg width="12" height="16" viewBox="0 0 12 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6 0C2.686 0 0 2.686 0 6c0 4.5 6 10 6 10s6-5.5 6-10c0-3.314-2.686-6-6-6zm0 8.5A2.5 2.5 0 1 1 6 3.5a2.5 2.5 0 0 1 0 5z"/></svg></span><span class="area-name">Richmond</span></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROBLEM AGITATION ═══ -->
+<section id="problem-agit">
+  <div class="pa-inner">
+    <div class="pa-heading-col reveal">
+      <span class="eyebrow">Most builders leave you in the dark</span>
+      <h2 class="reveal d1">You Deserve to Know Exactly What You're <em>Getting Into</em></h2>
+    </div>
+    <div class="pa-img-right reveal d2">
+      <div class="pa-img-right-inner">
+        <img src="public/19564-hammond-road/Hammond-web-5.jpg" alt="Koze Design &amp; Build Interior Detail" />
+      </div>
+    </div>
+    <div class="pa-img-left reveal d3">
+      <img src="public/19452-fraser-unit-15/koze-fraser-web-5.jpg" alt="Koze Design &amp; Build Kitchen" />
+    </div>
+    <div class="pa-body-col reveal">
+      <p>Too often, deadlines slip, budgets blur, and communication breaks down. You shouldn't have to wonder if you made the right call. Koze was built to be different.</p>
     </div>
   </div>
 </section>
@@ -1066,39 +926,31 @@
   <div class="section-inner">
     <div class="testi-header reveal">
       <span class="eyebrow">What Clients Say</span>
-      <h2>Built on Trust</h2>
+      <h2 class="reveal d1">Built on <em>Trust</em></h2>
     </div>
-    <div class="testi-slider-wrap reveal d1">
+    <div class="testi-track-wrap reveal d1">
       <div class="testi-track" id="testiTrack">
-        <div class="testi-slide">
-          <span class="testi-quote-mark">&ldquo;</span>
-          <blockquote>Jason and the Koze team made the entire process feel manageable. We always knew where our money was going, and the finished home exceeded everything we'd imagined.</blockquote>
-          <cite><strong>K. &amp; T. Hartmann</strong> — Custom Home, Pitt Meadows BC</cite>
+        <div class="testi-card">
+          <div class="testi-quote">&ldquo;Jason and the Koze team made the entire process feel manageable. We always knew where our money was going, and the finished home exceeded everything we&rsquo;d imagined.&rdquo;</div>
+          <div class="testi-cite"><strong>K. &amp; T. Hartmann</strong>, Custom Home, Pitt Meadows BC</div>
         </div>
-        <div class="testi-slide">
-          <span class="testi-quote-mark">&ldquo;</span>
-          <blockquote>What stood out was their honesty from day one. They told us upfront what was realistic for our budget, and then delivered exactly what they promised.</blockquote>
-          <cite><strong>M. &amp; S. Erikson</strong> — Major Renovation, Maple Ridge BC</cite>
+        <div class="testi-card">
+          <div class="testi-quote">&ldquo;What stood out was their honesty from day one. They told us upfront what was realistic for our budget, and then delivered exactly what they promised.&rdquo;</div>
+          <div class="testi-cite"><strong>M. &amp; S. Erikson</strong>, Major Renovation, Maple Ridge BC</div>
         </div>
-        <div class="testi-slide">
-          <span class="testi-quote-mark">&ldquo;</span>
-          <blockquote>We'd worked with contractors before who kept moving the goalposts. Koze gave us a fixed price and held to it. That alone was worth everything.</blockquote>
-          <cite><strong>D. Patel</strong> — ADU Build, Coquitlam BC</cite>
+        <div class="testi-card">
+          <div class="testi-quote">&ldquo;We&rsquo;d worked with contractors before who kept moving the goalposts. Koze gave us a fixed price and held to it. That alone was worth everything.&rdquo;</div>
+          <div class="testi-cite"><strong>D. Patel</strong>, ADU Build, Coquitlam BC</div>
         </div>
       </div>
-      <div class="testi-controls">
-        <div class="testi-arrow" onclick="prevSlide()">
-          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-        </div>
-        <div class="testi-dots" id="testiDots">
-          <button class="testi-dot active" onclick="goToSlide(0)"></button>
-          <button class="testi-dot" onclick="goToSlide(1)"></button>
-          <button class="testi-dot" onclick="goToSlide(2)"></button>
-        </div>
-        <div class="testi-arrow" onclick="nextSlide()">
-          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-        </div>
-      </div>
+    </div>
+    <div class="testi-nav reveal d2">
+      <button class="testi-nav-btn" onclick="shiftTesti(-1)" aria-label="Previous">
+        <svg viewBox="0 0 32 14"><line x1="30" y1="7" x2="6" y2="7"/><polyline points="12,1 5,7 12,13"/></svg>
+      </button>
+      <button class="testi-nav-btn" onclick="shiftTesti(1)" aria-label="Next">
+        <svg viewBox="0 0 32 14"><line x1="2" y1="7" x2="26" y2="7"/><polyline points="20,1 27,7 20,13"/></svg>
+      </button>
     </div>
   </div>
 </section>
@@ -1115,42 +967,42 @@
         What does &ldquo;budget-led design&rdquo; actually mean?
         <span class="faq-icon"><svg viewBox="0 0 12 12"><path d="M6 2v8M2 6h8" stroke-linecap="round"/></svg></span>
       </button>
-      <div class="faq-a"><p>Most builders design exactly what you ask for, then hand you a price well beyond your budget. We do the opposite — before any design begins, we align on a realistic budget. Your design is then created to fit within that number. No expensive revision process, no budget shock at the end.</p></div>
+      <div class="faq-a"><p>Most builders design exactly what you ask for, then hand you a price well beyond your budget. We do the opposite, before any design begins, we align on a realistic budget. Your design is then created to fit within that number. No expensive revision process, no budget shock at the end.</p></div>
     </div>
     <div class="faq-item reveal d1">
       <button class="faq-q" onclick="toggleFaq(this)">
         What is a fixed-price contract and when do I receive it?
         <span class="faq-icon"><svg viewBox="0 0 12 12"><path d="M6 2v8M2 6h8" stroke-linecap="round"/></svg></span>
       </button>
-      <div class="faq-a"><p>Once your plans are finalized, selections are made, and scope is fully defined — we present a single fixed-price proposal. You know exactly what your project costs before construction starts. No surprises during the build.</p></div>
+      <div class="faq-a"><p>Once your plans are finalized, selections are made, and scope is fully defined, we present a single fixed-price proposal. You know exactly what your project costs before construction starts. No surprises during the build.</p></div>
     </div>
     <div class="faq-item reveal d2">
       <button class="faq-q" onclick="toggleFaq(this)">
         Do I need to find my own architect and interior designer?
         <span class="faq-icon"><svg viewBox="0 0 12 12"><path d="M6 2v8M2 6h8" stroke-linecap="round"/></svg></span>
       </button>
-      <div class="faq-a"><p>No. Koze is a full-service design-build firm. We coordinate architecture, interior design, consultant work, permitting, and construction through our network of trusted partners. You have one point of contact throughout — never juggling multiple vendors.</p></div>
+      <div class="faq-a"><p>No. Koze is a full-service design-build firm. We coordinate architecture, interior design, consultant work, permitting, and construction through our network of trusted partners. You have one point of contact throughout, never juggling multiple vendors.</p></div>
     </div>
     <div class="faq-item reveal d3">
       <button class="faq-q" onclick="toggleFaq(this)">
         What is your minimum project budget?
         <span class="faq-icon"><svg viewBox="0 0 12 12"><path d="M6 2v8M2 6h8" stroke-linecap="round"/></svg></span>
       </button>
-      <div class="faq-a"><p>Our target minimum is $500,000, with an average project value around $800,000. We work with clients who understand that quality craftsmanship and a well-managed process represent a real investment — one that pays off over the life of a well-built home.</p></div>
+      <div class="faq-a"><p>Our target minimum is $500,000, with an average project value around $800,000. We work with clients who understand that quality craftsmanship and a well-managed process represent a real investment, one that pays off over the life of a well-built home.</p></div>
     </div>
     <div class="faq-item reveal d4">
       <button class="faq-q" onclick="toggleFaq(this)">
         How long does a custom home or major renovation take?
         <span class="faq-icon"><svg viewBox="0 0 12 12"><path d="M6 2v8M2 6h8" stroke-linecap="round"/></svg></span>
       </button>
-      <div class="faq-a"><p>A full custom home typically takes 12–18 months from design through occupancy. Major renovations vary by scope — most whole-home remodels range from 6–12 months. We provide a clear timeline during pre-construction so you can plan ahead.</p></div>
+      <div class="faq-a"><p>A full custom home typically takes 12–18 months from design through occupancy. Major renovations vary by scope, most whole-home remodels range from 6–12 months. We provide a clear timeline during pre-construction so you can plan ahead.</p></div>
     </div>
     <div class="faq-item reveal d5">
       <button class="faq-q" onclick="toggleFaq(this)">
         What areas do you serve?
         <span class="faq-icon"><svg viewBox="0 0 12 12"><path d="M6 2v8M2 6h8" stroke-linecap="round"/></svg></span>
       </button>
-      <div class="faq-a"><p>We're based in Pitt Meadows and serve the broader Lower Mainland — Maple Ridge, Coquitlam, Burnaby, Langley, South Surrey, Vancouver, North Vancouver, West Vancouver, and Richmond. Not sure if we cover your area? Reach out and ask.</p></div>
+      <div class="faq-a"><p>We're based in Pitt Meadows and serve the broader Lower Mainland: Maple Ridge, Coquitlam, Burnaby, Langley, South Surrey, Vancouver, North Vancouver, West Vancouver, and Richmond. Not sure if we cover your area? Reach out and ask.</p></div>
     </div>
   </div>
 </section>
@@ -1160,10 +1012,10 @@
   <div class="bg"></div>
   <div class="content">
     <span class="eyebrow reveal">Ready to Get Started?</span>
-    <h2 class="reveal d1">Let's Build Something That&nbsp;Lasts.</h2>
-    <p class="reveal d2">Tell us about your project. We'll review your goals, discuss what's realistic, and let you know if we're the right fit — no pressure, no obligation.</p>
+    <h2 class="reveal d1">Let's Build Something That&nbsp;<em>Lasts.</em></h2>
+    <p class="reveal d2">Tell us about your project. We'll review your goals, discuss what's realistic, and let you know if we're the right fit, no pressure, no obligation.</p>
     <div class="btn-group reveal d3">
-      <a href="mailto:info@kozedesignbuild.ca" class="btn-gold">Start Your Project &rarr;</a>
+      <a href="mailto:info@kozedesignbuild.ca" class="btn-gold">Start Your Project</a>
     </div>
   </div>
 </section>
@@ -1172,7 +1024,7 @@
 <div id="map">
   <iframe
     src="https://maps.google.com/maps?q=19554+Hammond+Rd+Pitt+Meadows+BC+V3Y+1L5&output=embed"
-    title="Koze Design &amp; Build — Office Location"
+    title="Koze Design &amp; Build, Office Location"
     loading="lazy"
     referrerpolicy="no-referrer-when-downgrade"
     allowfullscreen>
@@ -1246,7 +1098,6 @@
 <script>
   window.addEventListener('load', () => document.getElementById('hero').classList.add('loaded'));
 
-
   const header = document.getElementById('header');
   window.addEventListener('scroll', () => {
     header.classList.toggle('scrolled', window.scrollY > 30);
@@ -1268,80 +1119,158 @@
   const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
   revealEls.forEach(el => revealObserver.observe(el));
 
-  // Portfolio expanding panels
-  const panels = document.querySelectorAll('#portfolioPanels .p-panel');
+  // Portfolio expanding panels (guard if element removed)
   const panelWrap = document.getElementById('portfolioPanels');
-  panels.forEach(panel => {
-    panel.addEventListener('mouseenter', () => {
+  if (panelWrap) {
+    const panels = panelWrap.querySelectorAll('.p-panel');
+    panels.forEach(panel => {
+      panel.addEventListener('mouseenter', () => {
+        panels.forEach(p => p.classList.remove('active'));
+        panel.classList.add('active');
+        panelWrap.classList.add('has-hover');
+      });
+    });
+    panelWrap.addEventListener('mouseleave', () => {
       panels.forEach(p => p.classList.remove('active'));
-      panel.classList.add('active');
-      panelWrap.classList.add('has-hover');
+      panelWrap.classList.remove('has-hover');
     });
-  });
-  panelWrap.addEventListener('mouseleave', () => {
-    panels.forEach(p => p.classList.remove('active'));
-    panelWrap.classList.remove('has-hover');
-  });
-
-  // Difference sticky image crossfade
-  const diffFeatures = document.querySelectorAll('.diff-feature');
-  const diffImgs = document.querySelectorAll('.diff-img');
-  const featureObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        const idx = parseInt(e.target.dataset.img);
-        diffFeatures.forEach(f => f.classList.remove('active'));
-        diffImgs.forEach(i => i.classList.remove('active'));
-        e.target.classList.add('active');
-        if (diffImgs[idx]) diffImgs[idx].classList.add('active');
-      }
-    });
-  }, { threshold: 0.15, rootMargin: '-5% 0px -55% 0px' });
-  diffFeatures.forEach(f => featureObserver.observe(f));
-
-
-
-  // Testimonial slider
-  let currentSlide = 0;
-  const totalSlides = 3;
-  const track = document.getElementById('testiTrack');
-  const dots = document.querySelectorAll('.testi-dot');
-  let autoTimer;
-
-  function goToSlide(n) {
-    currentSlide = (n + totalSlides) % totalSlides;
-    track.style.transform = `translateX(-${currentSlide * 100}%)`;
-    dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
-    clearInterval(autoTimer);
-    autoTimer = setInterval(nextSlide, 5500);
   }
-  function nextSlide() { goToSlide(currentSlide + 1); }
-  function prevSlide() { goToSlide(currentSlide - 1); }
-  autoTimer = setInterval(nextSlide, 5500);
 
-  // Services carousel
-  let svcIndex = 0;
-  const SVC_TOTAL = 5;
-  function svcVisible() { return window.innerWidth <= 900 ? 1 : 3; }
-  function svcMax() { return SVC_TOTAL - svcVisible(); }
-  let svcAutoTimer;
-  function shiftServices(dir) {
-    svcIndex = Math.max(0, Math.min(svcIndex + dir, svcMax()));
-    const track = document.getElementById('servicesTrack');
-    const cards = track.querySelectorAll('.service-card');
-    track.style.transform = 'translateX(-' + (svcIndex * (cards[0].offsetWidth + 2)) + 'px)';
-    document.getElementById('svcPrev').classList.toggle('disabled', svcIndex === 0);
-    document.getElementById('svcNext').classList.toggle('disabled', svcIndex >= svcMax());
-    if (window.innerWidth <= 900) {
-      cards.forEach(c => c.classList.remove('card-active'));
-      clearTimeout(svcAutoTimer);
-      svcAutoTimer = setTimeout(() => cards[svcIndex].classList.add('card-active'), 700);
+  // Scrolling diff — scroll-driven crossfade
+  const sdTrackEl = document.querySelector('.sd-track');
+  const sdImgLayers = document.querySelectorAll('.sd-img-layer');
+  const sdDescLayers = document.querySelectorAll('.sd-desc-layer');
+  let sdCurrent = 0;
+  function sdUpdate() {
+    if (!sdTrackEl || window.innerWidth <= 900) return;
+    const rect = sdTrackEl.getBoundingClientRect();
+    const scrolled = -rect.top;
+    const total = sdTrackEl.offsetHeight - (window.innerHeight - 80);
+    const idx = Math.min(3, Math.max(0, Math.floor((scrolled / total) * 4)));
+    if (idx !== sdCurrent) {
+      sdCurrent = idx;
+      sdImgLayers.forEach((el, i) => el.classList.toggle('active', i === idx));
+      sdDescLayers.forEach((el, i) => el.classList.toggle('active', i === idx));
     }
   }
-  window.addEventListener('resize', () => { svcIndex = Math.min(svcIndex, svcMax()); shiftServices(0); });
+  window.addEventListener('scroll', sdUpdate, { passive: true });
+  sdUpdate();
+
+  // Smooth scroll for anchor links with fixed header offset
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const href = a.getAttribute('href');
+      if (!href || href === '#') return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        const top = target.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Testimonial slider, 2 visible at a time on desktop, 1 on mobile
+  let testiIdx = 0;
+  function testiVisible() { return window.innerWidth <= 900 ? 1 : 2; }
+  function testiMax() { return 3 - testiVisible(); }
+  function shiftTesti(dir) {
+    testiIdx = Math.max(0, Math.min(testiIdx + dir, testiMax()));
+    const track = document.getElementById('testiTrack');
+    const card = track.querySelector('.testi-card');
+    const gap = window.innerWidth <= 900 ? 0 : 24;
+    track.style.transform = 'translateX(-' + (testiIdx * (card.offsetWidth + gap)) + 'px)';
+  }
+  window.addEventListener('resize', () => { testiIdx = Math.min(testiIdx, testiMax()); shiftTesti(0); });
+
+  // Services carousel — infinite loop + edge-hover drift
+  (function() {
+    const carousel = document.querySelector('.services-carousel');
+    const track = document.getElementById('servicesTrack');
+    if (!carousel || !track) return;
+
+    // Clone cards for seamless loop
+    const origCards = Array.from(track.querySelectorAll('.service-card'));
+    origCards.forEach(c => track.appendChild(c.cloneNode(true)));
+    origCards.forEach(c => track.insertBefore(c.cloneNode(true), track.firstChild));
+
+    const gap = 2;
+    let offset = 0;
+    let velocity = 0;         // px/frame — positive = scroll right (showing next)
+    let raf;
+    let isHovering = false;
+    let hoverVel = 0;
+    const BASE_SPEED = 0.4;   // auto drift speed
+
+    function cardWidth() {
+      return track.querySelectorAll('.service-card')[0].offsetWidth + gap;
+    }
+
+    function cloneSetWidth() {
+      return cardWidth() * origCards.length;
+    }
+
+    // Start offset at the second set (after prepended clones)
+    function initOffset() {
+      offset = cloneSetWidth();
+      track.style.transform = 'translateX(-' + offset + 'px)';
+    }
+    initOffset();
+
+    function loop() {
+      // Blend towards hover velocity or slow auto drift
+      const target = isHovering ? hoverVel : BASE_SPEED;
+      velocity += (target - velocity) * 0.06;
+
+      offset += velocity;
+
+      const setW = cloneSetWidth();
+      // Seamless wrap
+      if (offset >= setW * 2) offset -= setW;
+      if (offset < setW) offset += setW;
+
+      track.style.transform = 'translateX(-' + offset + 'px)';
+      raf = requestAnimationFrame(loop);
+    }
+    raf = requestAnimationFrame(loop);
+
+    // Edge hover detection
+    carousel.addEventListener('mousemove', e => {
+      const rect = carousel.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const w = rect.width;
+      const pct = x / w;
+      isHovering = true;
+      if (pct > 0.7) {
+        // Right 30% — scroll forward (positive offset = moving right through items)
+        const strength = (pct - 0.7) / 0.3;
+        hoverVel = BASE_SPEED + strength * 3.5;
+      } else if (pct < 0.3) {
+        // Left 30% — scroll backward
+        const strength = (0.3 - pct) / 0.3;
+        hoverVel = -(BASE_SPEED + strength * 3.5);
+      } else {
+        hoverVel = 0;
+      }
+    });
+    carousel.addEventListener('mouseleave', () => { isHovering = false; hoverVel = 0; });
+
+    // Arrow buttons snap by one card
+    window.shiftServices = function(dir) {
+      offset += dir * cardWidth() * 1;
+    };
+
+    // Hide disabled state — both arrows always active for infinite loop
+    const prevBtn = document.getElementById('svcPrev');
+    const nextBtn = document.getElementById('svcNext');
+    if (prevBtn) prevBtn.classList.remove('disabled');
+    if (nextBtn) nextBtn.classList.remove('disabled');
+
+    window.addEventListener('resize', initOffset);
+  })();
 
   // Stat counter ticker
   function animateCounter(el) {
