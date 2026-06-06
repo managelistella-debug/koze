@@ -1220,17 +1220,29 @@
     }
     initOffset();
 
+    let snapTarget = null; // when set, eases offset towards this value
+
     function loop() {
-      // Blend towards hover velocity or slow auto drift
-      const target = isHovering ? hoverVel : BASE_SPEED;
-      velocity += (target - velocity) * 0.06;
-
-      offset += velocity;
-
       const setW = cloneSetWidth();
+
+      if (snapTarget !== null) {
+        // Ease towards snap target
+        const diff = snapTarget - offset;
+        offset += diff * 0.1;
+        if (Math.abs(diff) < 0.5) {
+          offset = snapTarget;
+          snapTarget = null;
+        }
+      } else {
+        // Blend towards hover velocity or slow auto drift
+        const target = isHovering ? hoverVel : BASE_SPEED;
+        velocity += (target - velocity) * 0.06;
+        offset += velocity;
+      }
+
       // Seamless wrap
-      if (offset >= setW * 2) offset -= setW;
-      if (offset < setW) offset += setW;
+      if (offset >= setW * 2) { offset -= setW; if (snapTarget !== null) snapTarget -= setW; }
+      if (offset < setW)      { offset += setW; if (snapTarget !== null) snapTarget += setW; }
 
       track.style.transform = 'translateX(-' + offset + 'px)';
       raf = requestAnimationFrame(loop);
@@ -1239,17 +1251,16 @@
 
     // Edge hover detection
     carousel.addEventListener('mousemove', e => {
+      if (snapTarget !== null) return; // don't interfere during snap
       const rect = carousel.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const w = rect.width;
       const pct = x / w;
       isHovering = true;
       if (pct > 0.7) {
-        // Right 30% — scroll forward (positive offset = moving right through items)
         const strength = (pct - 0.7) / 0.3;
         hoverVel = BASE_SPEED + strength * 3.5;
       } else if (pct < 0.3) {
-        // Left 30% — scroll backward
         const strength = (0.3 - pct) / 0.3;
         hoverVel = -(BASE_SPEED + strength * 3.5);
       } else {
@@ -1258,9 +1269,11 @@
     });
     carousel.addEventListener('mouseleave', () => { isHovering = false; hoverVel = 0; });
 
-    // Arrow buttons snap by one card
+    // Arrow buttons glide by one card
     window.shiftServices = function(dir) {
-      offset += dir * cardWidth() * 1;
+      const base = snapTarget !== null ? snapTarget : offset;
+      snapTarget = base + dir * cardWidth();
+      velocity = 0;
     };
 
     // Hide disabled state — both arrows always active for infinite loop
